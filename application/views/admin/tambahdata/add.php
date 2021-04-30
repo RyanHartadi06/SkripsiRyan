@@ -3,7 +3,6 @@
 
 <!-- Head -->
 <?php $this->load->view("admin/_partials/head.php") ?>
-<!-- <?php $this->load->view("admin/_partials/modal/save.php") ?> -->
 
 <body class="nav-fixed">
 
@@ -28,7 +27,7 @@
 					</div>
 				</div>
 				<div class="container-fluid mt-n10">
-					<form action="<?= base_url('admin/Tambahdata/post') ?>" method="post" enctype="multipart/form-data">
+					<form action="<?= base_url('frontend/Data/post') ?>" method="post" enctype="multipart/form-data">
 						<div class="card mb-4">
 							<div class="card-header">Add Data</div>
 							<div class="card-body">
@@ -49,17 +48,8 @@
 								</div>
 								<div class="row">
 									<div class="form-group col-lg-12 col-sm-12">
-										<label>Jenis Ikan</label>
-										<select class="custom-select" name="jenis_ikan">
-											<option selected>Choose...</option>
-											<option value="Campuran">Campuran</option>
-											<option value="Kohaku">Kohaku</option>
-											<option value="Sanke">Sanke</option>
-											<option value="Sowa">Sowa</option>
-											<option value="Shiro">Shiro</option>
-											<option value="Ogon">Ogon</option>
-											<option value="Yamabuki">Yamabuki</option>
-										</select>
+										<label>Nama Kolam</label>
+										<input class="form-control" id="nama_kolam" name="nama_kolam" type="text" placeholder="Nama Kolam" />
 									</div>
 								</div>
 								<div class="row">

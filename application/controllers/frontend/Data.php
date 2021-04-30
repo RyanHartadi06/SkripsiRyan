@@ -18,21 +18,22 @@ class Data extends CI_Controller
         $arr = [
             'judul' => $this->input->post('name'),
             'lokasi' => $this->input->post('lokasi'),
-            'jenis_ikan' => $this->input->post('jenis_ikan'),
+            'nama_kolam' => $this->input->post('nama_kolam'),
             'deskripsi' => $this->input->post('desc'),
-            'CreatedDate' => date('Y-m-d H:i:s')
+            'CreatedDate' => date('Y-m-d H:i:s'),
+            'status' => 'OFF'
         ];
         $insert = $this->db->insert('data', $arr);
         if ($insert) {
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
             Data Berhasil Ditambahkan !
              </div>');
-            redirect('admin/Category');
+            redirect('frontend/Proses');
         } else {
             $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
             Data Gagal Ditambahkan !
              </div>');
-            redirect('admin/Category');
+            redirect('frontend/Proses');
         }
     }
 }
