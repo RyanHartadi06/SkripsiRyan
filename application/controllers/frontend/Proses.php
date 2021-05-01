@@ -48,6 +48,21 @@ class Proses extends CI_Controller
 
 		$this->db->insert('sensor', $data);
 	}
+	public function pHajax()
+	{
+		$grafiknya =  $this->db->query("SELECT ph, createdDate FROM (SELECT * FROM sensor GROUP BY id DESC LIMIT 10) sub ORDER BY id ASC")->result();
+		echo json_encode($grafiknya);
+	}
+	public function pHsuhu()
+	{
+		$grafik_suhu =  $this->db->query("SELECT suhu, createdDate FROM (SELECT * FROM sensor GROUP BY id DESC LIMIT 10) sub ORDER BY id ASC")->result_array();
+		echo json_encode($grafik_suhu);
+	}
+	public function tdsajax()
+	{
+		$grafik_tds =  $this->db->query("SELECT tds, createdDate FROM (SELECT * FROM sensor GROUP BY id DESC LIMIT 10) sub ORDER BY id ASC")->result_array();
+		echo json_encode($grafik_tds);
+	}
 	public function refreshSuhu()
 	{
 		$suhu = $this->db->query("SELECT suhu FROM sensor ORDER BY id DESC LIMIT 1")->row();
