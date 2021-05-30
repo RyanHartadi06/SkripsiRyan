@@ -5,7 +5,7 @@
         </a>
     </div>
     <button class="btn btn-icon btn-transparent-dark order-1 order-lg-0 ml-5" id="sidebarToggle" href="#">
-        <i data-feather="menu"></i>
+        <i class="fas fa-bars"></i>
     </button>
     <ul class="navbar-nav align-items-center ml-auto">
         <li class="nav-item dropdown no-caret mr-3 dropdown-user">

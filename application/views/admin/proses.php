@@ -129,6 +129,7 @@
 
 <script>
     var ph = [];
+    //buat refresh
     var auto_refresh = setInterval(function() {
         $('#cek_suhu').fadeOut(function() {
             $(this).load('Proses/refreshSuhu', function() {
@@ -159,7 +160,7 @@
         ajaxSuhu();
         ajaxTds();
     }, 2000);
-
+    //end buat refresh
     function ajaxPh() {
         $.ajax({
             url: "<?= base_url('frontend/Proses/pHajax') ?>",
@@ -176,7 +177,7 @@
 
     function ajaxSuhu() {
         $.ajax({
-            url: "<?= base_url('frontend/Proses/pHsuhu') ?>",
+            url: "<?= base_url('frontend/Proses/suhuAjax') ?>",
             dataType: "json",
             success: function(result) {
                 var output = Object.entries(result).map(([key, value]) => (value.suhu));
@@ -201,7 +202,7 @@
             }
         });
     }
-
+    //grafik 
     function grafikPh(ph, createdDate) {
         // ### GRAFIK PH ### //
         var ctx = document.getElementById("grafik_ph");
@@ -294,9 +295,6 @@
         });
     }
 
-
-
-    //Sensor TDS
     function grafikTds(tds, createdDate) {
         var ctx = document.getElementById("grafik_tds");
         var cData = JSON.parse(`<?php echo $grafik_tds; ?>`);
@@ -478,7 +476,7 @@
             }
         });
     }
-    //grafik suhu
+    //grafik
 </script>
 
 </html>
