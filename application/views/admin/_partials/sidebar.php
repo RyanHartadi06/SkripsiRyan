@@ -24,10 +24,10 @@
                     Data Kriteria Kolam Ikan Koi
                 </a>
                 <div class="sidenav-menu-heading">Master Data</div>
-                <a class="nav-link collapsed" href="<?php echo base_url('frontend/Proses') ?>">
+                <!-- <a class="nav-link collapsed" href="<?php echo base_url('frontend/Proses') ?>">
                     <div class="nav-link-icon"><i data-feather="grid"></i></div>
                     Monitoring Data
-                </a>
+                </a> -->
                 <a class="nav-link collapsed" href="<?php echo base_url('frontend/Data') ?>">
                     <div class="nav-link-icon"><i data-feather="grid"></i></div>
                     Proses Data
