@@ -194,7 +194,7 @@
                         </div>
                     </div>
                     <div class="row mt-5">
-                        <div class="col-lg-4 mb-4">
+                        <div class="col-lg-12 mb-4">
                             <div class="card">
                                 <div class="card-header">Grafik Sensor Suhu</div>
                                 <div class="card-body">
@@ -202,7 +202,9 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-4 mb-4">
+                    </div>
+                    <div class="row mt-5">
+                        <div class="col-lg-12 mb-4">
                             <div class="card">
                                 <div class="card-header">Grafik Sensor Kemurnian Air ( TDS )</div>
                                 <div class="card-body">
@@ -210,7 +212,9 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-4 mb-4">
+                    </div>
+                    <div class="row mt-5">
+                        <div class="col-lg-12 mb-4">
                             <div class="card">
                                 <div class="card-header">Grafik Sensor pH</div>
                                 <div class="card-body">
@@ -235,5 +239,284 @@
 </body>
 
 
+<script>
+    grafikPh();
+    grafiksuhu();
+    grafikTds();
+    //grafik 
+    function grafikPh() {
+        // ### GRAFIK PH ### //
+        var ctx = document.getElementById("grafik_ph");
+        var cData = JSON.parse(`<?php echo $grafik_ph; ?>`);
+        var myLineChart = new Chart(ctx, {
+            type: "line",
+            data: {
+                labels: cData.waktu,
+                datasets: [{
+                    // label: cData.suhu,
+                    lineTension: 0.3,
+                    backgroundColor: "rgba(0, 97, 242, 0.05)",
+                    borderColor: "rgba(0, 97, 242, 1)",
+                    pointRadius: 3,
+                    pointBackgroundColor: "rgba(0, 97, 242, 1)",
+                    pointBorderColor: "rgba(0, 97, 242, 1)",
+                    pointHoverRadius: 3,
+                    pointHoverBackgroundColor: "rgba(0, 97, 242, 1)",
+                    pointHoverBorderColor: "rgba(0, 97, 242, 1)",
+                    pointHitRadius: 10,
+                    pointBorderWidth: 2,
+                    data: cData.ph
+                }]
+            },
+            options: {
+                maintainAspectRatio: false,
+                layout: {
+                    padding: {
+                        left: 10,
+                        right: 25,
+                        top: 25,
+                        bottom: 0
+                    }
+                },
+                scales: {
+                    xAxes: [{
+                        time: {
+                            unit: "date"
+                        },
+                        gridLines: {
+                            display: false,
+                            drawBorder: false
+                        },
+                        ticks: {
+                            maxTicksLimit: 7
+                        }
+                    }],
+                    yAxes: [{
+                        ticks: {
+                            maxTicksLimit: 5,
+                            padding: 10,
+                            callback: function(value, index, values) {
+                                return number_format(value);
+                            }
+                        },
+                        gridLines: {
+                            color: "rgb(234, 236, 244)",
+                            zeroLineColor: "rgb(234, 236, 244)",
+                            drawBorder: false,
+                            borderDash: [2],
+                            zeroLineBorderDash: [2]
+                        }
+                    }]
+                },
+                legend: {
+                    display: false
+                },
+                tooltips: {
+                    backgroundColor: "rgb(255,255,255)",
+                    bodyFontColor: "#858796",
+                    titleMarginBottom: 10,
+                    titleFontColor: "#6e707e",
+                    titleFontSize: 14,
+                    borderColor: "#dddfeb",
+                    borderWidth: 1,
+                    xPadding: 15,
+                    yPadding: 15,
+                    displayColors: false,
+                    intersect: false,
+                    mode: "index",
+                    caretPadding: 10,
+                    callbacks: {
+                        label: function(tooltipItem, chart) {
+                            var datasetLabel = chart.datasets[tooltipItem.datasetIndex].label || '';
+                            return datasetLabel + number_format(tooltipItem.yLabel);
+                        }
+                    }
+                }
+            }
+        });
+    }
+
+    function grafikTds() {
+        var ctx = document.getElementById("grafik_tds");
+        var cData = JSON.parse(`<?php echo $grafik_tds; ?>`);
+        var myLineChart = new Chart(ctx, {
+            type: "line",
+            data: {
+                labels: cData.waktu,
+                datasets: [{
+                    // label: cData.suhu,
+                    lineTension: 0.3,
+                    backgroundColor: "rgba(0, 97, 242, 0.05)",
+                    borderColor: "rgba(0, 97, 242, 1)",
+                    pointRadius: 3,
+                    pointBackgroundColor: "rgba(0, 97, 242, 1)",
+                    pointBorderColor: "rgba(0, 97, 242, 1)",
+                    pointHoverRadius: 3,
+                    pointHoverBackgroundColor: "rgba(0, 97, 242, 1)",
+                    pointHoverBorderColor: "rgba(0, 97, 242, 1)",
+                    pointHitRadius: 10,
+                    pointBorderWidth: 2,
+                    data: cData.tds
+                }]
+            },
+            options: {
+                maintainAspectRatio: false,
+                layout: {
+                    padding: {
+                        left: 10,
+                        right: 25,
+                        top: 25,
+                        bottom: 0
+                    }
+                },
+                scales: {
+                    xAxes: [{
+                        time: {
+                            unit: "date"
+                        },
+                        gridLines: {
+                            display: false,
+                            drawBorder: false
+                        },
+                        ticks: {
+                            maxTicksLimit: 7
+                        }
+                    }],
+                    yAxes: [{
+                        ticks: {
+                            maxTicksLimit: 5,
+                            padding: 10,
+                            callback: function(value, index, values) {
+                                return number_format(value);
+                            }
+                        },
+                        gridLines: {
+                            color: "rgb(234, 236, 244)",
+                            zeroLineColor: "rgb(234, 236, 244)",
+                            drawBorder: false,
+                            borderDash: [2],
+                            zeroLineBorderDash: [2]
+                        }
+                    }]
+                },
+                legend: {
+                    display: false
+                },
+                tooltips: {
+                    backgroundColor: "rgb(255,255,255)",
+                    bodyFontColor: "#858796",
+                    titleMarginBottom: 10,
+                    titleFontColor: "#6e707e",
+                    titleFontSize: 14,
+                    borderColor: "#dddfeb",
+                    borderWidth: 1,
+                    xPadding: 15,
+                    yPadding: 15,
+                    displayColors: false,
+                    intersect: false,
+                    mode: "index",
+                    caretPadding: 10,
+                    callbacks: {
+                        label: function(tooltipItem, chart) {
+                            var datasetLabel = chart.datasets[tooltipItem.datasetIndex].label || '';
+                            return datasetLabel + number_format(tooltipItem.yLabel);
+                        }
+                    }
+                }
+            }
+        });
+    }
+
+    function grafiksuhu() {
+        var ctx = document.getElementById("grafik_suhu");
+        var cData = JSON.parse(`<?php echo $grafik_suhu; ?>`);
+        var myLineChart = new Chart(ctx, {
+            type: "line",
+            data: {
+                labels: cData.waktu,
+                datasets: [{
+                    // label: cData.suhu,
+                    lineTension: 0.3,
+                    backgroundColor: "rgba(0, 97, 242, 0.05)",
+                    borderColor: "rgba(0, 97, 242, 1)",
+                    pointRadius: 3,
+                    pointBackgroundColor: "rgba(0, 97, 242, 1)",
+                    pointBorderColor: "rgba(0, 97, 242, 1)",
+                    pointHoverRadius: 3,
+                    pointHoverBackgroundColor: "rgba(0, 97, 242, 1)",
+                    pointHoverBorderColor: "rgba(0, 97, 242, 1)",
+                    pointHitRadius: 10,
+                    pointBorderWidth: 2,
+                    data: cData.suhu
+                }]
+            },
+            options: {
+                maintainAspectRatio: false,
+                layout: {
+                    padding: {
+                        left: 10,
+                        right: 25,
+                        top: 25,
+                        bottom: 0
+                    }
+                },
+                scales: {
+                    xAxes: [{
+                        time: {
+                            unit: "date"
+                        },
+                        gridLines: {
+                            display: false,
+                            drawBorder: false
+                        },
+                        ticks: {
+                            maxTicksLimit: 7
+                        }
+                    }],
+                    yAxes: [{
+                        ticks: {
+                            maxTicksLimit: 5,
+                            padding: 10,
+                            callback: function(value, index, values) {
+                                return number_format(value);
+                            }
+                        },
+                        gridLines: {
+                            color: "rgb(234, 236, 244)",
+                            zeroLineColor: "rgb(234, 236, 244)",
+                            drawBorder: false,
+                            borderDash: [2],
+                            zeroLineBorderDash: [2]
+                        }
+                    }]
+                },
+                legend: {
+                    display: false
+                },
+                tooltips: {
+                    backgroundColor: "rgb(255,255,255)",
+                    bodyFontColor: "#858796",
+                    titleMarginBottom: 10,
+                    titleFontColor: "#6e707e",
+                    titleFontSize: 14,
+                    borderColor: "#dddfeb",
+                    borderWidth: 1,
+                    xPadding: 15,
+                    yPadding: 15,
+                    displayColors: false,
+                    intersect: false,
+                    mode: "index",
+                    caretPadding: 10,
+                    callbacks: {
+                        label: function(tooltipItem, chart) {
+                            var datasetLabel = chart.datasets[tooltipItem.datasetIndex].label || '';
+                            return datasetLabel + number_format(tooltipItem.yLabel);
+                        }
+                    }
+                }
+            }
+        });
+    }
+</script>
 
 </html>

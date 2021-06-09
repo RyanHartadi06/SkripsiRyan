@@ -297,7 +297,7 @@
 
     function grafikTds(tds, createdDate) {
         var ctx = document.getElementById("grafik_tds");
-        var cData = JSON.parse(`<?php echo $grafik_tds; ?>`);
+        // var cData = JSON.parse(`<?php echo $grafik_tds; ?>`);
         var myLineChart = new Chart(ctx, {
             type: "line",
             data: {

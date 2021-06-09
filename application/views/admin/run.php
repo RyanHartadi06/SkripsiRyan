@@ -124,7 +124,7 @@
                                                 <div class="col-lg-6">
                                                     <ul class="list-unstyled">
                                                         <li class="pb-2"><strong>Nama Kolam: </strong> <?= $data->nama_kolam ?>i</li>
-                                                        <li class="pb-2"><strong>Dibuat Tanggal: </strong> <?= $data->CreatedDate ?>n </li>
+                                                        <li class="pb-2"><strong>Dibuat Tanggal: </strong> <?= $data->CreatedDate ?> </li>
                                                     </ul>
                                                 </div>
                                             </div>
@@ -209,7 +209,9 @@
                     $(this).fadeIn();
                 });
             });
-
+            getLastPh();
+            getLastSuhu();
+            getLastTds();
             ajaxPh();
             ajaxSuhu();
             ajaxTds();
@@ -218,7 +220,7 @@
         },
         2000);
     //end buat refresh
-    function ajaxPh() {
+    function getLastPh() {
         $.ajax({
             url: "<?= base_url('frontend/Proses/refreshphRun') ?>",
             success: function(res) {
@@ -227,7 +229,7 @@
         });
     }
 
-    function ajaxSuhu() {
+    function getLastSuhu() {
         $.ajax({
             url: "<?= base_url('frontend/Proses/refreshSuhuRun') ?>",
             success: function(res) {
@@ -236,11 +238,68 @@
         });
     }
 
-    function ajaxTds() {
+    function getLastTds() {
         $.ajax({
             url: "<?= base_url('frontend/Proses/refreshTdsRun') ?>",
             success: function(res) {
                 document.getElementById('tds').value = res;
+            }
+        });
+    }
+
+    function ajaxPh() {
+        var id = $('input[id="id"]').val();
+        $.ajax({
+            url: "<?= base_url('frontend/Proses/pHajaxByID') ?>",
+            method: 'get',
+            data: {
+                id: id
+            },
+            dataType: "json",
+            success: function(result) {
+                var output = Object.entries(result).map(([key, value]) => (value.ph));
+                const propertyNames = Object.values(output);
+                var outputDate = Object.entries(result).map(([key, value]) => (value.createdDate));
+                const propertyDate = Object.values(outputDate);
+                grafikPh(propertyNames, outputDate);
+            }
+        });
+    }
+
+    function ajaxSuhu() {
+        var id = $('input[id="id"]').val();
+        $.ajax({
+            url: "<?= base_url('frontend/Proses/suhuAjaxByID') ?>",
+            method: 'get',
+            data: {
+                id: id
+            },
+            dataType: "json",
+            success: function(result) {
+                var output = Object.entries(result).map(([key, value]) => (value.suhu));
+                const suhu = Object.values(output);
+                var outputDate = Object.entries(result).map(([key, value]) => (value.createdDate));
+                const createdDate = Object.values(outputDate);
+                grafiksuhu(suhu, createdDate);
+            }
+        });
+    }
+
+    function ajaxTds() {
+        var id = $('input[id="id"]').val();
+        $.ajax({
+            url: "<?= base_url('frontend/Proses/tdsajaxByID') ?>",
+            method: 'get',
+            data: {
+                id: id
+            },
+            dataType: "json",
+            success: function(result) {
+                var output = Object.entries(result).map(([key, value]) => (value.tds));
+                const tds = Object.values(output);
+                var outputDate = Object.entries(result).map(([key, value]) => (value.createdDate));
+                const createdDate = Object.values(outputDate);
+                grafikTds(tds, createdDate);
             }
         });
     }
@@ -263,6 +322,280 @@
 
             }
         })
+    }
+    //grafik 
+    function grafikPh(ph, createdDate) {
+        // ### GRAFIK PH ### //
+        var ctx = document.getElementById("grafik_ph");
+        // var cData = JSON.parse(`<?php echo $grafik_ph; ?>`);
+        var myLineChart = new Chart(ctx, {
+            type: "line",
+            data: {
+                labels: createdDate,
+                datasets: [{
+                    // label: cData.suhu,
+                    lineTension: 0.3,
+                    backgroundColor: "rgba(0, 97, 242, 0.05)",
+                    borderColor: "rgba(0, 97, 242, 1)",
+                    pointRadius: 3,
+                    pointBackgroundColor: "rgba(0, 97, 242, 1)",
+                    pointBorderColor: "rgba(0, 97, 242, 1)",
+                    pointHoverRadius: 3,
+                    pointHoverBackgroundColor: "rgba(0, 97, 242, 1)",
+                    pointHoverBorderColor: "rgba(0, 97, 242, 1)",
+                    pointHitRadius: 10,
+                    pointBorderWidth: 2,
+                    data: ph
+                }]
+            },
+            options: {
+                maintainAspectRatio: false,
+                layout: {
+                    padding: {
+                        left: 10,
+                        right: 25,
+                        top: 25,
+                        bottom: 0
+                    }
+                },
+                scales: {
+                    xAxes: [{
+                        time: {
+                            unit: "date"
+                        },
+                        gridLines: {
+                            display: false,
+                            drawBorder: false
+                        },
+                        ticks: {
+                            maxTicksLimit: 7
+                        }
+                    }],
+                    yAxes: [{
+                        ticks: {
+                            maxTicksLimit: 5,
+                            padding: 10,
+                            callback: function(value, index, values) {
+                                return number_format(value);
+                            }
+                        },
+                        gridLines: {
+                            color: "rgb(234, 236, 244)",
+                            zeroLineColor: "rgb(234, 236, 244)",
+                            drawBorder: false,
+                            borderDash: [2],
+                            zeroLineBorderDash: [2]
+                        }
+                    }]
+                },
+                legend: {
+                    display: false
+                },
+                tooltips: {
+                    backgroundColor: "rgb(255,255,255)",
+                    bodyFontColor: "#858796",
+                    titleMarginBottom: 10,
+                    titleFontColor: "#6e707e",
+                    titleFontSize: 14,
+                    borderColor: "#dddfeb",
+                    borderWidth: 1,
+                    xPadding: 15,
+                    yPadding: 15,
+                    displayColors: false,
+                    intersect: false,
+                    mode: "index",
+                    caretPadding: 10,
+                    callbacks: {
+                        label: function(tooltipItem, chart) {
+                            var datasetLabel = chart.datasets[tooltipItem.datasetIndex].label || '';
+                            return datasetLabel + number_format(tooltipItem.yLabel);
+                        }
+                    }
+                }
+            }
+        });
+    }
+
+    function grafikTds(tds, createdDate) {
+        var ctx = document.getElementById("grafik_tds");
+        // var cData = JSON.parse(`<?php echo $grafik_tds; ?>`);
+        var myLineChart = new Chart(ctx, {
+            type: "line",
+            data: {
+                labels: createdDate,
+                datasets: [{
+                    // label: cData.suhu,
+                    lineTension: 0.3,
+                    backgroundColor: "rgba(0, 97, 242, 0.05)",
+                    borderColor: "rgba(0, 97, 242, 1)",
+                    pointRadius: 3,
+                    pointBackgroundColor: "rgba(0, 97, 242, 1)",
+                    pointBorderColor: "rgba(0, 97, 242, 1)",
+                    pointHoverRadius: 3,
+                    pointHoverBackgroundColor: "rgba(0, 97, 242, 1)",
+                    pointHoverBorderColor: "rgba(0, 97, 242, 1)",
+                    pointHitRadius: 10,
+                    pointBorderWidth: 2,
+                    data: tds
+                }]
+            },
+            options: {
+                maintainAspectRatio: false,
+                layout: {
+                    padding: {
+                        left: 10,
+                        right: 25,
+                        top: 25,
+                        bottom: 0
+                    }
+                },
+                scales: {
+                    xAxes: [{
+                        time: {
+                            unit: "date"
+                        },
+                        gridLines: {
+                            display: false,
+                            drawBorder: false
+                        },
+                        ticks: {
+                            maxTicksLimit: 7
+                        }
+                    }],
+                    yAxes: [{
+                        ticks: {
+                            maxTicksLimit: 5,
+                            padding: 10,
+                            callback: function(value, index, values) {
+                                return number_format(value);
+                            }
+                        },
+                        gridLines: {
+                            color: "rgb(234, 236, 244)",
+                            zeroLineColor: "rgb(234, 236, 244)",
+                            drawBorder: false,
+                            borderDash: [2],
+                            zeroLineBorderDash: [2]
+                        }
+                    }]
+                },
+                legend: {
+                    display: false
+                },
+                tooltips: {
+                    backgroundColor: "rgb(255,255,255)",
+                    bodyFontColor: "#858796",
+                    titleMarginBottom: 10,
+                    titleFontColor: "#6e707e",
+                    titleFontSize: 14,
+                    borderColor: "#dddfeb",
+                    borderWidth: 1,
+                    xPadding: 15,
+                    yPadding: 15,
+                    displayColors: false,
+                    intersect: false,
+                    mode: "index",
+                    caretPadding: 10,
+                    callbacks: {
+                        label: function(tooltipItem, chart) {
+                            var datasetLabel = chart.datasets[tooltipItem.datasetIndex].label || '';
+                            return datasetLabel + number_format(tooltipItem.yLabel);
+                        }
+                    }
+                }
+            }
+        });
+    }
+
+    function grafiksuhu(suhu, createdDate) {
+        var ctx = document.getElementById("grafik_suhu");
+        // var cData = JSON.parse(`<?php echo $grafik_suhu; ?>`);
+        var myLineChart = new Chart(ctx, {
+            type: "line",
+            data: {
+                labels: createdDate,
+                datasets: [{
+                    // label: cData.suhu,
+                    lineTension: 0.3,
+                    backgroundColor: "rgba(0, 97, 242, 0.05)",
+                    borderColor: "rgba(0, 97, 242, 1)",
+                    pointRadius: 3,
+                    pointBackgroundColor: "rgba(0, 97, 242, 1)",
+                    pointBorderColor: "rgba(0, 97, 242, 1)",
+                    pointHoverRadius: 3,
+                    pointHoverBackgroundColor: "rgba(0, 97, 242, 1)",
+                    pointHoverBorderColor: "rgba(0, 97, 242, 1)",
+                    pointHitRadius: 10,
+                    pointBorderWidth: 2,
+                    data: suhu
+                }]
+            },
+            options: {
+                maintainAspectRatio: false,
+                layout: {
+                    padding: {
+                        left: 10,
+                        right: 25,
+                        top: 25,
+                        bottom: 0
+                    }
+                },
+                scales: {
+                    xAxes: [{
+                        time: {
+                            unit: "date"
+                        },
+                        gridLines: {
+                            display: false,
+                            drawBorder: false
+                        },
+                        ticks: {
+                            maxTicksLimit: 7
+                        }
+                    }],
+                    yAxes: [{
+                        ticks: {
+                            maxTicksLimit: 5,
+                            padding: 10,
+                            callback: function(value, index, values) {
+                                return number_format(value);
+                            }
+                        },
+                        gridLines: {
+                            color: "rgb(234, 236, 244)",
+                            zeroLineColor: "rgb(234, 236, 244)",
+                            drawBorder: false,
+                            borderDash: [2],
+                            zeroLineBorderDash: [2]
+                        }
+                    }]
+                },
+                legend: {
+                    display: false
+                },
+                tooltips: {
+                    backgroundColor: "rgb(255,255,255)",
+                    bodyFontColor: "#858796",
+                    titleMarginBottom: 10,
+                    titleFontColor: "#6e707e",
+                    titleFontSize: 14,
+                    borderColor: "#dddfeb",
+                    borderWidth: 1,
+                    xPadding: 15,
+                    yPadding: 15,
+                    displayColors: false,
+                    intersect: false,
+                    mode: "index",
+                    caretPadding: 10,
+                    callbacks: {
+                        label: function(tooltipItem, chart) {
+                            var datasetLabel = chart.datasets[tooltipItem.datasetIndex].label || '';
+                            return datasetLabel + number_format(tooltipItem.yLabel);
+                        }
+                    }
+                }
+            }
+        });
     }
 </script>
 

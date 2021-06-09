@@ -46,10 +46,10 @@ class Proses extends CI_Controller
 		$grafik_suhu =  $this->db->query("SELECT suhu, createdDate FROM (SELECT * FROM data_sensor WHERE id = '$qweq' GROUP BY id DESC LIMIT 10) sub WHERE id = '$qweq' ORDER BY id ASC")->result_array();
 		if ($grafiknya) {
 			foreach ($grafiknya as $p) {
-				$data['ph'][] = $p['ph'];
-				$data['waktu'][] = $p['createdDate'];
+				$dataph['ph'][] = $p['ph'];
+				$dataph['waktu'][] = $p['createdDate'];
 			}
-			$data['grafik_ph'] = json_encode($data);
+			$data['grafik_ph'] = json_encode($dataph);
 		}
 		if ($grafik_tds) {
 			foreach ($grafik_tds as $p) {
@@ -96,6 +96,24 @@ class Proses extends CI_Controller
 	public function tdsajax()
 	{
 		$grafik_tds =  $this->db->query("SELECT tds, createdDate FROM (SELECT * FROM sensor GROUP BY id DESC LIMIT 10) sub ORDER BY id ASC")->result_array();
+		echo json_encode($grafik_tds);
+	}
+	public function pHajaxByID()
+	{
+		$id = $_GET['id'];
+		$grafiknya =  $this->db->query("SELECT ph, createdDate FROM (SELECT * FROM data_sensor WHERE id = '$id' GROUP BY id_data DESC LIMIT 10) sub WHERE id = '$id' ORDER BY id_data ASC")->result_array();
+		echo json_encode($grafiknya);
+	}
+	public function suhuAjaxByID()
+	{
+		$id = $_GET['id'];
+		$grafik_suhu =  $this->db->query("SELECT suhu, createdDate FROM (SELECT * FROM data_sensor  WHERE id = '$id'  GROUP BY id_data DESC LIMIT 10) sub  WHERE id = '$id'  ORDER BY id_data ASC")->result_array();
+		echo json_encode($grafik_suhu);
+	}
+	public function tdsajaxByID()
+	{
+		$id = $_GET['id'];
+		$grafik_tds =  $this->db->query("SELECT tds, createdDate FROM (SELECT * FROM data_sensor  WHERE id = '$id'  GROUP BY id_data DESC LIMIT 10) sub  WHERE id = '$id'  ORDER BY id_data ASC")->result_array();
 		echo json_encode($grafik_tds);
 	}
 	public function refreshSuhu()
@@ -264,15 +282,15 @@ class Proses extends CI_Controller
 
 		// $data['all'] = $this->db->query("SELECT * FROM data_sensor WHERE id = '$qweq'  ORDER BY id_data DESC LIMIT 1")->row();
 
-		$grafiknya =  $this->db->query("SELECT ph, createdDate FROM (SELECT * FROM data_sensor WHERE id = '$qweq' GROUP BY id DESC LIMIT 10) sub WHERE id = '$qweq' ORDER BY id ASC")->result_array();
-		$grafik_tds =  $this->db->query("SELECT tds, createdDate FROM (SELECT * FROM data_sensor WHERE id = '$qweq' GROUP BY id DESC LIMIT 10) sub WHERE id = '$qweq' ORDER BY id ASC")->result_array();
-		$grafik_suhu =  $this->db->query("SELECT suhu, createdDate FROM (SELECT * FROM data_sensor WHERE id = '$qweq' GROUP BY id DESC LIMIT 10) sub WHERE id = '$qweq' ORDER BY id ASC")->result_array();
+		$grafiknya =  $this->db->query("SELECT ph, createdDate FROM (SELECT * FROM data_sensor WHERE id = '$qweq' GROUP BY id_data  DESC LIMIT 10) sub WHERE id = '$qweq' ORDER BY id_data ASC")->result_array();
+		$grafik_tds =  $this->db->query("SELECT tds, createdDate FROM (SELECT * FROM data_sensor WHERE id = '$qweq' GROUP BY id_data  DESC LIMIT 10) sub WHERE id = '$qweq' ORDER BY id ASC")->result_array();
+		$grafik_suhu =  $this->db->query("SELECT suhu, createdDate FROM (SELECT * FROM data_sensor WHERE id = '$qweq' GROUP BY id_data  DESC LIMIT 10) sub WHERE id = '$qweq' ORDER BY id ASC")->result_array();
 		if ($grafiknya) {
 			foreach ($grafiknya as $p) {
-				$data['ph'][] = $p['ph'];
-				$data['waktu'][] = $p['createdDate'];
+				$dataph['ph'][] = $p['ph'];
+				$dataph['waktu'][] = $p['createdDate'];
 			}
-			$data['grafik_ph'] = json_encode($data);
+			$data['grafik_ph'] = json_encode($dataph);
 		}
 		if ($grafik_tds) {
 			foreach ($grafik_tds as $p) {

@@ -15,11 +15,11 @@
                     </nav>
                 </div>
                 <div class="sidenav-menu-heading">Pengetahuan</div>
-                <a class="nav-link collapsed" href="<?php echo base_url('frontend/DataIkan') ?>">
+                <a class="nav-link collapsed" href="#">
                     <div class="nav-link-icon"><i data-feather="grid"></i></div>
                     Data Ikan Koi
                 </a>
-                <a class="nav-link collapsed" href="<?php echo base_url('frontend/DataIkan') ?>">
+                <a class="nav-link collapsed" href="#">
                     <div class="nav-link-icon"><i data-feather="grid"></i></div>
                     Data Kriteria Kolam Ikan Koi
                 </a>
