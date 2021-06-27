@@ -123,7 +123,7 @@
                                                 </div>
                                                 <div class="col-lg-6">
                                                     <ul class="list-unstyled">
-                                                        <li class="pb-2"><strong>Nama Kolam: </strong> <?= $data->nama_kolam ?>i</li>
+                                                        <li class="pb-2"><strong>Nama Kolam: </strong> <?= $data->nama_kolam ?></li>
                                                         <li class="pb-2"><strong>Dibuat Tanggal: </strong> <?= $data->CreatedDate ?> </li>
                                                     </ul>
                                                 </div>
@@ -162,6 +162,7 @@
                             </div>
                         </div>
                     </div>
+
                 </div>
 
             </main>
@@ -180,6 +181,7 @@
 <script>
     var ph = [];
     var id = $('input[id="id"]').val();
+    console.log(id);
 
     //buat refresh
     var auto_refresh = setInterval(function() {
@@ -327,7 +329,6 @@
     function grafikPh(ph, createdDate) {
         // ### GRAFIK PH ### //
         var ctx = document.getElementById("grafik_ph");
-        // var cData = JSON.parse(`<?php echo $grafik_ph; ?>`);
         var myLineChart = new Chart(ctx, {
             type: "line",
             data: {
@@ -418,7 +419,6 @@
 
     function grafikTds(tds, createdDate) {
         var ctx = document.getElementById("grafik_tds");
-        // var cData = JSON.parse(`<?php echo $grafik_tds; ?>`);
         var myLineChart = new Chart(ctx, {
             type: "line",
             data: {
@@ -509,7 +509,6 @@
 
     function grafiksuhu(suhu, createdDate) {
         var ctx = document.getElementById("grafik_suhu");
-        // var cData = JSON.parse(`<?php echo $grafik_suhu; ?>`);
         var myLineChart = new Chart(ctx, {
             type: "line",
             data: {
