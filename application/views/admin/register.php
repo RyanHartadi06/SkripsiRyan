@@ -21,8 +21,12 @@
                                     </div>
                                     <form method="post" autocomplete="off">
                                         <div class="form-group">
-                                            <label class="small mb-1" for="inputEmail">Username</label>
-                                            <input class="form-control py-4" id="username" name="username" type="text" placeholder="Enter Username" />
+                                            <label class="small mb-1" for="nama">Nama</label>
+                                            <input class="form-control py-4" id="nama" name="nama" type="text" placeholder="Masukkan Nama" />
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="small mb-1" for="username">Username</label>
+                                            <input class="form-control py-4" id="username" name="username" type="text" placeholder="Masukkan Username" />
                                         </div>
                                         <div class="form-group">
                                             <label class="small mb-1" for="inputPassword">Password</label>
@@ -30,7 +34,6 @@
                                         </div>
                                         <div class="form-group d-flex align-items-center justify-content-between mt-4 mb-0">
                                             <button type="submit" class="btn btn-primary mx-auto">Login</button>
-                                            <!-- <a href="<?= base_url('Login/Register') ?>" class="btn btn-success mx-auto">Register Sekarang</a> -->
                                         </div>
                                     </form>
                                 </div>
