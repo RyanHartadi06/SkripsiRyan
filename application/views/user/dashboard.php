@@ -2,18 +2,17 @@
 <html lang="en">
 
 <!-- Head -->
-<?php $this->load->view("admin/_partials/head.php") ?>
-<!-- <?php $this->load->view("admin/_partials/modal/delete.php") ?> -->
+<?php $this->load->view("user/_partials/head.php") ?>
 
 <body class="nav-fixed">
 
   <!-- Topbar -->
-  <?php $this->load->view("admin/_partials/topbar.php") ?>
+  <?php $this->load->view("user/_partials/topbar.php") ?>
 
   <div id="layoutSidenav">
 
     <!-- Sidebar -->
-    <?php $this->load->view("admin/_partials/sidebar.php") ?>
+    <?php $this->load->view("user/_partials/sidebar.php") ?>
 
     <div id="layoutSidenav_content">
       <main>
@@ -24,7 +23,7 @@
                 <div class="page-header-icon">
                   <i data-feather="activity"></i>
                 </div>
-                <span>User/Dashboard</span>
+                <span>Dashboard</span>
               </h1>
               <div class="page-header-subtitle">Sistem Kendali Kualitas Air Kolam Koi</div>
             </div>
@@ -97,13 +96,13 @@
       </main>
 
       <!-- Footer -->
-      <?php $this->load->view("admin/_partials/footer.php") ?>
+      <?php $this->load->view("user/_partials/footer.php") ?>
 
     </div>
   </div>
 
   <!-- JS -->
-  <?php $this->load->view("admin/_partials/js.php") ?>
+  <?php $this->load->view("user/_partials/js.php") ?>
 
 </body>
 <script>

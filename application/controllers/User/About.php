@@ -10,6 +10,6 @@ class About extends CI_Controller
 	public function index()
 	{
 
-		$this->load->view('admin/about/about');
+		$this->load->view('user/about/about');
 	}
 }

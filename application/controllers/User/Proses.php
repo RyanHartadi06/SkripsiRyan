@@ -35,7 +35,7 @@ class Proses extends CI_Controller
 			$data['grafik_suhu'] = json_encode($data2);
 		}
 
-		$this->load->view('admin/proses', $data);
+		$this->load->view('user/proses', $data);
 	}
 	public function run()
 	{
@@ -66,7 +66,7 @@ class Proses extends CI_Controller
 			$data['grafik_suhu'] = json_encode($data2);
 		}
 
-		$this->load->view('admin/run', $data);
+		$this->load->view('user/run', $data);
 	}
 	public function addData()
 	{
@@ -307,7 +307,7 @@ class Proses extends CI_Controller
 			$data['grafik_suhu'] = json_encode($data2);
 		}
 
-		$this->load->view('admin/detail', $data);
+		$this->load->view('user/detail', $data);
 	}
 	public function delete($id)
 	{

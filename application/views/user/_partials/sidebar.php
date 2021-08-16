@@ -19,11 +19,11 @@
                     <div class="nav-link-icon"><i data-feather="grid"></i></div>
                     Data Ikan Koi
                 </a>
-                <a class="nav-link collapsed" href="#">
+                <a class="nav-link collapsed" href="<?= base_url('User/Alat') ?>">
                     <div class="nav-link-icon"><i data-feather="grid"></i></div>
                     Alat IoT
                 </a>
-                <a class="nav-link collapsed" href="#">
+                <a class="nav-link collapsed" href="<?= base_url('User/Fuzzy') ?>">
                     <div class="nav-link-icon"><i data-feather="grid"></i></div>
                     Fuzzy Tsukamoto
                 </a>

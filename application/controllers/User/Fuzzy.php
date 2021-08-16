@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class DataIkan extends CI_Controller
+class Fuzzy extends CI_Controller
 {
     public function __construct()
     {
@@ -10,6 +10,6 @@ class DataIkan extends CI_Controller
     public function index()
     {
 
-        $this->load->view('user/ikan/index');
+        $this->load->view('user/fuzzy/index');
     }
 }

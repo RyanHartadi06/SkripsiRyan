@@ -2,17 +2,17 @@
 <html lang="en">
 
 <!-- Head -->
-<?php $this->load->view("admin/_partials/head.php") ?>
+<?php $this->load->view("user/_partials/head.php") ?>
 
 <body class="nav-fixed">
 
     <!-- Topbar -->
-    <?php $this->load->view("admin/_partials/topbar.php") ?>
+    <?php $this->load->view("user/_partials/topbar.php") ?>
 
     <div id="layoutSidenav">
 
         <!-- Sidebar -->
-        <?php $this->load->view("admin/_partials/sidebar.php") ?>
+        <?php $this->load->view("user/_partials/sidebar.php") ?>
 
         <div id="layoutSidenav_content">
             <main>
@@ -165,7 +165,7 @@
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="col-lg-2 d-flex align-items-center justify-content-center">
-                                            <img class="img-fluid" style="max-width: 10rem" src="<?= base_url('img/admin/logo/data-report-pana.svg') ?>" alt="">
+                                            <img class="img-fluid" style="max-width: 10rem" src="<?= base_url('img/user/logo/data-report-pana.svg') ?>" alt="">
                                         </div>
                                         <div class="col-lg-10 pt-4 pt-lg-0 content">
                                             <?php foreach ($qwe as $data) { ?>
@@ -228,13 +228,13 @@
             </main>
 
             <!-- Footer -->
-            <?php $this->load->view("admin/_partials/footer.php") ?>
+            <?php $this->load->view("user/_partials/footer.php") ?>
 
         </div>
     </div>
 
     <!-- JS -->
-    <?php $this->load->view("admin/_partials/js.php") ?>
+    <?php $this->load->view("user/_partials/js.php") ?>
 
 </body>
 

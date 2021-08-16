@@ -2,18 +2,18 @@
 <html lang="en">
 
 <!-- Head -->
-<?php $this->load->view("admin/_partials/head.php") ?>
-<!-- <?php $this->load->view("admin/_partials/modal/delete.php") ?> -->
+<?php $this->load->view("user/_partials/head.php") ?>
+<!-- <?php $this->load->view("user/_partials/modal/delete.php") ?> -->
 
 <body class="nav-fixed">
 
     <!-- Topbar -->
-    <?php $this->load->view("admin/_partials/topbar.php") ?>
+    <?php $this->load->view("user/_partials/topbar.php") ?>
 
     <div id="layoutSidenav">
 
         <!-- Sidebar -->
-        <?php $this->load->view("admin/_partials/sidebar.php") ?>
+        <?php $this->load->view("user/_partials/sidebar.php") ?>
 
         <div id="layoutSidenav_content">
             <main>
@@ -76,13 +76,13 @@
             </main> <!-- Footer -->
 
             <!-- Footer -->
-            <?php $this->load->view("admin/_partials/footer.php") ?>
+            <?php $this->load->view("user/_partials/footer.php") ?>
 
         </div>
     </div>
 
     <!-- JS -->
-    <?php $this->load->view("admin/_partials/js.php") ?>
+    <?php $this->load->view("user/_partials/js.php") ?>
 
 </body>
 

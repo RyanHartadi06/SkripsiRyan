@@ -9,7 +9,7 @@ class Login extends CI_Controller
 		$this->form_validation->set_rules('password', 'Password', 'required');
 
 		if ($this->form_validation->run() == false) {
-			$this->load->view('admin/login');
+			$this->load->view('login');
 		} else {
 			$username = $this->input->post('username');
 			$password = md5($this->input->post('password'));
@@ -37,14 +37,14 @@ class Login extends CI_Controller
 						'message',
 						'<div class="alert alert-danger mb-3" role="alert">Wrong Password!</div>'
 					);
-					redirect('admin/Login');
+					redirect('Login');
 				}
 			} else {
 				$this->session->set_flashdata(
 					'message',
 					'<div class="alert alert-danger mb-3" role="alert">Email Not Registered</div>'
 				);
-				redirect('admin/Login');
+				redirect('Login');
 			}
 		}
 	}
@@ -64,7 +64,7 @@ class Login extends CI_Controller
 		$this->form_validation->set_rules('password', 'Password', 'required');
 
 		if ($this->form_validation->run() == false) {
-			$this->load->view('admin/register');
+			$this->load->view('register');
 		} else {
 			$nama = $this->input->post('nama');
 			$username = $this->input->post('username');

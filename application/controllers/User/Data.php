@@ -10,12 +10,12 @@ class Data extends CI_Controller
     public function index()
     {
         $data['data'] = $this->db->query("SELECT * FROM data")->result_array();
-        $this->load->view('admin/tambahdata/data',  $data);
+        $this->load->view('user/tambahdata/data',  $data);
     }
     public function add()
     {
 
-        $this->load->view('admin/tambahdata/add');
+        $this->load->view('user/tambahdata/add');
     }
     public function post()
     {
