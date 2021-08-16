@@ -27,7 +27,7 @@
 					</div>
 				</div>
 				<div class="container-fluid mt-n10">
-					<form action="<?= base_url('frontend/Data/post') ?>" method="post" enctype="multipart/form-data">
+					<form action="<?= base_url('User/Data/post') ?>" method="post" enctype="multipart/form-data">
 						<div class="card mb-4">
 							<div class="card-header">Add Data</div>
 							<div class="card-body">

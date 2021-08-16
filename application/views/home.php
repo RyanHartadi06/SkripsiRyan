@@ -45,12 +45,12 @@
 				<p>I'm <span class="typed" data-typed-items="<?= $h['profession'] ?>"></span></p>
 			<?php } ?>
 			<div class="social-links">
-			<?php foreach($kontak as $k){?>
-				<a href="https://twitter.com/<?=$k['twitter']?>/" class="twitter"><i class="bx bxl-twitter"></i></a>
-				<a href="https://www.facebook.com/<?=$k['fb']?>/" class="facebook"><i class="bx bxl-facebook"></i></a>
-				<a href="https://www.instagram.com/<?=$k['ig']?>/" class="instagram"><i class="bx bxl-instagram"></i></a>
-				<a href="https://github.com/<?=$k['github']?>" class="github"><i class="bx bxl-github"></i></a>
-				<a href="https://www.linkedin.com/in/<?=$k['linkedin']?>/" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+				<?php foreach ($kontak as $k) { ?>
+					<a href="https://twitter.com/<?= $k['twitter'] ?>/" class="twitter"><i class="bx bxl-twitter"></i></a>
+					<a href="https://www.facebook.com/<?= $k['fb'] ?>/" class="facebook"><i class="bx bxl-facebook"></i></a>
+					<a href="https://www.instagram.com/<?= $k['ig'] ?>/" class="instagram"><i class="bx bxl-instagram"></i></a>
+					<a href="https://github.com/<?= $k['github'] ?>" class="github"><i class="bx bxl-github"></i></a>
+					<a href="https://www.linkedin.com/in/<?= $k['linkedin'] ?>/" class="linkedin"><i class="bx bxl-linkedin"></i></a>
 				<?php } ?>
 			</div>
 		</div>
@@ -68,8 +68,8 @@
 
 				<div class="row">
 					<div class="col-lg-4">
-					<?php foreach ($about as $q) { ?>
-						<img src="<?=base_url()?>uploads/about/<?= $q['gambar']?>" class="img-fluid" alt="">
+						<?php foreach ($about as $q) { ?>
+							<img src="<?= base_url() ?>uploads/about/<?= $q['gambar'] ?>" class="img-fluid" alt="">
 						<?php } ?>
 					</div>
 					<div class="col-lg-8 pt-4 pt-lg-0 content">
@@ -80,8 +80,8 @@
 
 										<li><i class="icofont-rounded-right"></i> <strong>Birthday: </strong> <?= $a['birthday'] ?></li>
 										<li><i class="icofont-rounded-right"></i> <strong>Website: </strong> <?= $a['website'] ?></li>
-										<?php foreach($kontak as $k){?>
-										<li><i class="icofont-rounded-right"></i> <strong>Phone: </strong> <?= $k['telepon'] ?></li>
+										<?php foreach ($kontak as $k) { ?>
+											<li><i class="icofont-rounded-right"></i> <strong>Phone: </strong> <?= $k['telepon'] ?></li>
 										<?php } ?>
 										<li><i class="icofont-rounded-right"></i> <strong>City: </strong> <?= $a['kota'] ?></li>
 									</ul>
@@ -101,7 +101,7 @@
 							</p>
 						<?php } ?>
 						<!-- <p>
-							I am a frontend Android developer. I am a junior programmer with good knowledge of front-end techniques.
+							I am a User Android developer. I am a junior programmer with good knowledge of front-end techniques.
 							I love simple and minimalist design and I also stand for quality. I love spending time on fixing little details and
 							optimizing Android apps. Also I like working in a team, you'll learn faster and much more.
 							As the saying goes: 'two heads are better than one'.
@@ -118,8 +118,8 @@
 
 				<div class="section-title">
 					<h2>Skills</h2>
-					<?php foreach($qSkill as $q){?>
-					<p><?= $q['quote'] ?></p>
+					<?php foreach ($qSkill as $q) { ?>
+						<p><?= $q['quote'] ?></p>
 					<?php } ?>
 				</div>
 
@@ -180,16 +180,16 @@
 				<div class="section-title">
 					<h2>Projects</h2>
 				</div>
-				<?php foreach($category as $a){?>
-				<h3 class="projects-title"><?=$a['name'] ?></h3>
-					<?php 
+				<?php foreach ($category as $a) { ?>
+					<h3 class="projects-title"><?= $a['name'] ?></h3>
+					<?php
 						$q = $this->db->query("SELECT * FROM portofolio WHERE id_kategori = '$a[id]'")->result_array();
-						foreach($q as $b){
-					?>
+						foreach ($q as $b) {
+							?>
 						<div class="projects-item">
-							<h4><?= $b['name']?></h4>
-							<h5><?= $b['tanggal']?></h5>
-							<p><?= $b['deskripsi']?></p>
+							<h4><?= $b['name'] ?></h4>
+							<h5><?= $b['tanggal'] ?></h5>
+							<p><?= $b['deskripsi'] ?></p>
 						</div>
 					<?php } ?>
 
@@ -247,31 +247,31 @@
 					<div class="col-lg-12 d-flex justify-content-center" data-aos="fade-up" data-aos-delay="100">
 						<ul id="portfolio-flters">
 							<li data-filter="*" class="filter-active">All</li>
-							<?php foreach($category as $a){?>
-								<li data-filter=".filter-<?=$a['id'] ?>"><?=$a['name'] ?></li>
+							<?php foreach ($category as $a) { ?>
+								<li data-filter=".filter-<?= $a['id'] ?>"><?= $a['name'] ?></li>
 							<?php } ?>
-						
+
 						</ul>
 					</div>
 				</div>
 
 				<div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
-					<?php foreach($portofolio as $q){?>
-					<div class="col-lg-4 col-md-6 portfolio-item filter-<?= $q['id_kategori']?>">
-						<div class="portfolio-wrap">
-							<img src="<?=base_url()?>uploads/portofolio/<?= $q['gambar']?>" class="img-fluid" alt="">
-							<div class="portfolio-info">
-								<h4><?= $q['name']?></h4>
-								<p><?= $q['kategori']?></p>
-								<div class="portfolio-links">
-									<a href="<?=base_url()?>uploads/portofolio/<?= $q['gambar']?>" data-gall="portfolioGallery" class="venobox" title="Preview"><i class="bx bx-plus"></i></a>
-									<?php if($q['url'] != ""){?>
-										<a href="<?= $q['url']?>" title="Go to Playstore"><i class="bx bx-link"></i></a>
-									<?php } ?>
+					<?php foreach ($portofolio as $q) { ?>
+						<div class="col-lg-4 col-md-6 portfolio-item filter-<?= $q['id_kategori'] ?>">
+							<div class="portfolio-wrap">
+								<img src="<?= base_url() ?>uploads/portofolio/<?= $q['gambar'] ?>" class="img-fluid" alt="">
+								<div class="portfolio-info">
+									<h4><?= $q['name'] ?></h4>
+									<p><?= $q['kategori'] ?></p>
+									<div class="portfolio-links">
+										<a href="<?= base_url() ?>uploads/portofolio/<?= $q['gambar'] ?>" data-gall="portfolioGallery" class="venobox" title="Preview"><i class="bx bx-plus"></i></a>
+										<?php if ($q['url'] != "") { ?>
+											<a href="<?= $q['url'] ?>" title="Go to Playstore"><i class="bx bx-link"></i></a>
+										<?php } ?>
+									</div>
 								</div>
 							</div>
 						</div>
-					</div>
 					<?php } ?>
 
 					<!-- <div class="col-lg-4 col-md-6 portfolio-item filter-web">
@@ -438,70 +438,70 @@
 				</div>
 
 				<div class="row my-auto">
-				<?php foreach($kontak as $k){?>
-					<div class="col-lg-4">
-						<div class="info">
-							<div class="email">
-								<i class="icofont-envelope"></i>
-								<h4>Email:</h4>
-								<p><?=$k['email']?></p>
-							</div>
+					<?php foreach ($kontak as $k) { ?>
+						<div class="col-lg-4">
+							<div class="info">
+								<div class="email">
+									<i class="icofont-envelope"></i>
+									<h4>Email:</h4>
+									<p><?= $k['email'] ?></p>
+								</div>
 
-							<div class="icon">
-								<i class="icofont-phone"></i>
-								<h4>Call:</h4>
-								<p><?=$k['telepon']?></p>
-							</div>
+								<div class="icon">
+									<i class="icofont-phone"></i>
+									<h4>Call:</h4>
+									<p><?= $k['telepon'] ?></p>
+								</div>
 
-							<div class="icon">
-								<i class="icofont-github"></i>
-								<h4>Github:</h4>
-								<p>https://github.com/<?=$k['github']?></p>
-							</div>
+								<div class="icon">
+									<i class="icofont-github"></i>
+									<h4>Github:</h4>
+									<p>https://github.com/<?= $k['github'] ?></p>
+								</div>
 
+							</div>
 						</div>
-					</div>
 
-					<div class="col-lg-4">
-						<div class="info">
-							<div class="twitter">
-								<i class="icofont-twitter"></i>
-								<h4>Twitter:</h4>
-								<p>https://twitter.com/<?=$k['twitter']?>/</p>
+						<div class="col-lg-4">
+							<div class="info">
+								<div class="twitter">
+									<i class="icofont-twitter"></i>
+									<h4>Twitter:</h4>
+									<p>https://twitter.com/<?= $k['twitter'] ?>/</p>
+								</div>
+
+								<div class="icon">
+									<i class="icofont-facebook"></i>
+									<h4>Facebook:</h4>
+									<p>https://www.facebook.com/<?= $k['fb'] ?>/</p>
+								</div>
+
+								<div class="icon">
+									<i class="icofont-instagram"></i>
+									<h4>Instagram:</h4>
+									<p>https://www.instagram.com/<?= $k['ig'] ?>/</p>
+								</div>
+
 							</div>
-
-							<div class="icon">
-								<i class="icofont-facebook"></i>
-								<h4>Facebook:</h4>
-								<p>https://www.facebook.com/<?=$k['fb']?>/</p>
-							</div>
-
-							<div class="icon">
-								<i class="icofont-instagram"></i>
-								<h4>Instagram:</h4>
-								<p>https://www.instagram.com/<?=$k['ig']?>/</p>
-							</div>
-
 						</div>
-					</div>
 
-					<div class="col-lg-4">
-						<div class="info">
-							<div class="whatsapp">
-								<i class="icofont-google-map"></i>
-								<h4>Whatsapp:</h4>
-								<p><?=$k['wa']?></p>
+						<div class="col-lg-4">
+							<div class="info">
+								<div class="whatsapp">
+									<i class="icofont-google-map"></i>
+									<h4>Whatsapp:</h4>
+									<p><?= $k['wa'] ?></p>
+								</div>
+
+								<div class="icon">
+									<i class="icofont-linkedin"></i>
+									<h4>Linkedin:</h4>
+									<p>https://www.linkedin.com/in/<?= $k['linkedin'] ?>/</p>
+								</div>
+
 							</div>
-
-							<div class="icon">
-								<i class="icofont-linkedin"></i>
-								<h4>Linkedin:</h4>
-								<p>https://www.linkedin.com/in/<?=$k['linkedin']?>/</p>
-							</div>
-
 						</div>
-					</div>
-				<?php } ?>
+					<?php } ?>
 				</div>
 
 			</div>

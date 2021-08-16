@@ -32,7 +32,7 @@
                 <div class="container-fluid mt-n10">
                     <div class="row">
                         <div class="col-xl-3 col-md-4 mt-4">
-                            <!-- Dashboard info widget 4-->
+                            <!-- User/Dashboard info widget 4-->
                             <div class="card border-top-0 border-bottom-0 border-right-0 border-left-lg border-info h-100">
                                 <div class="card-body" style="height: 8rem;">
                                     <div class="d-flex align-items-center">
@@ -46,7 +46,7 @@
                             </div>
                         </div>
                         <div class="col-xl-3 col-md-4 mt-4">
-                            <!-- Dashboard info widget 1-->
+                            <!-- User/Dashboard info widget 1-->
                             <div class="card border-top-0 border-bottom-0 border-right-0 border-left-lg border-primary h-100">
                                 <div class="card-body" style="height: 8rem;">
                                     <div class="d-flex align-items-center">
@@ -59,7 +59,7 @@
                             </div>
                         </div>
                         <div class="col-xl-3 col-md-4 mt-4">
-                            <!-- Dashboard info widget 1-->
+                            <!-- User/Dashboard info widget 1-->
                             <div class="card border-top-0 border-bottom-0 border-right-0 border-left-lg border-success h-100">
                                 <div class="card-body" style="height: 8rem;">
                                     <div class="d-flex align-items-center">
@@ -72,7 +72,7 @@
                             </div>
                         </div>
                         <div class="col-xl-3 col-md-4 mt-4">
-                            <!-- Dashboard info widget 4-->
+                            <!-- User/Dashboard info widget 4-->
                             <div class="card border-top-0 border-bottom-0 border-right-0 border-left-lg border-info h-100">
                                 <div class="card-body" style="height: 8rem;">
                                     <div class="d-flex align-items-center">
@@ -163,7 +163,7 @@
     //end buat refresh
     function ajaxPh() {
         $.ajax({
-            url: "<?= base_url('frontend/Proses/pHajax') ?>",
+            url: "<?= base_url('User/Proses/pHajax') ?>",
             dataType: "json",
             success: function(result) {
                 var output = Object.entries(result).map(([key, value]) => (value.ph));
@@ -177,7 +177,7 @@
 
     function ajaxSuhu() {
         $.ajax({
-            url: "<?= base_url('frontend/Proses/suhuAjax') ?>",
+            url: "<?= base_url('User/Proses/suhuAjax') ?>",
             dataType: "json",
             success: function(result) {
                 var output = Object.entries(result).map(([key, value]) => (value.suhu));
@@ -191,7 +191,7 @@
 
     function ajaxTds() {
         $.ajax({
-            url: "<?= base_url('frontend/Proses/tdsajax') ?>",
+            url: "<?= base_url('User/Proses/tdsajax') ?>",
             dataType: "json",
             success: function(result) {
                 var output = Object.entries(result).map(([key, value]) => (value.tds));

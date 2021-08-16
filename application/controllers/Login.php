@@ -26,11 +26,11 @@ class Login extends CI_Controller
 					];
 					if ($user['status'] == 1) {
 						// $this->session->set_userdata($data);
-						// redirect('fronted/Dashboard');
+						// redirect('fronted/User/Dashboard');
 						echo "Admin";
 					} else {
 						$this->session->set_userdata($data);
-						redirect('Dashboard');
+						redirect('User/Dashboard');
 					}
 				} else {
 					$this->session->set_flashdata(

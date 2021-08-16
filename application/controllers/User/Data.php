@@ -32,12 +32,12 @@ class Data extends CI_Controller
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
             Data Berhasil Ditambahkan !
              </div>');
-            redirect('frontend/Data');
+            redirect('User/Data');
         } else {
             $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
             Data Gagal Ditambahkan !
              </div>');
-            redirect('frontend/Data');
+            redirect('User/Data');
         }
     }
 }

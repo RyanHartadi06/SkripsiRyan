@@ -33,7 +33,7 @@
                             <div class="card-body">
                                 <div class="d-flex justify-content-end">
                                     <div class="mr-3">
-                                        <div class="text-lg font-weight-bold"><a href="<?php echo base_url('frontend/Proses/run?id=' . $_GET['id']) ?>"> <i class="fas fa-play"></i> Play </a></div>
+                                        <div class="text-lg font-weight-bold"><a href="<?php echo base_url('User/Proses/run?id=' . $_GET['id']) ?>"> <i class="fas fa-play"></i> Play </a></div>
                                     </div>
                                 </div>
                             </div>
@@ -44,7 +44,7 @@
                 <div class="container-fluid mt-n10">
                     <div class="row">
                         <div class="col-xl-3 col-md-4 mt-4">
-                            <!-- Dashboard info widget 4-->
+                            <!-- User/Dashboard info widget 4-->
                             <div class="card border-top-0 border-bottom-0 border-right-0 border-left-lg border-info h-100">
                                 <div class="card-body" style="height: 8rem;">
                                     <div class="d-flex align-items-center">
@@ -82,7 +82,7 @@
                             </div>
                         </div>
                         <div class="col-xl-3 col-md-4 mt-4">
-                            <!-- Dashboard info widget 1-->
+                            <!-- User/Dashboard info widget 1-->
                             <div class="card border-top-0 border-bottom-0 border-right-0 border-left-lg border-primary h-100">
                                 <div class="card-body" style="height: 8rem;">
                                     <div class="d-flex align-items-center">
@@ -107,7 +107,7 @@
                             </div>
                         </div>
                         <div class="col-xl-3 col-md-4 mt-4">
-                            <!-- Dashboard info widget 1-->
+                            <!-- User/Dashboard info widget 1-->
                             <div class="card border-top-0 border-bottom-0 border-right-0 border-left-lg border-success h-100">
                                 <div class="card-body" style="height: 8rem;">
                                     <div class="d-flex align-items-center">
@@ -131,7 +131,7 @@
                             </div>
                         </div>
                         <div class="col-xl-3 col-md-4 mt-4">
-                            <!-- Dashboard info widget 4-->
+                            <!-- User/Dashboard info widget 4-->
                             <div class="card border-top-0 border-bottom-0 border-right-0 border-left-lg border-info h-100">
                                 <div class="card-body" style="height: 8rem;">
                                     <div class="d-flex align-items-center">

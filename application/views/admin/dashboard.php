@@ -24,7 +24,7 @@
                 <div class="page-header-icon">
                   <i data-feather="activity"></i>
                 </div>
-                <span>Dashboard</span>
+                <span>User/Dashboard</span>
               </h1>
               <div class="page-header-subtitle">Sistem Kendali Kualitas Air Kolam Koi</div>
             </div>
@@ -47,7 +47,7 @@
                 <div class="col">
                   <h2 class="text-primary">Selamat Datang, di Sistem Kendali Kualitas Kolam Koi </h2>
                   <p class="text-gray-700">Sistem Kendali Kualitas Kolam Koi ini di tujukan untuk para peternak Ikan Koi untuk memilih Ikan Koi yang cocok di tempati di dalam air tersebut. Sistem Kendali ini Berbasis IOT dengan menggunakan metode Fuzzy Tsukamoto </p>
-                  <a class="btn btn-primary p-3" href="<?= base_url('frontend/Proses') ?>">
+                  <a class="btn btn-primary p-3" href="<?= base_url('User/Data') ?>">
                     Lihat Monitoring
                     <i class="ml-1" data-feather="arrow-right"></i>
                   </a>
@@ -63,22 +63,35 @@
             <div class="card mb-4">
               <div class="card-body text-center p-5">
                 <img class="img-fluid mb-5" src="<?= base_url('img/admin/logo/statistics-pana.svg') ?>" />
-                <h4>Report generation</h4>
-                <p class="mb-4">Ready to get started? Let us know now! It's time to start building that dashboard you've been waiting to create!</p>
-                <a class="btn btn-primary p-3" href="#!">Continue</a>
+                <h4>Profile Author</h4>
+                <p class="mb-4">Ready to get started? Let us know now! It's time to start building that User/Dashboard you've been waiting to create!</p>
+                <a class="btn btn-primary p-3" href="<?= base_url('User/About') ?>">Continue</a>
               </div>
             </div>
           </div>
-          <div class="col-lg-8">
-            <div class="card">
+          <div class="col-lg-4 mb-4">
+            <!-- Illustration card example-->
+            <div class="card mb-4">
               <div class="card-body text-center p-5">
-                <img class="img-fluid" src="<?= base_url('img/admin/logo/team-spirit-pana.svg') ?>" alt="" style="max-width: 14.25rem" />
-                <h5>Profile Authors</h5>
-                <p class="mb-4">Upgrade your plan to get access to team collaboration tools.</p>
-                <a class="btn btn-primary p-3" href="<?= base_url('frontend/About') ?>">Lihat Profile</a>
+                <img class="img-fluid mb-5" src="<?= base_url('img/admin/logo/statistics-pana.svg') ?>" />
+                <h4>Data Ikan Koi</h4>
+                <p class="mb-4">Berikut adalah jenis ikan koi yang diteliti pada skripsi saat ini berdasarkan jenis ikan yang banyak diminati oleh masyarakat</p>
+                <a class="btn btn-primary p-3" href="<?= base_url('User/About') ?>">Continue</a>
               </div>
             </div>
           </div>
+          <div class="col-lg-4 mb-4">
+            <!-- Illustration card example-->
+            <div class="card mb-4">
+              <div class="card-body text-center p-5">
+                <img class="img-fluid mb-5" src="<?= base_url('img/admin/logo/statistics-pana.svg') ?>" />
+                <h4>Fuzzy Tsukamoto</h4>
+                <p class="mb-4">Fuzzy Tsukamoto adalah sebuah algoritma yang dapat mengambil sembuah keputusan yang bersifat ambigu</p>
+                <a class="btn btn-primary p-3" href="<?= base_url('User/About') ?>">Continue</a>
+              </div>
+            </div>
+          </div>
+
 
         </div>
       </main>

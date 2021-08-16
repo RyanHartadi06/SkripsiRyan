@@ -33,7 +33,7 @@
                             <div class="card-body">
                                 <div class="d-flex justify-content-end">
                                     <div class="mr-3">
-                                        <div class="text-lg font-weight-bold"><a href="<?php echo base_url('frontend/Proses/detail?id=' . $_GET['id']) ?>"> <i class="fas fa-stop"></i> Stop </a></div>
+                                        <div class="text-lg font-weight-bold"><a href="<?php echo base_url('User/Proses/detail?id=' . $_GET['id']) ?>"> <i class="fas fa-stop"></i> Stop </a></div>
                                     </div>
                                 </div>
                             </div>
@@ -43,7 +43,7 @@
                 <div class="container-fluid mt-n10">
                     <div class="row">
                         <div class="col-xl-3 col-md-4 mt-4">
-                            <!-- Dashboard info widget 4-->
+                            <!-- User/Dashboard info widget 4-->
                             <div class="card border-top-0 border-bottom-0 border-right-0 border-left-lg border-info h-100">
                                 <div class="card-body" style="height: 8rem;">
                                     <div class="d-flex align-items-center">
@@ -57,7 +57,7 @@
                             </div>
                         </div>
                         <div class="col-xl-3 col-md-4 mt-4">
-                            <!-- Dashboard info widget 1-->
+                            <!-- User/Dashboard info widget 1-->
                             <div class="card border-top-0 border-bottom-0 border-right-0 border-left-lg border-primary h-100">
                                 <div class="card-body" style="height: 8rem;">
                                     <div class="d-flex align-items-center">
@@ -70,7 +70,7 @@
                             </div>
                         </div>
                         <div class="col-xl-3 col-md-4 mt-4">
-                            <!-- Dashboard info widget 1-->
+                            <!-- User/Dashboard info widget 1-->
                             <div class="card border-top-0 border-bottom-0 border-right-0 border-left-lg border-success h-100">
                                 <div class="card-body" style="height: 8rem;">
                                     <div class="d-flex align-items-center">
@@ -83,7 +83,7 @@
                             </div>
                         </div>
                         <div class="col-xl-3 col-md-4 mt-4">
-                            <!-- Dashboard info widget 4-->
+                            <!-- User/Dashboard info widget 4-->
                             <div class="card border-top-0 border-bottom-0 border-right-0 border-left-lg border-info h-100">
                                 <div class="card-body" style="height: 8rem;">
                                     <div class="d-flex align-items-center">
@@ -224,7 +224,7 @@
     //end buat refresh
     function getLastPh() {
         $.ajax({
-            url: "<?= base_url('frontend/Proses/refreshphRun') ?>",
+            url: "<?= base_url('User/Proses/refreshphRun') ?>",
             success: function(res) {
                 document.getElementById('ph').value = res;
             }
@@ -233,7 +233,7 @@
 
     function getLastSuhu() {
         $.ajax({
-            url: "<?= base_url('frontend/Proses/refreshSuhuRun') ?>",
+            url: "<?= base_url('User/Proses/refreshSuhuRun') ?>",
             success: function(res) {
                 document.getElementById('suhu').value = res;
             }
@@ -242,7 +242,7 @@
 
     function getLastTds() {
         $.ajax({
-            url: "<?= base_url('frontend/Proses/refreshTdsRun') ?>",
+            url: "<?= base_url('User/Proses/refreshTdsRun') ?>",
             success: function(res) {
                 document.getElementById('tds').value = res;
             }
@@ -252,7 +252,7 @@
     function ajaxPh() {
         var id = $('input[id="id"]').val();
         $.ajax({
-            url: "<?= base_url('frontend/Proses/pHajaxByID') ?>",
+            url: "<?= base_url('User/Proses/pHajaxByID') ?>",
             method: 'get',
             data: {
                 id: id
@@ -271,7 +271,7 @@
     function ajaxSuhu() {
         var id = $('input[id="id"]').val();
         $.ajax({
-            url: "<?= base_url('frontend/Proses/suhuAjaxByID') ?>",
+            url: "<?= base_url('User/Proses/suhuAjaxByID') ?>",
             method: 'get',
             data: {
                 id: id
@@ -290,7 +290,7 @@
     function ajaxTds() {
         var id = $('input[id="id"]').val();
         $.ajax({
-            url: "<?= base_url('frontend/Proses/tdsajaxByID') ?>",
+            url: "<?= base_url('User/Proses/tdsajaxByID') ?>",
             method: 'get',
             data: {
                 id: id
@@ -312,7 +312,7 @@
         var tds = $('input[id="tds"]').val();
         var suhu = $('input[id="suhu"]').val();
         $.ajax({
-            url: '<?php echo base_url(); ?>frontend/Proses/insert',
+            url: '<?php echo base_url(); ?>User/Proses/insert',
             type: 'POST',
             data: {
                 id: id,

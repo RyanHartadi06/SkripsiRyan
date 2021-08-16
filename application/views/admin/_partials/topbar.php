@@ -1,6 +1,6 @@
 <nav class="topnav navbar navbar-expand shadow navbar-light bg-white" id="sidenavAccordion">
     <div class="logo d-none d-sm-block">
-        <a class="navbar-brand my-auto" href="<?php echo base_url('admin/Dashboard') ?>">
+        <a class="navbar-brand my-auto" href="<?php echo base_url('admin/User/Dashboard') ?>">
             <?php echo SITE_NAME ?>
         </a>
     </div>
@@ -46,7 +46,7 @@
             <div class="modal-body">Are you sure to logout?</div>
             <div class="modal-footer">
                 <button class="btn btn-primary" type="button" data-dismiss="modal">Cancel</button>
-                <a class="btn btn-danger" type="button" href="<?= base_url('backend/Login/logout') ?>">Yes</a>
+                <a class="btn btn-danger" type="button" href="<?= base_url('Login/logout') ?>">Yes</a>
             </div>
         </div>
     </div>
