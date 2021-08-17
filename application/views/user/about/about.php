@@ -17,7 +17,7 @@
         <div id="layoutSidenav_content">
             <main>
                 <header class="page-header page-header-dark bg-gradient-primary-to-secondary pb-10">
-                    <div class="container">
+                    <div class="container col-10">
                         <div class="page-header-content pt-4">
                             <div class="row align-items-center justify-content-between">
                                 <div class="col-auto mt-4">
@@ -31,7 +31,7 @@
                         </div>
                     </div>
                 </header>
-                <div class="container mt-n10">
+                <div class="container mt-n10 col-10">
                     <div class="row">
                         <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-3">
                             <div class="card">

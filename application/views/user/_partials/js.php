@@ -12,3 +12,5 @@
 <script src="<?= base_url("assets/daterangepicker/daterangepicker.min.js") ?>" crossorigin="anonymous"></script>
 <script src="<?= base_url("assets/demo/date-range-picker-demo.js") ?>"></script>
 <script src="<?= base_url("assets/select2/select2.min.js") ?>"></script>
+<!-- <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script> -->
+<script src="<?= base_url("js/chartsloader.js") ?>"></script>
