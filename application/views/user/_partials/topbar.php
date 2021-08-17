@@ -16,15 +16,11 @@
                 <h6 class="dropdown-header d-flex align-items-center">
                     <img class="dropdown-user-img" src="<?php echo base_url('img/admin/user.png') ?>" />
                     <div class="dropdown-user-details">
-                        <div class="dropdown-user-details-name">Admin@admin.com</div>
-                        <div class="dropdown-user-details-email">Admin</div>
+                        <div class="dropdown-user-details-name"><?= $Pengguna['username'] ?></div>
+                        <div class="dropdown-user-details-email"><?= $Pengguna['nama'] ?></div>
                     </div>
                 </h6>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="<?php echo base_url('admin/Account/data') ?>">
-                    <div class="dropdown-item-icon"><i data-feather="settings"></i></div>
-                    Account
-                </a>
                 <a class="dropdown-item" href="onclick=" confirm_modal() data-toggle="modal" data-target="#modalLogout">
                     <div class="dropdown-item-icon"><i data-feather="log-out"></i></div>
                     Logout

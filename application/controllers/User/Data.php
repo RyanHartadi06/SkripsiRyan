@@ -6,16 +6,20 @@ class Data extends CI_Controller
     public function __construct()
     {
         parent::__construct();
+        belumlogin();
     }
     public function index()
     {
+        $data['Pengguna'] = $this->db->get_where('pengguna', ['id_pengguna' =>
+        $this->session->userdata('id_pengguna')])->row_array();
         $data['data'] = $this->db->query("SELECT * FROM data")->result_array();
         $this->load->view('user/tambahdata/data',  $data);
     }
     public function add()
     {
-
-        $this->load->view('user/tambahdata/add');
+        $data['Pengguna'] = $this->db->get_where('pengguna', ['id_pengguna' =>
+        $this->session->userdata('id_pengguna')])->row_array();
+        $this->load->view('user/tambahdata/add', $data);
     }
     public function post()
     {

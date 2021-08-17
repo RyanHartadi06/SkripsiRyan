@@ -41,7 +41,7 @@
         <div class="sidenav-footer">
             <div class="sidenav-footer-content">
                 <div class="sidenav-footer-subtitle">Logged in as:</div>
-                <div class="sidenav-footer-title">Admin</div>
+                <div class="sidenav-footer-title"><?= $Pengguna['nama'] ?></div>
             </div>
         </div>
     </nav>

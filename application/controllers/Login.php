@@ -19,16 +19,23 @@ class Login extends CI_Controller
 
 			if ($user) {
 				if ($password === $user['password']) {
-					$data = [
-						'id_pengguna' => $user['id_pengguna'],
-						'username' => $user['username'],
-						'status' => $user['status'],
-					];
+
 					if ($user['status'] == 1) {
 						// $this->session->set_userdata($data);
 						// redirect('fronted/User/Dashboard');
+						$data = [
+							'id_pengguna' => $user['id_pengguna'],
+							'username' => $user['username'],
+							'status' => $user['status'],
+						];
 						echo "Admin";
 					} else {
+						$data = [
+							'id_pengguna' => $user['id_pengguna'],
+							'username' => $user['username'],
+							'status' => $user['status'],
+						];
+
 						$this->session->set_userdata($data);
 						redirect('User/Dashboard');
 					}

@@ -10,6 +10,8 @@ class Proses extends CI_Controller
 	public function index()
 	{
 		// $data['data'] = $this->db->query("SELECT * FROM sensor ORDER BY id DESC LIMIT 1")->row();
+		$data['Pengguna'] = $this->db->get_where('pengguna', ['id_pengguna' =>
+		$this->session->userdata('id_pengguna')])->row_array();
 		$grafiknya =  $this->db->query("SELECT ph, createdDate FROM (SELECT * FROM sensor GROUP BY id DESC LIMIT 10) sub ORDER BY id ASC")->result_array();
 		$grafik_tds =  $this->db->query("SELECT tds, createdDate FROM (SELECT * FROM sensor GROUP BY id DESC LIMIT 10) sub ORDER BY id ASC")->result_array();
 		$grafik_suhu =  $this->db->query("SELECT suhu, createdDate FROM (SELECT * FROM sensor GROUP BY id DESC LIMIT 10) sub ORDER BY id ASC")->result_array();
@@ -39,6 +41,8 @@ class Proses extends CI_Controller
 	}
 	public function run()
 	{
+		$data['Pengguna'] = $this->db->get_where('pengguna', ['id_pengguna' =>
+		$this->session->userdata('id_pengguna')])->row_array();
 		$qweq = $_GET['id'];
 		$data['data'] = $this->db->query("SELECT * FROM data WHERE id = '$qweq'")->row();
 		$grafiknya =  $this->db->query("SELECT ph, createdDate FROM (SELECT * FROM data_sensor WHERE id = '$qweq' GROUP BY id DESC LIMIT 10) sub WHERE id = '$qweq' ORDER BY id ASC")->result_array();
@@ -281,7 +285,8 @@ class Proses extends CI_Controller
 		$data['qwe'] = $this->db->query("SELECT * FROM data WHERE id = '$qweq'")->result_array();
 
 		// $data['all'] = $this->db->query("SELECT * FROM data_sensor WHERE id = '$qweq'  ORDER BY id_data DESC LIMIT 1")->row();
-
+		$data['Pengguna'] = $this->db->get_where('pengguna', ['id_pengguna' =>
+		$this->session->userdata('id_pengguna')])->row_array();
 		$grafiknya =  $this->db->query("SELECT ph, createdDate FROM (SELECT * FROM data_sensor WHERE id = '$qweq' GROUP BY id_data  DESC LIMIT 10) sub WHERE id = '$qweq' ORDER BY id_data ASC")->result_array();
 		$grafik_tds =  $this->db->query("SELECT tds, createdDate FROM (SELECT * FROM data_sensor WHERE id = '$qweq' GROUP BY id_data  DESC LIMIT 10) sub WHERE id = '$qweq' ORDER BY id ASC")->result_array();
 		$grafik_suhu =  $this->db->query("SELECT suhu, createdDate FROM (SELECT * FROM data_sensor WHERE id = '$qweq' GROUP BY id_data  DESC LIMIT 10) sub WHERE id = '$qweq' ORDER BY id ASC")->result_array();
