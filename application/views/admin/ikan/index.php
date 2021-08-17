@@ -53,12 +53,12 @@
                                             <tr>
                                                 <td><?= $no++ ?></td>
                                                 <td><?= $d['nama_ikan'] ?></td>
-                                                <td><?= $d['gambar'] ?></td>
+                                                <td><img src="<?= base_url('uploads/ikan/') . $d['gambar'] ?>" alt="Gambar Jenis" style="width:70px"></td>
 
                                                 <td>
                                                     <a class="btn btn-datatable btn-icon btn-transparent-dark" href="<?php echo base_url('Admin/Ikan/detail/' . $d['id_jenis']) ?>"><i class="fas fa-plus"></i> </a>
                                                     <a class="btn btn-datatable btn-icon btn-transparent-dark" href="<?php echo base_url('Admin/Ikan/edit/' . $d['id_jenis']) ?>"><i class="fas fa-edit"></i> </a>
-                                                    <a class="btn btn-datatable btn-icon btn-transparent-dark" href="" onclick="confirm_hapus('<?php echo base_url('Admin/Ikan/delete/' . $d['id_jenis']) ?>')" data-toggle="modal" data-target="#modalDelete"><i class="fas fa-trash"></i></a>
+                                                    <a class="btn btn-datatable btn-icon btn-transparent-dark" href="" onclick="confirm_hapus('<?php echo base_url('Admin/Ikan/hapus/' . $d['id_jenis']) ?>')" data-toggle="modal" data-target="#modalDelete"><i class="fas fa-trash"></i></a>
                                                 </td>
                                             </tr>
                                         <?php } ?>
