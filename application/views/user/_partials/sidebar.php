@@ -16,24 +16,20 @@
                 </div>
                 <div class="sidenav-menu-heading">Pengetahuan</div>
                 <a class="nav-link collapsed" href="<?= base_url('User/DataIkan') ?>">
-                    <div class="nav-link-icon"><i data-feather="grid"></i></div>
+                    <div class="nav-link-icon"><i data-feather="box"></i></div>
                     Data Ikan Koi
                 </a>
                 <a class="nav-link collapsed" href="<?= base_url('User/Alat') ?>">
-                    <div class="nav-link-icon"><i data-feather="grid"></i></div>
+                    <div class="nav-link-icon"><i data-feather="tool"></i></div>
                     Alat IoT
                 </a>
                 <a class="nav-link collapsed" href="<?= base_url('User/Fuzzy') ?>">
-                    <div class="nav-link-icon"><i data-feather="grid"></i></div>
+                    <div class="nav-link-icon"><i data-feather="airplay"></i></div>
                     Fuzzy Tsukamoto
                 </a>
                 <div class="sidenav-menu-heading">Perhitungan</div>
-                <!-- <a class="nav-link collapsed" href="<?php echo base_url('User/Proses') ?>">
-                    <div class="nav-link-icon"><i data-feather="grid"></i></div>
-                    Monitoring Data
-                </a> -->
                 <a class="nav-link collapsed" href="<?php echo base_url('User/Data') ?>">
-                    <div class="nav-link-icon"><i data-feather="grid"></i></div>
+                    <div class="nav-link-icon"><i data-feather="briefcase"></i></div>
                     Proses Data
                 </a>
             </div>

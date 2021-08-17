@@ -28,7 +28,8 @@ class Login extends CI_Controller
 							'username' => $user['username'],
 							'status' => $user['status'],
 						];
-						echo "Admin";
+						$this->session->set_userdata($data);
+						redirect('Admin/Profil');
 					} else {
 						$data = [
 							'id_pengguna' => $user['id_pengguna'],
