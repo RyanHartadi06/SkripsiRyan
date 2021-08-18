@@ -12,6 +12,7 @@ class Alat extends CI_Controller
     {
         $data['Pengguna'] = $this->db->get_where('pengguna', ['id_pengguna' =>
         $this->session->userdata('id_pengguna')])->row_array();
+        $data['alat'] = $this->db->query('SELECT * FROM alat')->result_array();
         $this->load->view('user/alat/index', $data);
     }
 }
