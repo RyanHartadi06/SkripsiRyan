@@ -16,7 +16,7 @@
                     <div class="nav-link-icon"><i data-feather="tool"></i></div>
                     Alat IoT
                 </a>
-                <a class="nav-link collapsed" href="<?= base_url('Admin/Alat') ?>">
+                <a class="nav-link collapsed" href="<?= base_url('Admin/Fuzzy') ?>">
                     <div class="nav-link-icon"><i data-feather="activity"></i></div>
                     Fuzzy Rules
                 </a>

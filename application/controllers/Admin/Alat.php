@@ -108,34 +108,4 @@ class Alat extends CI_Controller
             }
         }
     }
-    public function test()
-    {
-        // for ($x = 0; $x <= 5; $x++) {
-        //     for ($y = 0; $y <= 5; $y++) {
-        //         for ($z = 0; $z <= 5; $z++) {
-        //             for ($a = 0; $a <= 5; $a++) {
-        //                 for ($b = 0; $b <= 5; $b++) {
-        //                     $data = [
-        //                         'ph' => $x,
-        //                         'suhu' => $y,
-        //                         'tds' => $z,
-        //                         'do' => $a,
-        //                         'salinity' => $b,
-        //                     ];
-        //                     // $this->db->insert('test', $data);
-        //                     // echo json_encode($data);
-        //                 }
-        //             }
-        //         }
-        //     }
-        // }
-        // $data = $this->db->query("SELECT * FROM test")->result_array();
-        // foreach ($data as $key) {
-        //     $dd = $this->db->query("SELECT  * FROM test WHERE id = $key[id]")->row();
-        //     $dd2 = $this->db->query("SELECT  COUNT(*) as suhu FROM test WHERE id = $key[id]")->row();
-        //     $dd3 = $this->db->query("SELECT  COUNT(*) as tds FROM test WHERE id = $key[id]")->row();
-        //     echo json_encode($dd);
-        //     // if($dd )
-        // }
-    }
 }

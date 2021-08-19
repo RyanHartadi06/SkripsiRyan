@@ -32,6 +32,10 @@
                     <div class="nav-link-icon"><i data-feather="briefcase"></i></div>
                     Proses Data
                 </a>
+                <a class="nav-link collapsed" href="<?php echo base_url('User/Perhitungan') ?>">
+                    <div class="nav-link-icon"><i data-feather="briefcase"></i></div>
+                    Perhitungan
+                </a>
             </div>
         </div>
         <div class="sidenav-footer">

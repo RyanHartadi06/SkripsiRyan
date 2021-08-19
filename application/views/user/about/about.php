@@ -3,7 +3,6 @@
 
 <!-- Head -->
 <?php $this->load->view("user/_partials/head.php") ?>
-<!-- <?php $this->load->view("user/_partials/modal/save.php") ?> -->
 
 <body class="nav-fixed">
 

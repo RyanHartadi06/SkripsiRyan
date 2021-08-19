@@ -21,7 +21,7 @@
                         <div class="page-header-content">
                             <h1 class="page-header-title">
                                 <div class="page-header-icon"><i data-feather="grid"></i></div>
-                                <span>Alat</span>
+                                <span>Fuzzy Rules</span>
                             </h1>
                         </div>
                     </div>
@@ -29,8 +29,8 @@
                 <div class="container-fluid mt-n10">
                     <div class="card mb-4">
                         <div class="card-header">
-                            <a class="btn btn-primary btn-sm shadow-sm" href="<?php echo base_url('Admin/Alat/add') ?>">
-                                Tambah Alat
+                            <a class="btn btn-primary btn-sm shadow-sm" href="<?php echo base_url('Admin/Fuzzy/add') ?>">
+                                Tambah Fuzzy Rules
                             </a>
                         </div>
                         <div class="card-body">
@@ -42,25 +42,29 @@
                                     <thead>
                                         <tr>
                                             <th>Nomor</th>
-                                            <th>Nama Alat</th>
-                                            <th>Deskripsi</th>
-                                            <th>Gambar</th>
+                                            <th>PH</th>
+                                            <th>Suhu</th>
+                                            <th>TDS</th>
+                                            <th>Do</th>
+                                            <th>Salinity</th>
+                                            <th>Grade</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <?php $no = 1;
-                                        foreach ($alat as $d) { ?>
+                                        foreach ($fuzzy as $d) { ?>
                                             <tr>
                                                 <td><?= $no++ ?></td>
-                                                <td><?= $d['nama_alat'] ?></td>
-                                                <td><?= $d['deskripsi'] ?></td>
-                                                <td><img src="<?= base_url('uploads/alat/') . $d['gambar'] ?>" alt="Gambar Jenis" style="width:70px"></td>
-
+                                                <td><?= $d['ph'] ?></td>
+                                                <td><?= $d['suhu'] ?></td>
+                                                <td><?= $d['tds'] ?></td>
+                                                <td><?= $d['do'] ?></td>
+                                                <td><?= $d['salinity'] ?></td>
+                                                <td><?= $d['grade'] ?></td>
                                                 <td>
-                                                    <a class="btn btn-datatable btn-icon btn-transparent-dark" href="<?php echo base_url('Admin/Alat/detail/' . $d['id_alat']) ?>"><i class="fas fa-plus"></i> </a>
-                                                    <a class="btn btn-datatable btn-icon btn-transparent-dark" href="<?php echo base_url('Admin/Alat/edit/' . $d['id_alat']) ?>"><i class="fas fa-edit"></i> </a>
-                                                    <a class="btn btn-datatable btn-icon btn-transparent-dark" href="" onclick="confirm_hapus('<?php echo base_url('Admin/Alat/hapus/' . $d['id_alat']) ?>')" data-toggle="modal" data-target="#modalDelete"><i class="fas fa-trash"></i></a>
+                                                    <a class="btn btn-datatable btn-icon btn-transparent-dark" href="<?php echo base_url('Admin/Fuzzy/edit/' . $d['id_rules']) ?>"><i class="fas fa-edit"></i> </a>
+                                                    <a class="btn btn-datatable btn-icon btn-transparent-dark" href="" onclick="confirm_hapus('<?php echo base_url('Admin/Fuzzy/hapus/' . $d['id_rules']) ?>')" data-toggle="modal" data-target="#modalDelete"><i class="fas fa-trash"></i></a>
                                                 </td>
                                             </tr>
                                         <?php } ?>
