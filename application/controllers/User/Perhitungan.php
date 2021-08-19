@@ -23,6 +23,30 @@ class Perhitungan extends CI_Controller
         $tds = $this->input->post('tds');
         $do = $this->input->post('do');
         $salinity = $this->input->post('salinity');
+        $query = $this->db->select('id_perhitungan')->from('perhitungan')->get()->last_row();
+        if ($query) {
+            $id_perhitungan = (int) $query->id_perhitungan + 1;
+        } else {
+            $id_perhitungan = (int) 1;
+        }
+        $rules_grade = $this->db->select('id_rules_grade')->from('rules_grade')->get()->last_row();
+        if ($rules_grade) {
+            $id_rules_grade = (int) $rules_grade->id_rules_grade + 1;
+        } else {
+            $id_rules_grade = (int) 1;
+        }
+        $data = [
+            'id_perhitungan' => $id_perhitungan,
+            'ph' => $ph,
+            'tds' => $tds,
+            'suhu' => $suhu,
+            'do' => $do,
+            'salinity' => $salinity,
+            'grade' => "",
+            'created_at' => date('Y-m-d H:i:s'),
+        ];
+        $this->db->insert('perhitungan', $data);
+        // echo json_encode($data);
         //Rules
         //FUNGSI KEANGGOTAAN
         //menghitung fungsi keanggotaan suhu 
@@ -89,7 +113,7 @@ class Perhitungan extends CI_Controller
         //menghitung fungsi keanggotaan suhu END
 
         //menghitung fungsi keanggotaan PH
-        if (6.65 <= $ph && $ph <= 7.7) { //jika angka diantara 6.65 - 7.7 maka menggunakan rumus A
+        if (6.65 <= $ph && $ph >= 7.7) { //jika angka diantara 6.65 - 7.7 maka menggunakan rumus A
             // rumus PH A
             if ($ph <= 6.65 && 7.7 <= $ph) {
                 $phA = 0;
@@ -138,7 +162,7 @@ class Perhitungan extends CI_Controller
 
         if ($ph <= 5.5 or 8.5 <= $ph) { //jika angka diantara 5.5 maka menggunakan rumus D
             // rumus PH D
-            if (5.5 < $ph && $ph < 8.5) {
+            if (5.5 < $ph && $ph > 8.5) {
                 $phD = 0;
             } else if (5.25 < $ph && $ph < 5.5) {
                 $phD = ($ph - 5.25) / (5.5 - 5.25);
@@ -207,11 +231,124 @@ class Perhitungan extends CI_Controller
             $tdsD = 1;
         }
         //menghitung fungsi keanggotaan TDS END
-        //FUNGSI KEANGGOTAAN END\
-        $suhu_setA = $ph_setA = $tds_setA = 'Baik';
-        $suhu_setB = $ph_setB = $tds_setB = 'Sedang';
-        $suhu_setC = $ph_setC = $tds_setC = 'Buruk';
-        $suhu_setD = $ph_setD = $tds_setD = 'Sangat Buruk';
+        //menghitung fungsi keanggotaan DO START
+        //==================== d.o ====================//
+
+        /**
+         *  mencari nilai keanggotaan himpunan d.o Baik
+         *  @return nilai keanggotaan di himpunan d.o Baik
+         */
+        if ($do >= 6) {
+            if ($do >= 7) {
+                $doA = 1;
+            } else if ($do >= 6 && $do <= 7) {
+                $doA = (7 - $do) / (7 - 6);
+            } else {
+                $doA = 0;
+            }
+        }
+
+
+        /**
+         *  mencari nilai keanggotaan himpunan d.o Sedang
+         *  @return nilai keanggotaan di himpunan d.o Sedang
+         */
+        if ($do >= 4 && $do <= 7) {
+            if ($do >= 5 && $do <= 6) {
+                $doB = 1;
+            } else if ($do >= 6 && $do <= 7) {
+                $doB = (7 - $do) / (7 - 6);
+            } else if ($do >= 4 && $do <= 5) {
+                $doB = ($do - 4) / (5 - 4);
+            } else {
+                $doB = 0;
+            }
+        }
+
+
+        /**
+         *  mencari nilai keanggotaan himpunan d.o Buruk
+         *  @return nilai keanggotaan di himpunan d.o Buruk
+         */
+
+        if ($do >= 3 && $do <= 5) {
+            if ($do >= 3.5 && $do <= 4) {
+                $doC = 1;
+            } else if ($do >= 4 && $do <= 5) {
+                $doC = (5 - $do) / (5 - 4);
+            } else if ($do >= 3 && $do <= 3.5) {
+                $doC = ($do - 3) / (3.5 - 3);
+            } else {
+                $doC = 0;
+            }
+        }
+
+        /**
+         *  mencari nilai keanggotaan himpunan d.o Sangat Buruk
+         *  @return nilai keanggotaan di himpunan d.o Sangat Buruk
+         */
+        if ($do <= 3.5) {
+            if ($do <= 3) {
+                $doD = 1;
+            } else if ($do >= 3 && $do <= 3.5) {
+                $doD = (3.5 - $do) / (3.5 - 3);
+            } else {
+                $doD = 0;
+            }
+        }
+
+
+        //menghitung fungsi keanggotaan DO END
+        //menghitung fungsi keanggotaan Salinity Start
+        if ($salinity >= 0.025 && $salinity <= 0.175) { //Rumus A
+            if (0.05 <= $salinity && $salinity <= 0.15) {
+                $salinityA = 1;
+            } else if (0.025 <= $salinity && $salinity <= 0.5) {
+                $salinityA = (0.05 - $salinity) / (0.05 - 0.025);
+            } else if (0.15 <= $salinity && $salinity <=  0.175) {
+                $salinityA = ($salinity - 0.15) / (0.175 - 0.15);
+            } else if ($salinity < 0.025 && $salinity > 0.175) {
+                $salinityA = 0;
+            }
+        }
+        if ($salinity >= 0.15 && $salinity <= 0.225) { //Rumus B
+            if ($salinity < 0.15 && $salinity > 0.225) {
+                $salinityB = 0;
+            } else if (0.15 <= $salinity && $salinity <=  0.175) {
+                $salinityB = ($salinity - 0.15) / (0.175 - 0.15);
+            } else if ($salinity >= 0.2 && $salinity <= 0.225) {
+                $salinityB = (0.225 - $salinity) / (0.225 - 0.2);
+            } else if ($salinity >= 0.175 && $salinity <= 0.2) {
+                $salinityB = 1;
+            }
+        }
+        if ($salinity >= 0.2 && $salinity < 0.35) { //Rumus C
+            if ($salinity < 0.2 or $salinity > 0.35) {
+                $salinityC = 0;
+            } else if (0.2 <= $salinity && $salinity <=  0.225) {
+                $salinityC = ($salinity - 0.2) / (0.225 - 0.2);
+            } else if (0.3 <= $salinity && $salinity <= 0.35) {
+                $salinityC = (0.35 - $salinity) / (0.35 - 0.3);
+            } else if (0.0225 <= $salinity && $salinity >= 0.3) {
+                $salinityC = 1;
+            }
+        }
+
+        if ($salinity >= 0.3 && $salinity <= 0.4) { //Rumus D
+            if ($salinity < 0.3) {
+                $salinityD = 0;
+            } else if ($salinity <= 0.3 && $salinity > 0.35) {
+                $salinityD = ($salinity - 0.3) / (0.35 - 0.3);
+            } else if ($salinity >= 0.35) {
+                $salinityD = 1;
+            }
+        }
+        //menghitung fungsi keanggotaan Salinity END
+        //FUNGSI KEANGGOTAAN END
+        $suhu_setA = $ph_setA = $tds_setA = $do_setA = $salinity_setA = 'Baik';
+        $suhu_setB = $ph_setB = $tds_setB = $do_setB = $salinity_setB = 'Sedang';
+        $suhu_setC = $ph_setC = $tds_setC = $do_setC = $salinity_setC = 'Buruk';
+        $suhu_setD = $ph_setD = $tds_setD = $do_setD = $salinity_setD = 'Sangat Buruk';
 
         if (isset($suhuA) && isset($suhuB)) {
             $suhuOutput = [$suhuA, $suhuB];
@@ -233,6 +370,11 @@ class Perhitungan extends CI_Controller
             $suhuOutput = [$suhuA, $suhuC];
             $suhuGrade = [$suhu_setA, $suhu_setC];
         }
+        if (isset($suhuA) && isset($suhuD)) {
+            $suhuOutput = [$suhuA, $suhuD];
+            $suhuGrade = [$suhu_setA, $suhu_setD];
+        }
+
 
         if (isset($phA) && isset($phB)) {
             $phOutput = [$phA, $phB];
@@ -254,6 +396,11 @@ class Perhitungan extends CI_Controller
             $phOutput = [$phA, $phC];
             $phGrade = [$ph_setA, $ph_setC];
         }
+        if (isset($phA) && isset($phD)) {
+            $phOutput = [$phA, $phD];
+            $phGrade = [$ph_setA, $ph_setD];
+        }
+
 
         if (isset($tdsA) && isset($tdsB)) {
             $tdsOutput = [$tdsA, $tdsB];
@@ -275,39 +422,150 @@ class Perhitungan extends CI_Controller
             $tdsOutput = [$tdsA, $tdsC];
             $tdsGrade = [$tds_setA, $tds_setC];
         }
+        if (isset($tdsA) && isset($tdsD)) {
+            $tdsOutput = [$tdsA, $tdsD];
+            $tdsGrade = [$tds_setA, $tds_setD];
+        }
 
+        if (isset($doA) && isset($doB)) {
+            $doOutput = [$doA, $doB];
+            $doGrade = [$do_setA, $do_setB];
+        }
+        if (isset($doB) && isset($doC)) {
+            $doOutput = [$doB, $doC];
+            $doGrade = [$do_setB, $do_setC];
+        }
+        if (isset($doC) && isset($doD)) {
+            $doOutput = [$doC, $doD];
+            $doGrade = [$do_setC, $do_setD];
+        }
+        if (isset($doB) && isset($doD)) {
+            $doOutput = [$doB, $doD];
+            $doGrade = [$do_setB, $do_setD];
+        }
+        if (isset($doA) && isset($doC)) {
+            $doOutput = [$doA, $doC];
+            $doGrade = [$do_setA, $do_setC];
+        }
+        if (isset($doA) && isset($doD)) {
+            $doOutput = [$doA, $doD];
+            $doGrade = [$do_setA, $do_setD];
+        }
 
-        echo json_encode($suhuOutput);
-        echo  "<br>";
-        echo json_encode($suhuGrade);
-        echo  "<br>";
-        echo json_encode($phOutput);
-        echo  "<br>";
-        echo json_encode($phGrade);
-        echo  "<br>";
-        echo json_encode($tdsOutput);
-        echo  "<br>";
-        echo json_encode($tdsGrade);
-        echo  "<br>";
+        if (isset($salinityA) && isset($salinityB)) {
+            $salinityOutput = [$salinityA, $salinityB];
+            $salinityGrade = [$salinity_setA, $salinity_setB];
+        }
+        if (isset($salinityB) && isset($salinityC)) {
+            $salinityOutput = [$salinityB, $salinityC];
+            $salinityGrade = [$salinity_setB, $salinity_setC];
+        }
+        if (isset($salinityC) && isset($salinityD)) {
+            $salinityOutput = [$salinityC, $salinityD];
+            $salinityGrade = [$salinity_setC, $salinity_setD];
+        }
+        if (isset($salinityB) && isset($salinityD)) {
+            $salinityOutput = [$salinityB, $salinityD];
+            $salinityGrade = [$salinity_setB, $salinity_setD];
+        }
+        if (isset($salinityA) && isset($salinityC)) {
+            $salinityOutput = [$salinityA, $salinityC];
+            $salinityGrade = [$salinity_setA, $salinity_setC];
+        }
+        if (isset($salinityA) && isset($salinityD)) {
+            $salinityOutput = [$salinityA, $salinityD];
+            $salinityGrade = [$salinity_setA, $salinity_setD];
+        }
+        // echo json_encode($phOutput);
+        // echo json_encode($phGrade);
+        // echo "<br>";
+        // echo json_encode($salinityOutput);
+        // echo json_encode($salinityGrade);
+        // echo "<br>";
+        // echo json_encode($doOutput);
+        // echo json_encode($doGrade);
+
         foreach ($suhuGrade as $s) {
             foreach ($phGrade as $p) {
                 foreach ($tdsGrade as $t) {
-                    $rr = $s . $p . $t;
-                    $qq = $this->db->query("SELECT * FROM rules WHERE suhu = '$s' AND ph = '$p' AND tds = '$t' AND do = 'Baik' AND salinity = 'Buruk'")->result_array();
-                    echo json_encode($qq);
-
-                    //Nilai Min
-                    //Nilai Inference
+                    foreach ($doGrade as $d) {
+                        foreach ($salinityGrade as $salt) {
+                            $qq = $this->db->query("SELECT * FROM rules WHERE suhu = '$s' AND ph = '$p' AND tds = '$t' AND do = '$d' AND salinity = '$salt'")->result_array();
+                            foreach ($qq as $key) {
+                                $datarules = [
+                                    // 'id_rules_grade' => $id_rules_grade,
+                                    'id_perhitungan' => $id_perhitungan,
+                                    'id_rules' => $key['id_rules'],
+                                    'created_at' => date('Y-m-d H:i:s'),
+                                ];
+                                $this->db->insert('rules_grade', $datarules);
+                            }
+                            // echo json_encode($qq);
+                        }
+                    }
                 }
             }
         }
+
         foreach ($suhuOutput as $s) {
             foreach ($phOutput as $p) {
                 foreach ($tdsOutput as $t) {
-                    $RMin = min($s, $p, $t);
-                    // echo $RMin;
+                    foreach ($doOutput as $d) {
+                        foreach ($salinityOutput as $salt) {
+                            $RMin = min($s, $p, $t, $d, $salt);
+                            $dataoutput = [
+                                'id_perhitungan' => $id_perhitungan,
+                                'nilai_min' => $RMin,
+                                'created_at' => date('Y-m-d H:i:s'),
+                                'inference' => 0
+                            ];
+                            $this->db->insert('nilai_min', $dataoutput);
+                            // echo json_encode($dataoutput);
+                        }
+                    }
                 }
             }
         }
+        $data['Pengguna'] = $this->db->get_where('pengguna', ['id_pengguna' =>
+        $this->session->userdata('id_pengguna')])->row_array();
+
+        $rulessss = $this->db->query("SELECT rules.grade as grade , nilai_min.nilai_min as min , nilai_min.id_min as id FROM rules, nilai_min,rules_grade WHERE nilai_min.id_perhitungan = rules_grade.id_perhitungan AND rules.id_rules = rules_grade.id_rules AND nilai_min.id_min = rules_grade.id_rules_grade AND rules_grade.id_perhitungan = '$id_perhitungan'")->result_array();
+
+
+        foreach ($rulessss as $aa) {
+            $grade = $aa['grade'];
+            $min = $aa['min'];
+            $id = $aa['id'];
+            $float = (float) $min;
+
+
+            if ($grade == "A") {
+                $aa = 200 - ($float * (200 - 100));
+                $hasila = $aa * $float;
+            }
+            if ($grade == "B") {
+                $bb = 300 - ($float * (300 - 200));
+                $hasila = $bb * $float;
+            }
+            if ($grade == "C") {
+                $cc = 400 - ($float * (400 - 300));
+                $hasila = $cc * $float;
+            }
+            if ($grade == "D") {
+                $dd = 500 - ($float * (500 - 400));
+                $hasila = $dd * $float;
+            }
+            $this->db->set('inference', $hasila);
+            $this->db->where('id_min', $id);
+            $this->db->update('nilai_min');
+        }
+        $inf  = $this->db->query("SELECT SUM(nilai_min.inference) as inf FROM nilai_min WHERE nilai_min.id_perhitungan = '$id_perhitungan'")->result_array();
+        $sums  = $this->db->query("SELECT SUM(nilai_min.nilai_min) as jumlah  FROM  nilai_min WHERE nilai_min.id_perhitungan = '$id_perhitungan'")->result_array();
+        $bagi = number_format($sums[0]['jumlah'], 2);
+        $atas = (float) $inf[0]['inf'];
+        $data['output'] = $atas / $bagi;
+        $data['ikan'] = $this->db->query("SELECT * FROM perhitungan WHERE id_perhitungan = '$id_perhitungan'")->row();
+        $data['data'] = $this->db->query("SELECT * FROM rules, nilai_min,rules_grade WHERE nilai_min.id_perhitungan = rules_grade.id_perhitungan AND rules.id_rules = rules_grade.id_rules AND nilai_min.id_min = rules_grade.id_rules_grade AND rules_grade.id_perhitungan = '$id_perhitungan'")->result_array();
+        $this->load->view('user/perhitungan/detail', $data);
     }
 }

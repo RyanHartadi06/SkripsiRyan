@@ -37,31 +37,31 @@
                                 <div class="row">
                                     <div class="form-group col-lg-12 col-sm-12">
                                         <label>PH</label>
-                                        <input class="form-control" id="ph" name="ph" type="text" placeholder="PH" />
+                                        <input class="form-control" id="ph" name="ph" type="text" placeholder="PH" required />
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="form-group col-lg-12 col-sm-12">
                                         <label>TDS</label>
-                                        <input class="form-control" id="tds" name="tds" type="text" placeholder="TDS" />
+                                        <input class="form-control" id="tds" name="tds" type="text" placeholder="TDS" required />
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="form-group col-lg-12 col-sm-12">
                                         <label>Suhu</label>
-                                        <input class="form-control" id="suhu" name="suhu" type="text" placeholder="Suhu" />
+                                        <input class="form-control" id="suhu" name="suhu" type="text" placeholder="Suhu" required />
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="form-group col-lg-12 col-sm-12">
                                         <label>DO</label>
-                                        <input class="form-control" id="Do" name="Do" type="text" placeholder="DO" />
+                                        <input class="form-control" id="do" name="do" type="text" placeholder="DO" required />
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="form-group col-lg-12 col-sm-12">
                                         <label>Salinity</label>
-                                        <input class="form-control" id="salinity" name="salinity" type="text" placeholder="Salinity" />
+                                        <input class="form-control" id="salinity" name="salinity" type="text" placeholder="Salinity" required />
                                     </div>
                                 </div>
 
