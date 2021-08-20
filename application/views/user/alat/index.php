@@ -34,7 +34,7 @@
                     <hr class="mt-2 mb-4" />
                     <!-- Knowledge base main category card 1-->
                     <?php foreach ($alat as $key) { ?>
-                        <a class="card card-icon lift lift-sm mb-4" href="knowledge-base-category.html">
+                        <a class="card card-icon lift lift-sm mb-4">
                             <div class="row no-gutters">
                                 <div class="col-auto card-icon-aside bg-primary"><img src="<?= base_url('uploads/alat/') . $key['gambar'] ?>" style="width:150px" alt=""></div>
                                 <div class="col">

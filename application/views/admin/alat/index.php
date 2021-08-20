@@ -58,7 +58,7 @@
                                                 <td><img src="<?= base_url('uploads/alat/') . $d['gambar'] ?>" alt="Gambar Jenis" style="width:70px"></td>
 
                                                 <td>
-                                                    <a class="btn btn-datatable btn-icon btn-transparent-dark" href="<?php echo base_url('Admin/Alat/detail/' . $d['id_alat']) ?>"><i class="fas fa-plus"></i> </a>
+                                                    <!-- <a class="btn btn-datatable btn-icon btn-transparent-dark" href="<?php echo base_url('Admin/Alat/detail/' . $d['id_alat']) ?>"><i class="fas fa-plus"></i> </a> -->
                                                     <a class="btn btn-datatable btn-icon btn-transparent-dark" href="<?php echo base_url('Admin/Alat/edit/' . $d['id_alat']) ?>"><i class="fas fa-edit"></i> </a>
                                                     <a class="btn btn-datatable btn-icon btn-transparent-dark" href="" onclick="confirm_hapus('<?php echo base_url('Admin/Alat/hapus/' . $d['id_alat']) ?>')" data-toggle="modal" data-target="#modalDelete"><i class="fas fa-trash"></i></a>
                                                 </td>

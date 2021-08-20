@@ -27,14 +27,22 @@
                     <div class="nav-link-icon"><i data-feather="airplay"></i></div>
                     Fuzzy Tsukamoto
                 </a>
+                <a class="nav-link collapsed" href="<?= base_url('User/Fuzzy/rules') ?>">
+                    <div class="nav-link-icon"><i data-feather="columns"></i></div>
+                    Fuzzy Rules
+                </a>
                 <div class="sidenav-menu-heading">Perhitungan</div>
                 <a class="nav-link collapsed" href="<?php echo base_url('User/Data') ?>">
                     <div class="nav-link-icon"><i data-feather="briefcase"></i></div>
                     Proses Data
                 </a>
                 <a class="nav-link collapsed" href="<?php echo base_url('User/Perhitungan') ?>">
-                    <div class="nav-link-icon"><i data-feather="briefcase"></i></div>
-                    Perhitungan
+                    <div class="nav-link-icon"><i data-feather="code"></i></div>
+                    Perhitungan Sistem
+                </a>
+                <a class="nav-link collapsed" href="<?php echo base_url('User/History') ?>">
+                    <div class="nav-link-icon"><i data-feather="git-commit"></i></div>
+                    History
                 </a>
             </div>
         </div>

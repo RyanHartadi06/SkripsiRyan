@@ -49,7 +49,6 @@ class Perhitungan extends CI_Controller
         // echo json_encode($data);
         //Rules
         //FUNGSI KEANGGOTAAN
-        //menghitung fungsi keanggotaan suhu 
         if (22.5 <= $suhu && $suhu <= 27) { //jika angka diantara 22.5 - 27 maka menggunakan rumus A
             // rumus suhu A 
             if ($suhu <= 22.5 or 27 <= $suhu) {
@@ -62,7 +61,6 @@ class Perhitungan extends CI_Controller
                 $suhuA = (27 - $suhu) / (27 - 26);
             }
         }
-
 
         if ((17.5 <= $suhu && $suhu <= 25) or (26 <= $suhu && $suhu <= 29)) { //jika angka diantara 17.5 - 25 atau diantara 26-29 maka menggunakan rumus B
             // rumus suhu B
@@ -113,7 +111,7 @@ class Perhitungan extends CI_Controller
         //menghitung fungsi keanggotaan suhu END
 
         //menghitung fungsi keanggotaan PH
-        if (6.65 <= $ph && $ph >= 7.7) { //jika angka diantara 6.65 - 7.7 maka menggunakan rumus A
+        if (6.65 <= $ph && $ph <= 7.7) { //jika angka diantara 6.65 - 7.7 maka menggunakan rumus A
             // rumus PH A
             if ($ph <= 6.65 && 7.7 <= $ph) {
                 $phA = 0;
@@ -162,7 +160,7 @@ class Perhitungan extends CI_Controller
 
         if ($ph <= 5.5 or 8.5 <= $ph) { //jika angka diantara 5.5 maka menggunakan rumus D
             // rumus PH D
-            if (5.5 < $ph && $ph > 8.5) {
+            if (5.5 < $ph && $ph < 8.5) {
                 $phD = 0;
             } else if (5.25 < $ph && $ph < 5.5) {
                 $phD = ($ph - 5.25) / (5.5 - 5.25);
@@ -230,6 +228,10 @@ class Perhitungan extends CI_Controller
         if ($tds <= 0 or 500 <= $tds) {
             $tdsD = 1;
         }
+
+        // if ($tds <= 0 or 500 <= $tds) {
+        //     $tdsD = 1;
+        // }
         //menghitung fungsi keanggotaan TDS END
         //menghitung fungsi keanggotaan DO START
         //==================== d.o ====================//
@@ -374,6 +376,11 @@ class Perhitungan extends CI_Controller
             $suhuOutput = [$suhuA, $suhuD];
             $suhuGrade = [$suhu_setA, $suhu_setD];
         }
+        if (isset($suhuD)) {
+            $suhuOutput = [$suhuD];
+            $suhuGrade = [$suhu_setD];
+        }
+
 
 
         if (isset($phA) && isset($phB)) {
@@ -400,6 +407,10 @@ class Perhitungan extends CI_Controller
             $phOutput = [$phA, $phD];
             $phGrade = [$ph_setA, $ph_setD];
         }
+        if (isset($phD)) {
+            $phOutput = [$phD];
+            $phGrade = [$ph_setD];
+        }
 
 
         if (isset($tdsA) && isset($tdsB)) {
@@ -425,6 +436,10 @@ class Perhitungan extends CI_Controller
         if (isset($tdsA) && isset($tdsD)) {
             $tdsOutput = [$tdsA, $tdsD];
             $tdsGrade = [$tds_setA, $tds_setD];
+        }
+        if (isset($tdsD)) {
+            $tdsOutput = [$tdsD];
+            $tdsGrade = [$tds_setD];
         }
 
         if (isset($doA) && isset($doB)) {
@@ -476,12 +491,23 @@ class Perhitungan extends CI_Controller
             $salinityOutput = [$salinityA, $salinityD];
             $salinityGrade = [$salinity_setA, $salinity_setD];
         }
+        // echo "PH";
         // echo json_encode($phOutput);
         // echo json_encode($phGrade);
         // echo "<br>";
+        // echo "TDS";
+        // echo json_encode($tdsOutput);
+        // echo json_encode($tdsGrade);
+        // echo "<br>";
+        // echo "Suhu";
+        // echo json_encode($suhuOutput);
+        // echo json_encode($suhuGrade);
+        // echo "<br>";
+        // echo "Salinity";
         // echo json_encode($salinityOutput);
         // echo json_encode($salinityGrade);
         // echo "<br>";
+        // echo "DO";
         // echo json_encode($doOutput);
         // echo json_encode($doGrade);
 
@@ -490,15 +516,16 @@ class Perhitungan extends CI_Controller
                 foreach ($tdsGrade as $t) {
                     foreach ($doGrade as $d) {
                         foreach ($salinityGrade as $salt) {
+                            //BUG
                             $qq = $this->db->query("SELECT * FROM rules WHERE suhu = '$s' AND ph = '$p' AND tds = '$t' AND do = '$d' AND salinity = '$salt'")->result_array();
                             foreach ($qq as $key) {
                                 $datarules = [
-                                    // 'id_rules_grade' => $id_rules_grade,
                                     'id_perhitungan' => $id_perhitungan,
                                     'id_rules' => $key['id_rules'],
                                     'created_at' => date('Y-m-d H:i:s'),
                                 ];
                                 $this->db->insert('rules_grade', $datarules);
+                                // echo json_encode($qq);
                             }
                             // echo json_encode($qq);
                         }
@@ -563,6 +590,26 @@ class Perhitungan extends CI_Controller
         $sums  = $this->db->query("SELECT SUM(nilai_min.nilai_min) as jumlah  FROM  nilai_min WHERE nilai_min.id_perhitungan = '$id_perhitungan'")->result_array();
         $bagi = number_format($sums[0]['jumlah'], 2);
         $atas = (float) $inf[0]['inf'];
+        $hasil = $atas / $bagi;
+        if (0 <= $hasil && $hasil <= 150) {
+            // echo 'Grade A';
+            $grade_hasil = 'A';
+        } else if (151 <= $hasil && $hasil <= 250) {
+            // echo 'Grade B';
+            $grade_hasil = 'B';
+        } else if (251 <= $hasil && $hasil <= 350) {
+            // echo 'Grade C';
+            $grade_hasil = 'C';
+        } else if (351 <= $hasil && $hasil <= 500) {
+            // echo 'Grade D';
+            $grade_hasil = 'D';
+        } else {
+            // echo 'Grade D, tidak terdefinisi';
+            $grade_hasil = 'D';
+        }
+        $this->db->set('grade', $grade_hasil);
+        $this->db->where('id_perhitungan', $id_perhitungan);
+        $this->db->update('perhitungan');
         $data['output'] = $atas / $bagi;
         $data['ikan'] = $this->db->query("SELECT * FROM perhitungan WHERE id_perhitungan = '$id_perhitungan'")->row();
         $data['data'] = $this->db->query("SELECT * FROM rules, nilai_min,rules_grade WHERE nilai_min.id_perhitungan = rules_grade.id_perhitungan AND rules.id_rules = rules_grade.id_rules AND nilai_min.id_min = rules_grade.id_rules_grade AND rules_grade.id_perhitungan = '$id_perhitungan'")->result_array();

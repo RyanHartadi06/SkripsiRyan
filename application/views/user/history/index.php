@@ -22,49 +22,16 @@
                         <div class="page-header-content">
                             <h1 class="page-header-title">
                                 <div class="page-header-icon"><i data-feather="grid"></i></div>
-                                <span>Nilai Output</span>
+                                <span>History</span>
                             </h1>
                         </div>
                     </div>
                 </div>
                 <div class="container-fluid mt-n10">
-                    <div class="card mb-3">
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-lg-2 d-flex align-items-center justify-content-center">
-                                    <img class="img-fluid" style="max-width: 10rem" src="<?= base_url("img/admin/logo/statistics-pana.svg") ?>" alt="">
-                                </div>
-                                <div class="col-lg-10 pt-4 pt-lg-0 content">
-                                    <div class="row">
-                                        <div class="col-lg-6">
-                                            <ul class="list-unstyled">
-                                                <li class="pb-2"><strong>PH: </strong> <?= $ikan->ph ?></li>
-                                                <li class="pb-2"><strong>TDS: </strong> <?= $ikan->tds ?></li>
-                                                <li class="pb-2"><strong>Suhu: </strong> <?= $ikan->suhu ?></li>
-                                                <li class="pb-2"><strong>Salinity: </strong> <?= $ikan->salinity ?></li>
-                                                <li class="pb-2"><strong>DO: </strong> <?= $ikan->do ?></li>
-
-                                            </ul>
-                                        </div>
-
-                                    </div>
-                                    <!-- <p><?= $p['profil'] ?></p> -->
-                                    <h3>Output Nilai: <b><?php if (!is_nan($output)) {
-                                                                echo $output, " ",
-                                                                    "(",
-                                                                    '<b>' . $ikan->grade . '</b>',
-                                                                    ")";
-                                                            } else {
-                                                                echo "Kualitas Buruk Sehingga Tidak Cocok Untuk Jenis Ikan Koi Apapun";
-                                                            } ?></b>
-
-                                    </h3>
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                     <div class="card mb-4">
+                        <div class="card-header">
+
+                        </div>
                         <div class="card-body">
                             <div class="col">
                                 <?php echo $this->session->flashdata('message') ?>
@@ -74,13 +41,13 @@
                                     <thead>
                                         <tr>
                                             <th>Nomor</th>
-                                            <th>Ph</th>
-                                            <th>Suhu</th>
+                                            <th>PH</th>
                                             <th>TDS</th>
+                                            <th>Suhu</th>
                                             <th>Do</th>
                                             <th>Salinity</th>
                                             <th>Grade</th>
-                                            <th>Min</th>
+                                            <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -89,13 +56,15 @@
                                             <tr>
                                                 <td><?= $no++ ?></td>
                                                 <td><?= $d['ph'] ?></td>
-                                                <td><?= $d['suhu'] ?></td>
                                                 <td><?= $d['tds'] ?></td>
+                                                <td><?= $d['suhu'] ?></td>
                                                 <td><?= $d['do'] ?></td>
                                                 <td><?= $d['salinity'] ?></td>
                                                 <td><?= $d['grade'] ?></td>
-                                                <td><?= $d['nilai_min'] ?></td>
-
+                                                <td>
+                                                    <a class="btn btn-datatable btn-icon btn-transparent-dark" href="<?php echo base_url('User/History/detail/' . $d['id_perhitungan']) ?>"><i class="fas fa-plus"></i> </a>
+                                                    <a class="btn btn-datatable btn-icon btn-transparent-dark" href="" onclick="confirm_hapus('<?php echo base_url('User/History/hapus/' . $d['id_perhitungan']) ?>')" data-toggle="modal" data-target="#modalDelete"><i class="fas fa-trash"></i></a>
+                                                </td>
                                             </tr>
                                         <?php } ?>
                                     </tbody>
@@ -120,7 +89,6 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
             </main>
 

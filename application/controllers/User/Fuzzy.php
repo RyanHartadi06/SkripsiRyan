@@ -14,4 +14,11 @@ class Fuzzy extends CI_Controller
         $this->session->userdata('id_pengguna')])->row_array();
         $this->load->view('user/fuzzy/index', $data);
     }
+    public function rules()
+    {
+        $data['Pengguna'] = $this->db->get_where('pengguna', ['id_pengguna' =>
+        $this->session->userdata('id_pengguna')])->row_array();
+        $data['data'] = $this->db->query("SELECT * FROM rules")->result_array();
+        $this->load->view('user/fuzzy/rules', $data);
+    }
 }
