@@ -85,11 +85,11 @@
                                                 foreach ($karakteristik as $d) { ?>
                                                     <tr>
                                                         <td><?= $no++ ?></td>
-                                                        <td><?= $d['ph_min'] ?> - <?= $d['ph_max'] ?></td>
-                                                        <td><?= $d['tds_min'] ?> - <?= $d['tds_max'] ?></td>
-                                                        <td><?= $d['suhu_min'] ?> - <?= $d['suhu_max'] ?></td>
-                                                        <td><?= $d['do_min'] ?> - <?= $d['do_max'] ?></td>
-                                                        <td><?= $d['salinity_min'] ?> - <?= $d['salinity_max'] ?></td>
+                                                        <td><?= $d['ph'] ?></td>
+                                                        <td><?= $d['tds'] ?> </td>
+                                                        <td><?= $d['suhu'] ?> </td>
+                                                        <td><?= $d['do'] ?></td>
+                                                        <td><?= $d['salinity'] ?> </td>
                                                         <td><?= $d['grade'] ?></td>
                                                     </tr>
                                                 <?php } ?>

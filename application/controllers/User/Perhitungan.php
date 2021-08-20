@@ -214,7 +214,7 @@ class Perhitungan extends CI_Controller
             }
         }
 
-        if (450 <= $tds && $tds <= 500) { //jika angka diantara 450 - 500 maka menggunakan rumus C
+        if (450 <= $tds && $tds <= 500) { //jika angka diantara 450 - 500 maka menggunakan rumus D
             // rumus TDS D
             if ($tds <= 450) {
                 $tdsD = 0;
@@ -376,10 +376,10 @@ class Perhitungan extends CI_Controller
             $suhuOutput = [$suhuA, $suhuD];
             $suhuGrade = [$suhu_setA, $suhu_setD];
         }
-        if (isset($suhuD)) {
-            $suhuOutput = [$suhuD];
-            $suhuGrade = [$suhu_setD];
-        }
+        // if (isset($suhuD)) {
+        //     $suhuOutput = [$suhuD];
+        //     $suhuGrade = [$suhu_setD];
+        // }
 
 
 
@@ -407,10 +407,10 @@ class Perhitungan extends CI_Controller
             $phOutput = [$phA, $phD];
             $phGrade = [$ph_setA, $ph_setD];
         }
-        if (isset($phD)) {
-            $phOutput = [$phD];
-            $phGrade = [$ph_setD];
-        }
+        // if (isset($phD)) {
+        //     $phOutput = [$phD];
+        //     $phGrade = [$ph_setD];
+        // }
 
 
         if (isset($tdsA) && isset($tdsB)) {
@@ -437,10 +437,10 @@ class Perhitungan extends CI_Controller
             $tdsOutput = [$tdsA, $tdsD];
             $tdsGrade = [$tds_setA, $tds_setD];
         }
-        if (isset($tdsD)) {
-            $tdsOutput = [$tdsD];
-            $tdsGrade = [$tds_setD];
-        }
+        // if (isset($tdsD)) {
+        //     $tdsOutput = [$tdsD];
+        //     $tdsGrade = [$tds_setD];
+        // }
 
         if (isset($doA) && isset($doB)) {
             $doOutput = [$doA, $doB];

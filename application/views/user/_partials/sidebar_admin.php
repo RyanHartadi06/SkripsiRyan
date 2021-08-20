@@ -20,6 +20,10 @@
                     <div class="nav-link-icon"><i data-feather="activity"></i></div>
                     Fuzzy Rules
                 </a>
+                <a class="nav-link collapsed" href="<?= base_url('Admin/Karakter') ?>">
+                    <div class="nav-link-icon"><i data-feather="folder-plus"></i></div>
+                    Karakteristik Kolam
+                </a>
 
             </div>
         </div>

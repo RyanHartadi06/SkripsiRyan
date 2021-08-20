@@ -21,7 +21,7 @@
                         <div class="page-header-content">
                             <h1 class="page-header-title">
                                 <div class="page-header-icon"><i data-feather="grid"></i></div>
-                                <span>Data Ikan</span>
+                                <span>Karakter Kolam</span>
                             </h1>
                         </div>
                     </div>
@@ -29,8 +29,8 @@
                 <div class="container-fluid mt-n10">
                     <div class="card mb-4">
                         <div class="card-header">
-                            <a class="btn btn-primary btn-sm shadow-sm" href="<?php echo base_url('Admin/Ikan/add') ?>">
-                                Tambah Data Ikan
+                            <a class="btn btn-primary btn-sm shadow-sm" href="<?php echo base_url('Admin/Karakter/add') ?>">
+                                Tambah Karakter Kolam
                             </a>
                         </div>
                         <div class="card-body">
@@ -43,7 +43,12 @@
                                         <tr>
                                             <th>Nomor</th>
                                             <th>Nama Ikan</th>
-                                            <th>Gambar</th>
+                                            <th>Ph</th>
+                                            <th>Tds</th>
+                                            <th>Suhu</th>
+                                            <th>Do</th>
+                                            <th>Salinity</th>
+                                            <th>Grade</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
@@ -53,12 +58,15 @@
                                             <tr>
                                                 <td><?= $no++ ?></td>
                                                 <td><?= $d['nama_ikan'] ?></td>
-                                                <td><img src="<?= base_url('uploads/ikan/') . $d['gambar'] ?>" alt="Gambar Jenis" style="width:70px"></td>
-
+                                                <td><?= $d['ph'] ?></td>
+                                                <td><?= $d['tds'] ?></td>
+                                                <td><?= $d['suhu'] ?></td>
+                                                <td><?= $d['do'] ?></td>
+                                                <td><?= $d['salinity'] ?></td>
+                                                <td><?= $d['grade'] ?></td>
                                                 <td>
-                                                    <a class="btn btn-datatable btn-icon btn-transparent-dark" href="<?php echo base_url('Admin/Ikan/detail/' . $d['id_jenis']) ?>"><i class="fas fa-plus"></i> </a>
-                                                    <a class="btn btn-datatable btn-icon btn-transparent-dark" href="<?php echo base_url('Admin/Ikan/edit/' . $d['id_jenis']) ?>"><i class="fas fa-edit"></i> </a>
-                                                    <a class="btn btn-datatable btn-icon btn-transparent-dark" href="" onclick="confirm_hapus('<?php echo base_url('Admin/Ikan/hapus/' . $d['id_jenis']) ?>')" data-toggle="modal" data-target="#modalDelete"><i class="fas fa-trash"></i></a>
+                                                    <a class="btn btn-datatable btn-icon btn-transparent-dark" href="<?php echo base_url('Admin/Karakter/edit/' . $d['id_detail']) ?>"><i class="fas fa-edit"></i> </a>
+                                                    <a class="btn btn-datatable btn-icon btn-transparent-dark" href="" onclick="confirm_hapus('<?php echo base_url('Admin/Karakter/hapus/' . $d['id_detail']) ?>')" data-toggle="modal" data-target="#modalDelete"><i class="fas fa-trash"></i></a>
                                                 </td>
                                             </tr>
                                         <?php } ?>
