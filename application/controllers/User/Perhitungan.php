@@ -64,15 +64,15 @@ class Perhitungan extends CI_Controller
 
         if ((17.5 <= $suhu && $suhu <= 25) or (26 <= $suhu && $suhu <= 29)) { //jika angka diantara 17.5 - 25 atau diantara 26-29 maka menggunakan rumus B
             // rumus suhu B
-            if (($suhu <= 17.5 or 29 <= $suhu) or (25 <= $suhu && $suhu <= 26)) {
+            if ($suhu < 17.5 or 29 < $suhu or (25 <= $suhu && $suhu <= 26)) {
                 $suhuB = 0;
-            } else if (17.5 < $suhu && $suhu <= 20) {
+            } else if (17.5 <= $suhu && $suhu <= 20) {
                 $suhuB = ($suhu - 17.5) / (20 - 17.5);
             } else if ((20 <= $suhu && $suhu <= 22.5) or (27 <= $suhu && $suhu <= 28)) {
                 $suhuB = 1;
             } else if (22.5 < $suhu && $suhu < 25) {
                 $suhuB = (25 - $suhu) / (25 - 22.5);
-            } else if (26 < $suhu && $suhu <= 27) {
+            } else if (26 <= $suhu && $suhu <= 27) {
                 $suhuB = ($suhu - 26) / (27 - 26);
             } else if (28 < $suhu && $suhu < 29) {
                 $suhuB = (29 - $suhu) / (29 - 28);
@@ -96,7 +96,7 @@ class Perhitungan extends CI_Controller
             }
         }
 
-        if ($suhu <= 15 or 30 <= $suhu) { //jika angka diantara 17.5 - 25 atau diantara 26-29 maka menggunakan rumus D
+        if ($suhu <= 15 or ($suhu >= 30 && $suhu <= 32)) { //jika angka diantara 17.5 - 25 atau diantara 26-29 maka menggunakan rumus D
             // rumus suhu D
             if (15 <= $suhu && $suhu <= 30) {
                 $suhuD = 0;
@@ -355,40 +355,40 @@ class Perhitungan extends CI_Controller
         if (isset($suhuA) && isset($suhuB)) {
             $suhuOutput = [$suhuA, $suhuB];
             $suhuGrade = [$suhu_setA, $suhu_setB];
-        }
-        if (isset($suhuB) && isset($suhuC)) {
+        } else if (isset($suhuB) && isset($suhuC)) {
             $suhuOutput = [$suhuB, $suhuC];
             $suhuGrade = [$suhu_setB, $suhu_setC];
-        }
-        if (isset($suhuC) && isset($suhuD)) {
+        } else if (isset($suhuC) && isset($suhuD)) {
             $suhuOutput = [$suhuC, $suhuD];
             $suhuGrade = [$suhu_setC, $suhu_setD];
-        }
-        if (isset($suhuB) && isset($suhuD)) {
+        } else if (isset($suhuB) && isset($suhuD)) {
             $suhuOutput = [$suhuB, $suhuD];
             $suhuGrade = [$suhu_setB, $suhu_setD];
-        }
-        if (isset($suhuA) && isset($suhuC)) {
+        } else  if (isset($suhuA) && isset($suhuC)) {
             $suhuOutput = [$suhuA, $suhuC];
             $suhuGrade = [$suhu_setA, $suhu_setC];
-        }
-        if (isset($suhuA) && isset($suhuD)) {
+        } else if (isset($suhuA) && isset($suhuD)) {
             $suhuOutput = [$suhuA, $suhuD];
             $suhuGrade = [$suhu_setA, $suhu_setD];
-        }
-        if (isset($suhuD) && isset($suhuC)) {
+        } else if (isset($suhuD) && isset($suhuC)) {
             $suhuOutput = [$suhuD, $suhuC];
             $suhuGrade = [$suhu_setD, $suhu_setC];
-        }
-        if (isset($suhuD) && isset($suhuB)) {
+        } else if (isset($suhuD) && isset($suhuB)) {
             $suhuOutput = [$suhuD, $suhuB];
             $suhuGrade = [$suhu_setD, $suhu_setB];
-        }
-        if (isset($suhuD) && isset($suhuA)) {
+        } else if (isset($suhuD) && isset($suhuA)) {
             $suhuOutput = [$suhuD, $suhuA];
             $suhuGrade = [$suhu_setD, $suhu_setA];
-        }
-        if (isset($suhuD)) {
+        } else if (isset($suhuA)) {
+            $suhuOutput = [$suhuA];
+            $suhuGrade = [$suhu_setA];
+        } else if (isset($suhuB)) {
+            $suhuOutput = [$suhuB];
+            $suhuGrade = [$suhu_setB];
+        } else if (isset($suhuC)) {
+            $suhuOutput = [$suhuC];
+            $suhuGrade = [$suhu_setC];
+        } else if (isset($suhuD)) {
             $suhuOutput = [$suhuD];
             $suhuGrade = [$suhu_setD];
         }
@@ -398,122 +398,123 @@ class Perhitungan extends CI_Controller
         if (isset($phA) && isset($phB)) {
             $phOutput = [$phA, $phB];
             $phGrade = [$ph_setA, $ph_setB];
-        }
-        if (isset($phB) && isset($phC)) {
+        } else if (isset($phB) && isset($phC)) {
             $phOutput = [$phB, $phC];
             $phGrade = [$ph_setB, $ph_setC];
-        }
-        if (isset($phC) && isset($phD)) {
+        } else if (isset($phC) && isset($phD)) {
             $phOutput = [$phC, $phD];
             $phGrade = [$ph_setC, $ph_setD];
-        }
-        if (isset($phB) && isset($phD)) {
+        } else if (isset($phB) && isset($phD)) {
             $phOutput = [$phB, $phD];
             $phGrade = [$ph_setB, $ph_setD];
-        }
-        if (isset($phA) && isset($phC)) {
+        } else if (isset($phA) && isset($phC)) {
             $phOutput = [$phA, $phC];
             $phGrade = [$ph_setA, $ph_setC];
-        }
-        if (isset($phA) && isset($phD)) {
+        } else if (isset($phA) && isset($phD)) {
             $phOutput = [$phA, $phD];
             $phGrade = [$ph_setA, $ph_setD];
-        }
-        if (isset($phD) && isset($phC)) {
+        } else if (isset($phD) && isset($phC)) {
             $phOutput = [$phD, $phC];
             $phGrade = [$ph_setD, $ph_setC];
-        }
-        if (isset($phD) && isset($phB)) {
+        } else if (isset($phD) && isset($phB)) {
             $phOutput = [$phD, $phB];
             $phGrade = [$ph_setD, $ph_setB];
-        }
-        if (isset($phD) && isset($phA)) {
+        } else if (isset($phD) && isset($phA)) {
             $phOutput = [$phD, $phA];
             $phGrade = [$ph_setD, $ph_setA];
+        } else if (isset($phA)) {
+            $phOutput = [$phA];
+            $phGrade = [$ph_setA];
+        } else if (isset($phB)) {
+            $phOutput = [$phB];
+            $phGrade = [$ph_setB];
+        } else if (isset($phC)) {
+            $phOutput = [$phC];
+            $phGrade = [$ph_setC];
+        } else if (isset($phD)) {
+            $phOutput = [$phD];
+            $phGrade = [$ph_setD];
         }
-        // if (isset($phD)) {
-        //     $phOutput = [$phD];
-        //     $phGrade = [$ph_setD];
-        // }
 
 
         if (isset($tdsA) && isset($tdsB)) {
             $tdsOutput = [$tdsA, $tdsB];
             $tdsGrade = [$tds_setA, $tds_setB];
-        }
-        if (isset($tdsB) && isset($tdsC)) {
+        } else if (isset($tdsB) && isset($tdsC)) {
             $tdsOutput = [$tdsB, $tdsC];
             $tdsGrade = [$tds_setB, $tds_setC];
-        }
-        if (isset($tdsC) && isset($tdsD)) {
+        } else if (isset($tdsC) && isset($tdsD)) {
             $tdsOutput = [$tdsC, $tdsD];
             $tdsGrade = [$tds_setC, $tds_setD];
-        }
-        if (isset($tdsB) && isset($tdsD)) {
+        } else if (isset($tdsB) && isset($tdsD)) {
             $tdsOutput = [$tdsB, $tdsD];
             $tdsGrade = [$tds_setB, $tds_setD];
-        }
-        if (isset($tdsA) && isset($tdsC)) {
+        } else if (isset($tdsA) && isset($tdsC)) {
             $tdsOutput = [$tdsA, $tdsC];
             $tdsGrade = [$tds_setA, $tds_setC];
-        }
-        if (isset($tdsA) && isset($tdsD)) {
+        } else if (isset($tdsA) && isset($tdsD)) {
             $tdsOutput = [$tdsA, $tdsD];
             $tdsGrade = [$tds_setA, $tds_setD];
-        }
-        if (isset($tdsD) && isset($tdsB)) {
+        } else if (isset($tdsD) && isset($tdsB)) {
             $tdsOutput = [$tdsD, $tdsB];
             $tdsGrade = [$tds_setD, $tds_setB];
-        }
-        if (isset($tdsD) && isset($tdsA)) {
+        } else if (isset($tdsD) && isset($tdsA)) {
             $tdsOutput = [$tdsD, $tdsA];
             $tdsGrade = [$tds_setD, $tds_setA];
+        } else if (isset($tdsA)) {
+            $tdsOutput = [$tdsA];
+            $tdsGrade = [$tds_setA];
+        } else if (isset($tdsB)) {
+            $tdsOutput = [$tdsB];
+            $tdsGrade = [$tds_setB];
+        } else if (isset($tdsC)) {
+            $tdsOutput = [$tdsC];
+            $tdsGrade = [$tds_setC];
+        } else if (isset($tdsD)) {
+            $tdsOutput = [$tdsD];
+            $tdsGrade = [$tds_setD];
         }
-        // if (isset($tdsD)) {
-        //     $tdsOutput = [$tdsD];
-        //     $tdsGrade = [$tds_setD];
-        // }
 
         if (isset($doA) && isset($doB)) {
             $doOutput = [$doA, $doB];
             $doGrade = [$do_setA, $do_setB];
-        }
-        if (isset($doB) && isset($doC)) {
+        } else if (isset($doB) && isset($doC)) {
             $doOutput = [$doB, $doC];
             $doGrade = [$do_setB, $do_setC];
-        }
-        if (isset($doC) && isset($doD)) {
+        } else if (isset($doC) && isset($doD)) {
             $doOutput = [$doC, $doD];
             $doGrade = [$do_setC, $do_setD];
-        }
-        if (isset($doB) && isset($doD)) {
+        } else if (isset($doB) && isset($doD)) {
             $doOutput = [$doB, $doD];
             $doGrade = [$do_setB, $do_setD];
-        }
-        if (isset($doA) && isset($doC)) {
+        } else if (isset($doA) && isset($doC)) {
             $doOutput = [$doA, $doC];
             $doGrade = [$do_setA, $do_setC];
-        }
-        if (isset($doA) && isset($doD)) {
+        } else if (isset($doA) && isset($doD)) {
             $doOutput = [$doA, $doD];
             $doGrade = [$do_setA, $do_setD];
-        }
-        if (isset($doD) && isset($doA)) {
+        } else if (isset($doD) && isset($doA)) {
             $doOutput = [$doD, $doA];
             $doGrade = [$do_setD, $do_setA];
-        }
-        if (isset($doD) && isset($doC)) {
+        } else if (isset($doD) && isset($doC)) {
             $doOutput = [$doD, $doC];
             $doGrade = [$do_setD, $do_setC];
-        }
-        if (isset($doD) && isset($doB)) {
+        } else if (isset($doD) && isset($doB)) {
             $doOutput = [$doD, $doB];
             $doGrade = [$do_setD, $do_setB];
+        } else if (isset($doA)) {
+            $doOutput = [$doA];
+            $doGrade = [$do_setA];
+        } else if (isset($doB)) {
+            $doOutput = [$doB];
+            $doGrade = [$do_setB];
+        } else if (isset($doC)) {
+            $doOutput = [$doC];
+            $doGrade = [$do_setC];
+        } else if (isset($doD)) {
+            $doOutput = [$doD];
+            $doGrade = [$do_setD];
         }
-        // if (isset($doD)) {
-        //     $doOutput = [$doD];
-        //     $doGrade = [$do_setD];
-        // }
 
 
 
@@ -521,44 +522,43 @@ class Perhitungan extends CI_Controller
         if (isset($salinityA) && isset($salinityB)) {
             $salinityOutput = [$salinityA, $salinityB];
             $salinityGrade = [$salinity_setA, $salinity_setB];
-        }
-        if (isset($salinityB) && isset($salinityC)) {
+        } else if (isset($salinityB) && isset($salinityC)) {
             $salinityOutput = [$salinityB, $salinityC];
             $salinityGrade = [$salinity_setB, $salinity_setC];
-        }
-        if (isset($salinityC) && isset($salinityD)) {
+        } else if (isset($salinityC) && isset($salinityD)) {
             $salinityOutput = [$salinityC, $salinityD];
             $salinityGrade = [$salinity_setC, $salinity_setD];
-        }
-        if (isset($salinityB) && isset($salinityD)) {
+        } else if (isset($salinityB) && isset($salinityD)) {
             $salinityOutput = [$salinityB, $salinityD];
             $salinityGrade = [$salinity_setB, $salinity_setD];
-        }
-        if (isset($salinityA) && isset($salinityC)) {
+        } else if (isset($salinityA) && isset($salinityC)) {
             $salinityOutput = [$salinityA, $salinityC];
             $salinityGrade = [$salinity_setA, $salinity_setC];
-        }
-        if (isset($salinityA) && isset($salinityD)) {
+        } else if (isset($salinityA) && isset($salinityD)) {
             $salinityOutput = [$salinityA, $salinityD];
             $salinityGrade = [$salinity_setA, $salinity_setD];
-        }
-        if (isset($salinityD) && isset($salinityB)) {
+        } else if (isset($salinityD) && isset($salinityB)) {
             $salinityOutput = [$salinityD, $salinityB];
             $salinityGrade = [$salinity_setD, $salinity_setB];
-        }
-        if (isset($salinityD) && isset($salinityC)) {
+        } else if (isset($salinityD) && isset($salinityC)) {
             $salinityOutput = [$salinityD, $salinityC];
             $salinityGrade = [$salinity_setD, $salinity_setC];
-        }
-
-        if (isset($salinityD) && isset($salinityA)) {
+        } else if (isset($salinityD) && isset($salinityA)) {
             $salinityOutput = [$salinityD, $salinityA];
             $salinityGrade = [$salinity_setD, $salinity_setA];
+        } else if (isset($salinityA)) {
+            $salinityOutput = [$salinityA];
+            $salinityGrade = [$salinity_setA];
+        } else if (isset($salinityB)) {
+            $salinityOutput = [$salinityB];
+            $salinityGrade = [$salinity_setB];
+        } else if (isset($salinityC)) {
+            $salinityOutput = [$salinityC];
+            $salinityGrade = [$salinity_setC];
+        } else if (isset($salinityD)) {
+            $salinityOutput = [$salinityD];
+            $salinityGrade = [$salinity_setD];
         }
-        // if (isset($salinityD)) {
-        //     $salinityOutput = [$salinityD];
-        //     $salinityGrade = [$salinity_setD];
-        // }
         // echo "PH";
         // echo json_encode($phOutput);
         // echo json_encode($phGrade);
@@ -570,6 +570,11 @@ class Perhitungan extends CI_Controller
         // echo "Suhu";
         // echo json_encode($suhuOutput);
         // echo json_encode($suhuGrade);
+        // echo "Suhu N";
+        // echo json_encode($suhuA);
+        // echo json_encode($suhuB);
+        // echo json_encode($suhuC);
+        // echo json_encode($suhuD);
         // echo "<br>";
         // echo "Salinity";
         // echo json_encode($salinityOutput);
