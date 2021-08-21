@@ -154,7 +154,57 @@
                             </div>
                         </div>
                     </div>
-                    <h3 class="mt-4 mb-4">Monitoring Sensor By Grafik</h3>
+                    <div class="row mt-2 mb-2">
+
+                        <div class="col-lg-6">
+                            <h3 class="mt-4 mb-4">Monitoring Sensor By Grafik</h3>
+                        </div>
+                        <div class="col-lg-6 d-flex justify-content-end">
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                                Hitung Kualitas Air dan Penentuan Jenis Ikan
+                            </button>
+                            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Masukkan Parameter Do dan Salinity Air</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form action="<?= base_url('User/Perhitungan/hitung') ?> " method="post">
+                                                <div class="row">
+                                                    <div class="form-group col-lg-12 col-sm-12">
+                                                        <label for="">Do</label>
+                                                        <?php
+                                                        $qq = $_GET['id'];
+                                                        $data = $this->db->query("SELECT tds, suhu, ph FROM data_sensor WHERE id = '$qq' ORDER BY id DESC LIMIT 1")->row();
+                                                        ?>
+                                                        <input type="text" class="form-control" name="do" name="do" required>
+                                                        <input type="text" class="form-control" name="ph" name="ph" value="<?= $data->ph ?>" hidden>
+                                                        <input type="text" class="form-control" name="suhu" name="suhu" value="<?= $data->suhu ?>" hidden>
+                                                        <input type="text" class="form-control" name="tds" name="tds" value="<?= $data->tds ?>" hidden>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="form-group col-lg-12 col-sm-12">
+                                                        <label for="">Salinity</label>
+                                                        <input type="text" class="form-control" name="salinity" name="salinity" required>
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                                    <button type="submit" class="btn btn-primary">Hitung</button>
+                                                </div>
+                                            </form>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <input type="text" id="id" value="<?= $_GET['id'] ?>" hidden>
                     <div class="row">
                         <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-3">
