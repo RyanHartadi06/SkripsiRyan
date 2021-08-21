@@ -21,7 +21,7 @@
                         <div class="page-header-content">
                             <h1 class="page-header-title">
                                 <div class="page-header-icon"><i data-feather="user"></i></div>
-                                <span>Edit Data Alat</span>
+                                <span>Edit Fuzzy Rules</span>
                             </h1>
                         </div>
                     </div>
@@ -29,29 +29,89 @@
                 <div class="container-fluid mt-n10">
                     <form action="" method="post" enctype="multipart/form-data">
                         <div class="card mb-4">
-                            <div class="card-header">Edit Data Alat</div>
+                            <div class="card-header">Edit Fuzzy Rules</div>
                             <div class="card-body">
                                 <div class="col">
                                     <?php echo $this->session->flashdata('pesan') ?>
                                 </div>
                                 <div class="row">
-                                    <div class="form-group col-lg-12 col-sm-12">
-                                        <label>Nama Alat</label>
-                                        <input class="form-control" id="name" name="name" type="text" placeholder="Nama Alat" value="<?= $alat->nama_alat ?>" />
+                                    <div class="form-group col-lg-6 col-sm-6">
+                                        <label>Ph</label>
+                                        <select class="form-control" id="ph" name="ph">
+                                            <?php foreach ($var as $d) { ?>
+                                                <option value="<?= $d['nama_variabel'] ?>" <?= ($fuzzy->ph == $d['nama_variabel'] ? 'selected' : '') ?>><?= $d['nama_variabel'] ?></option>
+                                            <?php } ?>
+
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-lg-6 col-sm-6">
+                                        <label>Suhu</label>
+                                        <select class="form-control" id="suhu" name="suhu">
+                                            <?php foreach ($var as $d) { ?>
+                                                <option value="<?= $d['nama_variabel'] ?>" <?= ($fuzzy->suhu == $d['nama_variabel'] ? 'selected' : '') ?>><?= $d['nama_variabel'] ?></option>
+                                            <?php } ?>
+
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="form-group col-lg-12 col-sm-12">
-                                        <label>Gambar</label>
-                                        <input class="form-control" id="gambar" name="gambar" type="file" placeholder="Gambar" />
+                                    <div class="form-group col-lg-6 col-sm-6">
+                                        <label>Tds</label>
+                                        <select class="form-control" id="tds" name="tds">
+                                            <?php foreach ($var as $d) { ?>
+                                                <option value="<?= $d['nama_variabel'] ?>" <?= ($fuzzy->tds == $d['nama_variabel'] ? 'selected' : '') ?>><?= $d['nama_variabel'] ?></option>
+                                            <?php } ?>
+
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-lg-6 col-sm-6">
+                                        <label>Do</label>
+                                        <select class="form-control" id="do" name="do">
+                                            <?php foreach ($var as $d) { ?>
+                                                <option value="<?= $d['nama_variabel'] ?>" <?= ($fuzzy->do == $d['nama_variabel'] ? 'selected' : '') ?>><?= $d['nama_variabel'] ?></option>
+                                            <?php } ?>
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="form-group col-lg-12 col-sm-12">
-                                        <label>Deskripsi</label>
-                                        <textarea class="form-control" id="desc" name="desc" type="text" placeholder="Deskripsi"><?= $alat->deskripsi ?></textarea>
+                                    <div class="form-group col-lg-6 col-sm-6">
+                                        <label>Salinity</label>
+                                        <select class="form-control" id="salinity" name="salinity">
+                                            <?php foreach ($var as $d) { ?>
+                                                <option value="<?= $d['nama_variabel'] ?>" <?= ($fuzzy->salinity == $d['nama_variabel'] ? 'selected' : '') ?>><?= $d['nama_variabel'] ?></option>
+                                            <?php } ?>
+
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-lg-6 col-sm-6">
+                                        <label>Do</label>
+                                        <select class="form-control" id="grade" name="grade">
+                                            <?php if ($fuzzy->grade == "A") { ?>
+                                                <option value="A">A</option>
+                                                <option value="B">B</option>
+                                                <option value="C">C</option>
+                                                <option value="D">D</option>
+                                            <?php } else if ($fuzzy->grade == "B") { ?>
+                                                <option value="B">B</option>
+                                                <option value="A">A</option>
+                                                <option value="C">C</option>
+                                                <option value="D">D</option>
+                                            <?php } else if ($fuzzy->grade == "C") { ?>
+                                                <option value="C">C</option>
+                                                <option value="A">A</option>
+                                                <option value="B">B</option>
+                                                <option value="D">D</option>
+                                            <?php } elseif ($fuzzy->grade == "D") {  ?>
+                                                <option value="D">D</option>
+                                                <option value="A">A</option>
+                                                <option value="B">B</option>
+                                                <option value="C">C</option>
+                                            <?php } ?>
+
+                                        </select>
                                     </div>
                                 </div>
+
                             </div>
                         </div>
                         <button name="save" id="save" type="submit" class="btn btn-primary mr-2" href="#" data-toggle="modal" data-target="#modalSave">

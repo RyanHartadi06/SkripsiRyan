@@ -12,7 +12,7 @@
             <a class="btn btn-icon btn-transparent-dark dropdown-toggle" id="navbarDropdownUserImage" href="javascript:void(0);" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <img class="img-fluid" src="<?php echo base_url('img/admin/user.png') ?>" />
             </a>
-            <div class="dropdown-menu dropdown-menu-right border-0 shadow animated--fade-in-up" aria-labelledby="navbarDropdownUserImage">
+            <!-- <div class="dropdown-menu dropdown-menu-right border-0 shadow animated--fade-in-up" aria-labelledby="navbarDropdownUserImage">
                 <h6 class="dropdown-header d-flex align-items-center">
                     <img class="dropdown-user-img" src="<?php echo base_url('img/admin/user.png') ?>" />
                     <div class="dropdown-user-details">
@@ -25,7 +25,7 @@
                     <div class="dropdown-item-icon"><i data-feather="log-out"></i></div>
                     Logout
                 </a>
-            </div>
+            </div> -->
         </li>
     </ul>
 </nav>

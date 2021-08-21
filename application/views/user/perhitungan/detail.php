@@ -50,15 +50,15 @@
                                     </div>
                                     <!-- <p><?= $p['profil'] ?></p> -->
                                     <h3>Output Nilai: <b><?php if (!is_nan($output)) {
-                                                                echo $output, " ",
-                                                                    "(",
-                                                                    '<b>' . $ikan->grade . '</b>',
-                                                                    ")";
+                                                                echo $output;
                                                             } else {
-                                                                echo "Kualitas Buruk Sehingga Tidak Cocok Untuk Jenis Ikan Koi Apapun";
+                                                                echo "Kualitas Buruk";
                                                             } ?></b>
 
                                     </h3>
+                                    <h5> Grade : <b>
+                                            <?= $ikan->grade ?>
+                                        </b> </h5>
 
                                 </div>
                             </div>
@@ -81,6 +81,7 @@
                                             <th>Salinity</th>
                                             <th>Grade</th>
                                             <th>Min</th>
+                                            <th>Inference</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -95,6 +96,7 @@
                                                 <td><?= $d['salinity'] ?></td>
                                                 <td><?= $d['grade'] ?></td>
                                                 <td><?= $d['nilai_min'] ?></td>
+                                                <td><?= $d['inference'] ?></td>
 
                                             </tr>
                                         <?php } ?>
