@@ -48,18 +48,80 @@
                                         </div>
 
                                     </div>
-                                    <!-- <p><?= $p['profil'] ?></p> -->
-                                    <h3>Output Nilai: <b><?php if (!is_nan($output)) {
-                                                                echo $output;
+
+                                    <h3>Output Nilai: <b><?php if ($ikan->nilai != 9999) {
+                                                                echo $ikan->nilai;
                                                             } else {
                                                                 echo "Kualitas Buruk";
+                                                                // echo $output;
                                                             } ?></b>
 
                                     </h3>
                                     <h5> Grade : <b>
                                             <?= $ikan->grade ?>
                                         </b> </h5>
-
+                                    <input type="text" name="nilai" id="nilai" value="<?= $ikan->nilai ?>" hidden>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card mb-3">
+                        <div class="card-header">Output Pemilihan Jenis Ikan Koi</div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-12 col-12 col-lg-12">
+                                    <table class="table" id="dataTable" cellspacing="0">
+                                        <thead>
+                                            <tr class="text-center">
+                                                <th>Jenis Ikan Koi</th>
+                                                <th>Kualitas Air Untuk Ikan</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <p>Kohaku</p>
+                                                    <input type="hidden" name="koh" id="koh" class="koh" style=" border:none; text-align:center;" readonly />
+                                                </td>
+                                                <td id="kohaku"></td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <p>Sanke</p>
+                                                    <input type="hidden" name="san" id="san" class="san" style=" border:none; text-align:center;" readonly />
+                                                </td>
+                                                <td id="sanke"></td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <p>Sowa</p>
+                                                    <input type="hidden" name="sow" id="sow" class="sow" style=" border:none; text-align:center;" readonly />
+                                                </td>
+                                                <td id="sowa"></td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <p>Shiro</p>
+                                                    <input type="hidden" name="shi" id="shi" class="shi" style=" border:none; text-align:center;" readonly />
+                                                </td>
+                                                <td id="shiro"></td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <p>Ogan</p>
+                                                    <input type="hidden" name="oga" id="oga" class="oga" style=" border:none; text-align:center;" readonly />
+                                                </td>
+                                                <td id="ogan"></td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <p>Yamabuki</p>
+                                                    <input type="hidden" name="yam" id="yam" class="yam" style=" border:none; text-align:center;" readonly />
+                                                </td>
+                                                <td id="yamabuki"></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
                         </div>
@@ -143,6 +205,115 @@
         });
         document.getElementById('delete_link').setAttribute('href', add);
     }
+
+    var nilaiHasil = document.getElementById("nilai").value;
+    console.log(nilaiHasil);
+
+    function gradeKohaku() {
+        if (nilaiHasil <= 201) {
+            return "<p class='bold text-success'>Optimal (A)</p>"
+        } else if (nilaiHasil >= 200 && nilaiHasil <= 300) {
+            return "<p class='bold text-primary'>Sedang (B)</p>"
+        } else if (nilaiHasil >= 300 && nilaiHasil <= 400) {
+            return "<p class='bold text-warning'>Buruk (C)</p>"
+        } else {
+            return "<p class='bold text-danger'>Sangat Buruk (D)</p>"
+        }
+    }
+
+    function gradeKoh() {
+        if (nilaiHasil <= 201) {
+            return "Optimal (A)"
+        } else if (nilaiHasil >= 200 && nilaiHasil <= 300) {
+            return "Sedang (B)"
+        } else if (nilaiHasil >= 300 && nilaiHasil <= 400) {
+            return "Buruk (C)"
+        } else {
+            return "Sangat Buruk (D)"
+        }
+    }
+
+    function gradeSowaSanke() {
+        if (nilaiHasil <= 201) {
+            return "<p class='bold text-success'>Optimal (A)</p>"
+        } else if (nilaiHasil >= 200 && nilaiHasil <= 300) {
+            return "<p class='bold text-primary'>Sedang (B)</p>"
+        } else if (nilaiHasil >= 300 && nilaiHasil <= 400) {
+            return "<p class='bold text-warning'>Buruk (C)</p>"
+        } else {
+            return "<p class='bold text-danger'>Sangat Buruk (D)</p>"
+        }
+    }
+
+    function gradeSow() {
+        if (nilaiHasil <= 201) {
+            return "Optimal (A)"
+        } else if (nilaiHasil >= 200 && nilaiHasil <= 300) {
+            return "Sedang (B)"
+        } else if (nilaiHasil >= 300 && nilaiHasil <= 400) {
+            return "Buruk (C)"
+        } else {
+            return "Sangat Buruk (D)"
+        }
+    }
+
+    function gradeShiro() {
+        if (nilaiHasil <= 232) {
+            return "<p class='bold text-success'>Optimal (A)</p>"
+        } else if (nilaiHasil >= 233 && nilaiHasil <= 350) {
+            return "<p class='bold text-primary'>Sedang (B)</p>"
+        } else if (nilaiHasil >= 300 && nilaiHasil <= 440) {
+            return "<p class='bold text-warning'>Buruk (C)</p>"
+        } else {
+            return "<p class='bold text-danger'>Sangat Buruk (D)</p>"
+        }
+    }
+
+    function gradeShi() {
+        if (nilaiHasil <= 232) {
+            return "Optimal (A)"
+        } else if (nilaiHasil >= 233 && nilaiHasil <= 350) {
+            return "Sedang (B)"
+        } else if (nilaiHasil >= 300 && nilaiHasil <= 440) {
+            return "Buruk (C)"
+        } else {
+            return "Sangat Buruk (D)"
+        }
+    }
+
+    function gradeOganYamabuki() {
+        if (nilaiHasil <= 201) {
+            return "<p class='bold text-success'>Optimal (A)</p>"
+        } else if (nilaiHasil >= 200 && nilaiHasil <= 300) {
+            return "<p class='bold text-primary'>Sedang (B)</p>"
+        } else if (nilaiHasil >= 300 && nilaiHasil <= 400) {
+            return "<p class='bold text-warning'>Buruk (C)</p>"
+        } else {
+            return "<p class='bold text-danger'>Sangat Buruk (D)</p>"
+        }
+    }
+
+    function gradeOga() {
+        if (nilaiHasil <= 201) {
+            return "Optimal (A)"
+        } else if (nilaiHasil >= 200 && nilaiHasil <= 300) {
+            return "Sedang (B)"
+        } else if (nilaiHasil >= 300 && nilaiHasil <= 400) {
+            return "Buruk (C)"
+        } else {
+            return "Sangat Buruk (D)"
+        }
+    }
+    var kohaku = gradeKohaku();
+    $('#kohaku').html(kohaku);
+    var sowasanke = gradeSowaSanke();
+    $('#sowa').html(sowasanke);
+    $('#sanke').html(sowasanke);
+    var shiro = gradeShiro();
+    $('#shiro').html(shiro);
+    var oganyamabuki = gradeOganYamabuki();
+    $('#ogan').html(oganyamabuki);
+    $('#yamabuki').html(oganyamabuki);
 </script>
 
 </html>

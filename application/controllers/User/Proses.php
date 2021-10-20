@@ -314,6 +314,19 @@ class Proses extends CI_Controller
 
 		$this->load->view('user/detail', $data);
 	}
+	public function detailmanual()
+	{
+		$qweq = $_GET['id'];
+		$data['qwe'] = $this->db->query("SELECT * FROM data WHERE id = '$qweq'")->result_array();
+
+		// $data['all'] = $this->db->query("SELECT * FROM data_sensor WHERE id = '$qweq'  ORDER BY id_data DESC LIMIT 1")->row();
+		$data['Pengguna'] = $this->db->get_where('pengguna', ['id_pengguna' =>
+		$this->session->userdata('id_pengguna')])->row_array();
+		$data['ikan'] = $this->db->query("SELECT * FROM perhitungan WHERE id = '$qweq'")->row();
+		$data['data'] = $this->db->query("SELECT * FROM rules, nilai_min,rules_grade WHERE nilai_min.id_perhitungan = rules_grade.id_perhitungan AND rules.id_rules = rules_grade.id_rules AND nilai_min.id_min = rules_grade.id_rules_grade AND rules_grade.id_perhitungan = '$qweq'")->result_array();
+		// echo json_encode($data);
+		$this->load->view('user/perhitungan/detail', $data);
+	}
 	public function delete($id)
 	{
 		$tables = array('data_sensor', 'data');

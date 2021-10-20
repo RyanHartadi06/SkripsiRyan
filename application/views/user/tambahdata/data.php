@@ -30,9 +30,15 @@
                 <div class="container-fluid mt-n10">
                     <div class="card mb-4">
                         <div class="card-header">
-                            <a class="btn btn-primary btn-sm shadow-sm" href="<?php echo base_url('User/Data/add') ?>">
-                                Tambah Proses Data
-                            </a>
+                            <div class="dropdown">
+                                <button class="btn btn-primary dropdown-toggle btn-sm shadow-sm" id="dropdownMenuButton" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Tambah Proses Data
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <a class="dropdown-item" href="<?php echo base_url('User/Data/add') ?>">Perhitungan Data Sensor</a>
+                                    <a class="dropdown-item" href="<?php echo base_url('User/Perhitungan') ?>">Perhitungan Manual</a>
+                                </div>
+                            </div>
                         </div>
                         <div class="card-body">
                             <div class="col">
@@ -46,6 +52,7 @@
                                             <th>Judul</th>
                                             <th>Lokasi</th>
                                             <th>Nama Kolam</th>
+                                            <th>Status</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
@@ -57,11 +64,28 @@
                                                 <td><?= $d['judul'] ?></td>
                                                 <td><?= $d['lokasi'] ?></td>
                                                 <td><?= $d['nama_kolam'] ?></td>
-                                                <td>
-                                                    <a class="btn btn-datatable btn-icon btn-transparent-dark" href="<?php echo base_url('User/Proses/detail?id=' . $d['id']) ?>"><i class="fas fa-plus"></i> </a>
-                                                    <a class="btn btn-datatable btn-icon btn-transparent-dark" href="<?php echo base_url('User/Proses/run?id=' . $d['id']) ?>"><i class="fas fa-play"></i> </a>
-                                                    <a class="btn btn-datatable btn-icon btn-transparent-dark" href="" onclick="confirm_hapus('<?php echo base_url('User/Proses/delete/' . $d['id']) ?>')" data-toggle="modal" data-target="#modalDelete"><i class="fas fa-trash"></i></a>
-                                                </td>
+                                                <?php if ($d['status'] == 1) { ?>
+                                                    <td>
+                                                        <span class="badge badge-primary">Sistem IoT</span> </td>
+                                                <?php } ?>
+                                                <?php if ($d['status'] == 2) { ?>
+                                                    <td>
+                                                        <span class="badge badge-success">Manual</span> </td>
+                                                <?php } ?>
+                                                <?php if ($d['status'] == 1) { ?>
+                                                    <td>
+                                                        <a class="btn btn-datatable btn-icon btn-transparent-dark" href="<?php echo base_url('User/Proses/detail?id=' . $d['id']) ?>"><i class="fas fa-plus"></i> </a>
+                                                        <a class="btn btn-datatable btn-icon btn-transparent-dark" href="<?php echo base_url('User/Proses/run?id=' . $d['id']) ?>"><i class="fas fa-play"></i> </a>
+                                                        <a class="btn btn-datatable btn-icon btn-transparent-dark" href="" onclick="confirm_hapus('<?php echo base_url('User/Proses/delete/' . $d['id']) ?>')" data-toggle="modal" data-target="#modalDelete"><i class="fas fa-trash"></i></a>
+                                                    </td>
+                                                <?php } ?>
+                                                <?php if ($d['status'] == 2) { ?>
+                                                    <td>
+                                                        <a class="btn btn-datatable btn-icon btn-transparent-dark" href="<?php echo base_url('User/Proses/detailmanual?id=' . $d['id']) ?>"><i class="fas fa-plus"></i> </a>
+                                                        <a class="btn btn-datatable btn-icon btn-transparent-dark" href="" onclick="confirm_hapus('<?php echo base_url('User/Proses/delete/' . $d['id']) ?>')" data-toggle="modal" data-target="#modalDelete"><i class="fas fa-trash"></i></a>
+
+                                                    </td>
+                                                <?php } ?>
                                             </tr>
                                         <?php } ?>
                                     </tbody>

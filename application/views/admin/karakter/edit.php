@@ -21,7 +21,7 @@
                         <div class="page-header-content">
                             <h1 class="page-header-title">
                                 <div class="page-header-icon"><i data-feather="user"></i></div>
-                                <span>Edit Karakter Kolam</span>
+                                <span>Edit Karakter Air Kolam</span>
                             </h1>
                         </div>
                     </div>

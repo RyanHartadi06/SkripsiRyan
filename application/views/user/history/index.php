@@ -41,6 +41,7 @@
                                     <thead>
                                         <tr>
                                             <th>Nomor</th>
+                                            <th>Nama Penelitian</th>
                                             <th>PH</th>
                                             <th>TDS</th>
                                             <th>Suhu</th>
@@ -55,6 +56,7 @@
                                         foreach ($data as $d) { ?>
                                             <tr>
                                                 <td><?= $no++ ?></td>
+                                                <td><?= $d['judul'] ?></td>
                                                 <td><?= $d['ph'] ?></td>
                                                 <td><?= $d['tds'] ?></td>
                                                 <td><?= $d['suhu'] ?></td>

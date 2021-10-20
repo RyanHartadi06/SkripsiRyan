@@ -27,7 +27,7 @@
                     </div>
                 </div>
                 <div class="container-fluid mt-n10">
-                    <form action="<?= base_url('User/Perhitungan/hitung') ?>" method="post" enctype="multipart/form-data">
+                    <form action="<?= base_url('User/Perhitungan/hitungmanual') ?>" method="post" enctype="multipart/form-data">
                         <div class="card mb-4">
                             <div class="card-header">Perhitungan Fuzzy</div>
                             <div class="card-body">
@@ -36,35 +36,54 @@
                                 </div>
                                 <div class="row">
                                     <div class="form-group col-lg-12 col-sm-12">
-                                        <label>PH</label>
-                                        <input class="form-control" id="ph" name="ph" type="text" placeholder="PH" required />
+                                        <label>Judul Penelitian</label>
+                                        <input class="form-control" id="name" name="name" type="text" placeholder="Judul Penelitian" />
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="form-group col-lg-12 col-sm-12">
+                                        <label>Lokasi</label>
+                                        <input class="form-control" id="lokasi" name="lokasi" type="text" placeholder="Lokasi" />
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-group col-lg-12 col-sm-12">
+                                        <label>Nama Kolam</label>
+                                        <input class="form-control" id="nama_kolam" name="nama_kolam" type="text" placeholder="Nama Kolam" />
+                                    </div>
+                                </div>
+                                <hr>
+
+                                <div class="row">
+                                    <div class="form-group col-lg-6 col-sm-6">
+                                        <label>PH</label>
+                                        <input class="form-control" id="ph" name="ph" type="text" placeholder="PH" required />
+                                    </div>
+                                    <div class="form-group col-lg-6 col-sm-6">
                                         <label>TDS</label>
                                         <input class="form-control" id="tds" name="tds" type="text" placeholder="TDS" required />
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="form-group col-lg-12 col-sm-12">
+                                    <div class="form-group col-lg-4 col-sm-4">
                                         <label>Suhu</label>
                                         <input class="form-control" id="suhu" name="suhu" type="text" placeholder="Suhu" required />
                                     </div>
-                                </div>
-                                <div class="row">
-                                    <div class="form-group col-lg-12 col-sm-12">
+                                    <div class="form-group col-lg-4 col-sm-4">
                                         <label>DO</label>
                                         <input class="form-control" id="do" name="do" type="text" placeholder="DO" required />
                                     </div>
-                                </div>
-                                <div class="row">
-                                    <div class="form-group col-lg-12 col-sm-12">
+                                    <div class="form-group col-lg-4 col-sm-4">
                                         <label>Salinity</label>
                                         <input class="form-control" id="salinity" name="salinity" type="text" placeholder="Salinity" required />
                                     </div>
                                 </div>
-
+                                <div class="row">
+                                    <div class="form-group col-lg-12 col-sm-12">
+                                        <label>Deskripsi</label>
+                                        <textarea class="form-control" id="desc" name="desc" type="text" placeholder="Deskripsi"></textarea>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <button name="save" id="save" type="submit" class="btn btn-primary mr-2" href="#" data-toggle="modal" data-target="#modalSave">

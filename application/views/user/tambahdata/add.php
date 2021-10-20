@@ -21,7 +21,7 @@
 						<div class="page-header-content">
 							<h1 class="page-header-title">
 								<div class="page-header-icon"><i data-feather="user"></i></div>
-								<span>Add Data</span>
+								<span>Tambah Data</span>
 							</h1>
 						</div>
 					</div>
@@ -29,7 +29,7 @@
 				<div class="container-fluid mt-n10">
 					<form action="<?= base_url('User/Data/post') ?>" method="post" enctype="multipart/form-data">
 						<div class="card mb-4">
-							<div class="card-header">Add Data</div>
+							<div class="card-header">Tambah Data</div>
 							<div class="card-body">
 								<div class="col">
 									<?php echo $this->session->flashdata('pesan') ?>

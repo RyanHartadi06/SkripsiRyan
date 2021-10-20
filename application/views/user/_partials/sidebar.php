@@ -36,10 +36,10 @@
                     <div class="nav-link-icon"><i data-feather="briefcase"></i></div>
                     Proses Data
                 </a>
-                <a class="nav-link collapsed" href="<?php echo base_url('User/Perhitungan') ?>">
+                <!-- <a class="nav-link collapsed" href="<?php echo base_url('User/Perhitungan') ?>">
                     <div class="nav-link-icon"><i data-feather="code"></i></div>
                     Perhitungan Sistem
-                </a>
+                </a> -->
                 <a class="nav-link collapsed" href="<?php echo base_url('User/History') ?>">
                     <div class="nav-link-icon"><i data-feather="git-commit"></i></div>
                     History

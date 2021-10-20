@@ -84,7 +84,7 @@
                                         </select>
                                     </div>
                                     <div class="form-group col-lg-6 col-sm-6">
-                                        <label>Do</label>
+                                        <label>Grade</label>
                                         <select class="form-control" id="grade" name="grade">
 
                                             <option value="A">A</option>

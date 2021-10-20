@@ -12,7 +12,7 @@ class Data extends CI_Controller
     {
         $data['Pengguna'] = $this->db->get_where('pengguna', ['id_pengguna' =>
         $this->session->userdata('id_pengguna')])->row_array();
-        $data['data'] = $this->db->query("SELECT * FROM data")->result_array();
+        $data['data'] = $this->db->query("SELECT * FROM data GROUP BY id DESC")->result_array();
         $this->load->view('user/tambahdata/data',  $data);
     }
     public function add()
@@ -23,12 +23,12 @@ class Data extends CI_Controller
     }
     public function post()
     {
-
         $arr = [
             'judul' => $this->input->post('name'),
             'lokasi' => $this->input->post('lokasi'),
             'nama_kolam' => $this->input->post('nama_kolam'),
             'deskripsi' => $this->input->post('desc'),
+            'status' => 1,
             'CreatedDate' => date('Y-m-d H:i:s'),
         ];
         $insert = $this->db->insert('data', $arr);

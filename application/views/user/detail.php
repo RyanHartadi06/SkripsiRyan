@@ -53,7 +53,7 @@
                                             <div class="h5" id="tanggal">
                                                 <?php
                                                 $qq = $_GET['id'];
-                                                $data = $this->db->query("SELECT createdDate FROM data_sensor WHERE id = '$qq' ORDER BY id DESC LIMIT 1")->row();
+                                                $data = $this->db->query("SELECT createdDate FROM data_sensor WHERE id = '$qq' ORDER BY id_data DESC LIMIT 1")->row();
 
                                                 if ($data) {
                                                     $tgl = $data->createdDate;
@@ -66,7 +66,7 @@
                                             <div class="h5" id="waktu">
                                                 <?php
                                                 $qq = $_GET['id'];
-                                                $data = $this->db->query("SELECT createdDate FROM data_sensor WHERE id = '$qq' ORDER BY id DESC LIMIT 1")->row();
+                                                $data = $this->db->query("SELECT createdDate FROM data_sensor WHERE id = '$qq' ORDER BY id_data DESC LIMIT 1")->row();
 
                                                 if ($data) {
                                                     $waktu = $data->createdDate;
@@ -91,7 +91,7 @@
                                             <div class="h5" id="cek_ph">
                                                 <?php
                                                 $qq = $_GET['id'];
-                                                $data = $this->db->query("SELECT ph FROM data_sensor WHERE id = '$qq' ORDER BY id DESC LIMIT 1")->row();
+                                                $data = $this->db->query("SELECT ph FROM data_sensor WHERE id = '$qq' ORDER BY id_data DESC LIMIT 1")->row();
 
                                                 if ($data) {
                                                     echo "{$data->ph} pH";
@@ -116,7 +116,7 @@
                                             <div class="h5" id="cek_kelembaban">
                                                 <?php
                                                 $qq = $_GET['id'];
-                                                $data = $this->db->query("SELECT tds FROM data_sensor WHERE id = '$qq' ORDER BY id DESC LIMIT 1")->row();
+                                                $data = $this->db->query("SELECT tds FROM data_sensor WHERE id = '$qq' ORDER BY id_data DESC LIMIT 1")->row();
 
                                                 if ($data) {
                                                     echo "{$data->tds} ppm";
@@ -140,7 +140,7 @@
                                             <div class="h5" id="cek_suhu">
                                                 <?php
                                                 $qq = $_GET['id'];
-                                                $data = $this->db->query("SELECT suhu FROM data_sensor WHERE id = '$qq' ORDER BY id DESC LIMIT 1")->row();
+                                                $data = $this->db->query("SELECT suhu FROM data_sensor WHERE id = '$qq' ORDER BY id_data DESC LIMIT 1")->row();
 
                                                 if ($data) {
                                                     echo "{$data->suhu} &#176;C";
@@ -179,10 +179,11 @@
                                                         <label for="">Do</label>
                                                         <?php
                                                         $qq = $_GET['id'];
-                                                        $data = $this->db->query("SELECT tds, suhu, ph FROM data_sensor WHERE id = '$qq' ORDER BY id DESC LIMIT 1")->row();
+                                                        $data = $this->db->query("SELECT tds, suhu, ph FROM data_sensor WHERE id = '$qq' ORDER BY id_data DESC LIMIT 1")->row();
                                                         ?>
                                                         <input type="text" class="form-control" name="do" name="do" required>
                                                         <input type="text" class="form-control" name="ph" name="ph" value="<?= $data->ph ?>" hidden>
+                                                        <input type="text" class="form-control" name="id" name="id" value="<?= $_GET['id'] ?>" hidden>
                                                         <input type="text" class="form-control" name="suhu" name="suhu" value="<?= $data->suhu ?>" hidden>
                                                         <input type="text" class="form-control" name="tds" name="tds" value="<?= $data->tds ?>" hidden>
                                                     </div>
@@ -228,7 +229,7 @@
                                                     </div>
                                                     <div class="col-lg-6">
                                                         <ul class="list-unstyled">
-                                                            <li class="pb-2"><strong>Nama Kolam: </strong> <?= $data['nama_kolam'] ?>i</li>
+                                                            <li class="pb-2"><strong>Nama Kolam: </strong> <?= $data['nama_kolam'] ?></li>
                                                             <li class="pb-2"><strong>Dibuat Tanggal: </strong> <?= $data['CreatedDate'] ?> </li>
                                                         </ul>
                                                     </div>

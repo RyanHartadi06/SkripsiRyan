@@ -28,7 +28,7 @@
               <div class="page-header-subtitle">Sistem Kendali Kualitas Air Kolam Koi</div>
             </div>
             <div class="card col-md-4 col-lg-4 col-sm-4 mt-4">
-              <div class="card-body bg-white p-3" id="reportrange">
+              <div class="card-body bg-white p-3" id="">
                 <div id="date" class="text-lg text-black font-weight-bold"></div>
                 <div id="time" class="text-sm text-black-75 font-weight-bold"></div>
               </div>
@@ -72,7 +72,7 @@
             <!-- Illustration card example-->
             <div class="card mb-4">
               <div class="card-body text-center p-5">
-                <img class="img-fluid mb-5" src="<?= base_url('img/freepik/browser-stats-pana.svg') ?>" style="width:16rem" />
+                <img class="img-fluid mb-5" src="<?= base_url('img/freepik/browser-stats-pana.svg') ?>" style="width:10rem" />
                 <h4>Data Ikan Koi</h4>
                 <p class="mb-4">Berikut adalah jenis ikan koi yang diteliti pada skripsi saat ini berdasarkan jenis ikan yang banyak diminati oleh masyarakat</p>
                 <a class="btn btn-primary p-3" href="<?= base_url('User/About') ?>">Continue</a>
@@ -83,7 +83,7 @@
             <!-- Illustration card example-->
             <div class="card mb-4">
               <div class="card-body text-center p-5">
-                <img class="img-fluid mb-5" src="<?= base_url('img/freepik/processing-pana.svg') ?>" style="width:17rem" />
+                <img class="img-fluid mb-5" src="<?= base_url('img/freepik/processing-pana.svg') ?>" style="width:10rem" />
                 <h4>Fuzzy Tsukamoto</h4>
                 <p class="mb-4">Fuzzy Tsukamoto adalah sebuah algoritma yang dapat mengambil sembuah keputusan yang bersifat ambigu</p>
                 <a class="btn btn-primary p-3" href="<?= base_url('User/About') ?>">Continue</a>
