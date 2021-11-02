@@ -10,31 +10,70 @@
             <main>
                 <div class="container">
                     <div class="row justify-content-center">
-                        <div class="col-lg-5">
+                        <div class="col-lg-8">
                             <div class="card shadow-lg border-0 rounded-lg mt-5">
                                 <div class="card-header justify-content-center">
-                                    <h3 class="font-weight-bold my-4">Login</h3>
+                                    <h3 class="font-weight-bold my-4">Register Akun</h3>
                                 </div>
                                 <div class="card-body">
                                     <div class="col">
                                         <?php echo $this->session->flashdata('message') ?>
                                     </div>
-                                    <form method="post" autocomplete="off">
-                                        <div class="form-group">
-                                            <label class="small mb-1" for="nama">Nama</label>
-                                            <input class="form-control py-4" id="nama" name="nama" type="text" placeholder="Masukkan Nama" />
+                                    <form action="" method="post" enctype="multipart/form-data">
+                                        <div class="card-body">
+                                            <div class="col">
+                                                <?php echo $this->session->flashdata('pesan') ?>
+                                            </div>
+                                            <div class="row">
+                                                <div class="form-group col-lg-6 col-sm-12">
+                                                    <label>Username</label>
+                                                    <input class="form-control" id="username" name="username" type="text" placeholder="Nama User" />
+                                                    <?php echo form_error('username'); ?>
+                                                </div>
+                                                <div class="form-group col-lg-6 col-sm-12">
+                                                    <label>Nama Lengkap</label>
+                                                    <input class="form-control" id="nama" name="nama" type="text" placeholder="Nama User" />
+                                                    <?php echo form_error('nama'); ?>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="form-group col-lg-12 col-sm-12">
+                                                    <label>Password</label>
+                                                    <input class="form-control" id="password" name="password" type="password" placeholder="Password" />
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="form-group col-lg-6 col-sm-12">
+                                                    <label>NIK</label>
+                                                    <input class="form-control" id="nik" name="nik" type="text" placeholder="NIK" />
+                                                    <?php echo form_error('nik'); ?>
+                                                </div>
+                                                <div class="form-group col-lg-6 col-sm-12">
+                                                    <label>Nomor Telepon</label>
+                                                    <input class="form-control" id="no_telp" name="no_telp" type="text" placeholder="Nomor Telepon" />
+                                                    <?php echo form_error('no_telp'); ?>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="form-group col-lg-12 col-sm-12">
+                                                    <label>Alamat</label>
+                                                    <input class="form-control" id="alamat" name="alamat" type="text" placeholder="alamat" />
+                                                    <?php echo form_error('alamat'); ?>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="form-group col-lg-12 col-sm-12">
+                                                    <label>Foto</label>
+                                                    <input class="form-control" id="gambar" name="gambar" type="file" placeholder="Foto" />
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div class="form-group">
-                                            <label class="small mb-1" for="username">Username</label>
-                                            <input class="form-control py-4" id="username" name="username" type="text" placeholder="Masukkan Username" />
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="small mb-1" for="inputPassword">Password</label>
-                                            <input class="form-control py-4" id="password" name="password" type="password" placeholder="Enter password" />
-                                        </div>
-                                        <div class="form-group d-flex align-items-center justify-content-between mt-4 mb-0">
-                                            <button type="submit" class="btn btn-primary mx-auto">Login</button>
-                                        </div>
+                                        <button name="save" id="save" type="submit" class="btn btn-primary mr-2" href="#" data-toggle="modal" data-target="#modalSave">
+                                            Save
+                                        </button>
+                                        <a class="btn btn-danger" href="javascript:history.go(-1)">
+                                            Cancel
+                                        </a>
                                     </form>
                                 </div>
                             </div>

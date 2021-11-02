@@ -7,7 +7,10 @@
                     <div class="nav-link-icon"><i data-feather="user"></i></div>
                     Profile
                 </a>
-
+                <a class="nav-link collapsed" href="<?= base_url('Admin/Akun/Pengguna') ?>">
+                    <div class="nav-link-icon"><i data-feather="users"></i></div>
+                    Data Pengguna
+                </a>
                 <a class="nav-link collapsed" href="<?= base_url('Admin/Ikan') ?>">
                     <div class="nav-link-icon"><i data-feather="box"></i></div>
                     Data Ikan Koi

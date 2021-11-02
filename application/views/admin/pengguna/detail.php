@@ -12,7 +12,7 @@
     <div id="layoutSidenav">
 
         <!-- Sidebar -->
-        <?php $this->load->view("user/_partials/sidebar.php") ?>
+        <?php $this->load->view("user/_partials/sidebar_admin.php") ?>
 
         <div id="layoutSidenav_content">
             <main>
@@ -21,7 +21,7 @@
                         <div class="page-header-content">
                             <h1 class="page-header-title">
                                 <div class="page-header-icon"><i data-feather="user"></i></div>
-                                <span>Edit Akun</span>
+                                <span>Detail Akun</span>
                             </h1>
                         </div>
                     </div>
@@ -29,7 +29,7 @@
                 <div class="container-fluid mt-n10">
                     <form action="" method="post" enctype="multipart/form-data">
                         <div class="card mb-4">
-                            <div class="card-header">Edit Akun</div>
+                            <div class="card-header">Detail Akun</div>
                             <div class="card-body">
                                 <div class="col">
                                     <?php echo $this->session->flashdata('message') ?>
@@ -37,52 +37,65 @@
                                 <div class="row">
                                     <div class="form-group col-lg-6 col-sm-6">
                                         <label>Nama</label>
-                                        <input class="form-control" id="nama" name="nama" type="text" value="<?= $users->nama ?>" />
+                                        <br>
+                                        <b><?= $users->nama ?></b>
                                     </div>
                                     <div class="form-group col-lg-6 col-sm-6">
                                         <label>Username</label>
-                                        <input class="form-control" id="username" name="username" type="text" value="<?= $users->username ?>" />
+                                        <br>
+                                        <b><?= $users->username ?></b>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="form-group col-lg-6 col-sm-6">
                                         <label>NIK</label>
-                                        <input class="form-control" id="nik" name="nik" type="text" value="<?= $users->nik ?>" />
+                                        <br>
+                                        <b><?= $users->nik ?></b>
                                     </div>
                                     <div class="form-group col-lg-6 col-sm-6">
                                         <label>Nomor Telepon</label>
-                                        <input class="form-control" id="no_telp" name="no_telp" type="text" value="<?= $users->no_telp ?>" />
+                                        <br>
+                                        <b><?= $users->no_telp ?></b>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="form-group col-lg-6 col-sm-6">
                                         <label>Alamat</label>
-                                        <input class="form-control" id="alamat" name="alamat" type="text" value="<?= $users->alamat ?>" />
+                                        <br>
+                                        <b><?= $users->alamat ?></b>
                                     </div>
                                     <div class="form-group col-lg-6 col-sm-6">
-                                        <label>foto</label>
-                                        <input class="form-control" id="gambar" name="gambar" type="file" />
+                                        <label>Is Active</label>
+                                        <br>
+                                        <?php if ($users->is_active == 1) { ?>
+                                            <span class="badge badge-primary">Aktif</span>
+                                        <?php } ?>
+                                        <?php if ($users->is_active == 2) { ?>
+                                            <span class="badge badge-danger">Off</span>
+                                        <?php } ?>
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="form-group col-lg-6 col-sm-6">
-                                        <label>Password</label>
-                                        <input class="form-control" id="password" name="password" type="password" />
-                                    </div>
-                                    <div class="form-group col-lg-6 col-sm-6">
-                                        <label>Konfirmasi Password</label>
-                                        <input class="form-control" id="konfirmasi" name="konfirmasi" type="password" />
+                                    <div class="form-group col-lg-12 col-md-12">
+                                        <label for="">Foto</label>
+                                        <br>
+                                        <img src="<?= base_url('uploads/user/' . $users->foto) ?>" alt="" width="120">
                                     </div>
                                 </div>
-
                             </div>
                         </div>
-                        <button name="save" id="save" type="submit" class="btn btn-primary mr-2" href="#" data-toggle="modal" data-target="#modalSave">
-                            Save
-                        </button>
-                        <a class="btn btn-danger" href="javascript:history.go(-1)">
-                            Cancel
-                        </a>
+                        <?php if ($users->is_active == 1) { ?>
+                            <a href="<?= base_url('Admin/Akun/off/' .  $users->id_pengguna) ?>" type="submit" class="btn btn-primary mr-2">
+                                Nonaktifkan
+                            </a>
+                        <?php } ?>
+                        <?php if ($users->is_active == 2) { ?>
+                            <a href="<?= base_url('Admin/Akun/on/' .  $users->id_pengguna) ?>" type="submit" class="btn btn-primary mr-2">
+                                Aktifkan
+                            </a>
+                        <?php } ?>
+
+
                     </form>
                 </div>
             </main>

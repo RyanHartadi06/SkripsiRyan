@@ -37,13 +37,32 @@
                                 <div class="row">
                                     <div class="form-group col-lg-6 col-sm-6">
                                         <label>Nama</label>
-                                        <input class="form-control" id="name" name="name" type="text" value="<?= $users->nama ?>" />
+                                        <input class="form-control" id="nama" name="nama" type="text" value="<?= $users->nama ?>" />
                                     </div>
                                     <div class="form-group col-lg-6 col-sm-6">
                                         <label>Username</label>
                                         <input class="form-control" id="username" name="username" type="text" value="<?= $users->username ?>" />
                                     </div>
-
+                                </div>
+                                <div class="row">
+                                    <div class="form-group col-lg-6 col-sm-6">
+                                        <label>NIK</label>
+                                        <input class="form-control" id="nik" name="nik" type="text" value="<?= $users->nik ?>" />
+                                    </div>
+                                    <div class="form-group col-lg-6 col-sm-6">
+                                        <label>Nomor Telepon</label>
+                                        <input class="form-control" id="no_telp" name="no_telp" type="text" value="<?= $users->no_telp ?>" />
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-group col-lg-6 col-sm-6">
+                                        <label>Alamat</label>
+                                        <input class="form-control" id="alamat" name="alamat" type="text" value="<?= $users->alamat ?>" />
+                                    </div>
+                                    <div class="form-group col-lg-6 col-sm-6">
+                                        <label>foto</label>
+                                        <input class="form-control" id="gambar" name="gambar" type="file" />
+                                    </div>
                                 </div>
                                 <div class="row">
                                     <div class="form-group col-lg-6 col-sm-6">

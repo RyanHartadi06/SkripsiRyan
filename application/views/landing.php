@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Elements by BuildWith Angga</title>
+  <title>Sistem Pemilihan Jenis Ikan Koi Berdasarkan Kualitas Air Kolam Koi</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
 </head>
 
@@ -246,7 +246,7 @@
           <!-- Left Column -->
           <div class="left-column d-flex flex-lg-grow-1 flex-column align-items-lg-start text-lg-start align-items-center text-center">
             <h1 class="header-title">
-              Sistem Pendukung Keputusan Pemilihan<br class="desktop"> Jenis ikan </h1>
+              Sistem Pendukung Keputusan Pemilihan<br class="desktop"> Jenis ikan koi </h1>
             <p class="subtitle my-5">
               Sistem Pendukung Keputusan menggunakan sebuah <br class="desktop"> alat IoT sehingga dapat memudahkan pengguna<br class="desktop"> dalam monitoring kolam ikan</p>
             <p>
@@ -270,7 +270,9 @@
             <img id="img-fluid" class="h-auto mw-100" src="http://api.elements.buildwithangga.com/storage/files/2/assets/Header/Header4/Header-4-2.png" alt="" />
           </div>
         </div>
+
       </div>
+
     </div>
   </section>
   <style>
@@ -361,12 +363,15 @@
   <div class="content-3-1 container-xxl mx-auto position-relative" style="font-family: 'Poppins', sans-serif">
     <div class="d-flex flex-lg-row flex-column align-items-center">
       <!-- Left Column -->
-      <div class="img-hero text-center justify-content-center d-flex">
-        <img id="hero" class="img-fluid" src="<?= base_url('img/Group2.jpg') ?>" alt="" />
+      <div class="left-column text-center d-flex justify-content-lg-end justify-content-center pe-0 col-lg-6 col-md-6">
+        <img id="img-fluid" class="h-auto mw-100" src="<?= base_url('img/Group2.jpg') ?>" alt="" />
       </div>
+      <!-- <div class="img-hero text-center justify-content-center d-flex">
+        <img id="hero" class="img-fluid" src="" alt="" />
+      </div> -->
 
       <!-- Right Column -->
-      <div class="right-column d-flex flex-column align-items-lg-start align-items-center text-lg-start text-center">
+      <div class="right-column d-flex flex-column align-items-lg-start align-items-center text-lg-start text-center col-lg-6 col-md-6">
         <h2 class="title-text">Solusi kebutuhan pemilihan jenis ikan koi</h2>
         <ul class="p-0 m-0">
           <li class="list-unstyled" style="margin-bottom: 2rem">
@@ -405,7 +410,9 @@
         </ul>
       </div>
     </div>
+    <br>
   </div>
+
   <section class="h-100 w-100 bg-white" style="box-sizing: border-box">
     <style>
       @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
@@ -620,6 +627,28 @@
         </div>
       </div>
     </div>
+  </section>
+  <section class="h-100 w-100 bg-white mt-3" style="box-sizing: border-box">
+    <div class="content-2-2 container-xxl mx-auto p-0 position-relative" style="font-family: 'Poppins', sans-serif">
+      <div class="d-flex flex-lg-row flex-column align-items-center">
+        <div class="me-lg-3">
+          <img src="http://api.elements.buildwithangga.com/storage/files/2/assets/Content/Content2/Content-2-1%20(1).png" alt="" />
+        </div>
+        <div class="flex-grow-1 text-lg-start text-center card-text">
+          <h3 class="card-title">
+            Info pemesanan alat pendeteksi kualitas air
+          </h3>
+          <p class="card-caption">
+            Ingin memesan alat pendeteksi kualitas air kolam koi?
+          </p>
+          <br>
+          <a class="btn d-inline-flex mb-md-0 btn-try btn-success" href="https://wa.me/6281359652164">
+            Pesan sekarang
+          </a>
+        </div>
+      </div>
+    </div>
+
   </section>
   <section class="h-100 w-100 bg-white" style="box-sizing: border-box">
     <style>
