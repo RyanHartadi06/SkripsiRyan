@@ -13,13 +13,25 @@ class Perhitungan extends CI_Controller
     {
         $data['Pengguna'] = $this->db->get_where('pengguna', ['id_pengguna' =>
         $this->session->userdata('id_pengguna')])->row_array();
-
+        // echo 
         $this->load->view('user/perhitungan/index', $data);
     }
     public function hitung()
     {
         $ph = $this->input->post('ph');
-        $id = $this->input->post('id');
+        $queryq = $this->db->select('id')->order_by('id', "desc")->limit(1)->get('data')->row();;
+        if ($queryq) {
+            $id = (int) $queryq->id;
+        } else {
+            $id = (int) 1;
+        }
+        // $query = $this->db->select('id_data')->from('data_sensor')->get()->last_row();
+        // if ($query) {
+        //     $id = (int) $query->id_data;
+        // } else {
+        //     $id = (int) 1;
+        // }
+        $id = $id;
         $suhu = $this->input->post('suhu');
         $tds = $this->input->post('tds');
         $do = $this->input->post('do');
@@ -38,7 +50,7 @@ class Perhitungan extends CI_Controller
         }
         $data = [
             'id_perhitungan' => $id_perhitungan,
-            'id' => $id,
+            'id_data' => $id,
             'ph' => $ph,
             'tds' => $tds,
             'suhu' => $suhu,
@@ -721,14 +733,19 @@ class Perhitungan extends CI_Controller
 
     public function hitungmanual()
     {
+        $data['Pengguna'] = $this->db->get_where('pengguna', ['id_pengguna' =>
+        $this->session->userdata('id_pengguna')])->row_array();
+        $id_user = $data['Pengguna']['id_pengguna'];
         $queryq = $this->db->select('id')->order_by('id', "desc")->limit(1)->get('data')->row();;
         if ($queryq) {
-            $id = (int) $queryq->id + 1;
+            $id_data = (int) $queryq->id + 1;
         } else {
-            $id = (int) 1;
+            $id_data = (int) 1;
         }
+        // echo $id_data;
         $arr = [
             'judul' => $this->input->post('name'),
+            'id_user' => $id_user,
             'lokasi' => $this->input->post('lokasi'),
             'nama_kolam' => $this->input->post('nama_kolam'),
             'deskripsi' => $this->input->post('desc'),
@@ -755,7 +772,7 @@ class Perhitungan extends CI_Controller
         }
         $data = [
             'id_perhitungan' => $id_perhitungan,
-            'id' => $id,
+            'id_data' => $id_data,
             'ph' => $ph,
             'tds' => $tds,
             'suhu' => $suhu,

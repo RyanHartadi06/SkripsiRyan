@@ -30,9 +30,13 @@
                                         </div>
                                         <div class="form-group d-flex align-items-center justify-content-between mt-4 mb-0">
                                             <button type="submit" class="btn btn-primary mx-auto">Login</button>
-                                            <!-- <a href="<?= base_url('Login/Register') ?>" class="btn btn-success mx-auto">Register Sekarang</a> -->
+
                                         </div>
                                     </form>
+                                    <div class="mt-4">
+                                        Tidak memilik akun? <br>
+                                        <a href="<?= base_url('Login/Register') ?>">Register Sekarang</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>

@@ -13,7 +13,8 @@ class History extends CI_Controller
     {
         $data['Pengguna'] = $this->db->get_where('pengguna', ['id_pengguna' =>
         $this->session->userdata('id_pengguna')])->row_array();
-        $data['data'] = $this->db->query("SELECT * FROM perhitungan , data WHERE data.id = perhitungan.id GROUP BY data.id DESC")->result_array();
+        $id = $data['Pengguna']['id_pengguna'];
+        $data['data'] = $this->db->query("SELECT * FROM perhitungan , data WHERE perhitungan.id_data = data.id AND data.id_user = $id GROUP BY created_at DESC")->result_array();
         $this->load->view('user/history/index',  $data);
     }
     public function detail($id_perhitungan)

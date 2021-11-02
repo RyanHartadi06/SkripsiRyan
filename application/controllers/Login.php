@@ -77,7 +77,6 @@ class Login extends CI_Controller
 			$nama = $this->input->post('nama');
 			$username = $this->input->post('username');
 			$password = md5($this->input->post('password'));
-
 			//lakukan pengecekan apakah email terdaftar
 			$user = $this->db->get_where('pengguna', ['username' => $username])->row_array();
 			if (!$user) {
@@ -85,7 +84,7 @@ class Login extends CI_Controller
 					'nama' => $nama,
 					'username' => $username,
 					'password' => $password,
-					'status' => 1,
+					'status' => 2,
 					'created_at' => date('Y-m-d H:i:s')
 				];
 				$this->db->insert('pengguna', $data);

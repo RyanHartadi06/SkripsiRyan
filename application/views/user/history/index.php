@@ -48,6 +48,7 @@
                                             <th>Do</th>
                                             <th>Salinity</th>
                                             <th>Grade</th>
+                                            <th>Status</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
@@ -63,6 +64,14 @@
                                                 <td><?= $d['do'] ?></td>
                                                 <td><?= $d['salinity'] ?></td>
                                                 <td><?= $d['grade'] ?></td>
+                                                <?php if ($d['status'] == 1) { ?>
+                                                    <td>
+                                                        <span class="badge badge-primary">Sistem IoT</span> </td>
+                                                <?php } ?>
+                                                <?php if ($d['status'] == 2) { ?>
+                                                    <td>
+                                                        <span class="badge badge-success">Manual</span> </td>
+                                                <?php } ?>
                                                 <td>
                                                     <a class="btn btn-datatable btn-icon btn-transparent-dark" href="<?php echo base_url('User/History/detail/' . $d['id_perhitungan']) ?>"><i class="fas fa-plus"></i> </a>
                                                     <a class="btn btn-datatable btn-icon btn-transparent-dark" href="" onclick="confirm_hapus('<?php echo base_url('User/History/hapus/' . $d['id_perhitungan']) ?>')" data-toggle="modal" data-target="#modalDelete"><i class="fas fa-trash"></i></a>
