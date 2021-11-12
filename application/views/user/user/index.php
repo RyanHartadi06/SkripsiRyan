@@ -40,16 +40,13 @@
                                         <input class="form-control" id="nama" name="nama" type="text" value="<?= $users->nama ?>" />
                                     </div>
                                     <div class="form-group col-lg-6 col-sm-6">
-                                        <label>Username</label>
-                                        <input class="form-control" id="username" name="username" type="text" value="<?= $users->username ?>" />
+                                        <label>Email</label>
+                                        <input class="form-control" id="email" name="email" type="email" value="<?= $users->email ?>" />
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="form-group col-lg-6 col-sm-6">
-                                        <label>NIK</label>
-                                        <input class="form-control" id="nik" name="nik" type="text" value="<?= $users->nik ?>" />
-                                    </div>
-                                    <div class="form-group col-lg-6 col-sm-6">
+
+                                    <div class="form-group col-lg-12 col-sm-12">
                                         <label>Nomor Telepon</label>
                                         <input class="form-control" id="no_telp" name="no_telp" type="text" value="<?= $users->no_telp ?>" />
                                     </div>
@@ -60,18 +57,18 @@
                                         <input class="form-control" id="alamat" name="alamat" type="text" value="<?= $users->alamat ?>" />
                                     </div>
                                     <div class="form-group col-lg-6 col-sm-6">
-                                        <label>foto</label>
+                                        <label>Foto</label>
                                         <input class="form-control" id="gambar" name="gambar" type="file" />
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="form-group col-lg-6 col-sm-6">
                                         <label>Password</label>
-                                        <input class="form-control" id="password" name="password" type="password" />
+                                        <input class="form-control" id="password" name="password" type="password" required />
                                     </div>
                                     <div class="form-group col-lg-6 col-sm-6">
                                         <label>Konfirmasi Password</label>
-                                        <input class="form-control" id="konfirmasi" name="konfirmasi" type="password" />
+                                        <input class="form-control" id="konfirmasi" name="konfirmasi" type="password" required />
                                     </div>
                                 </div>
 

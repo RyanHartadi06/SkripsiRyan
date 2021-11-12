@@ -3,19 +3,25 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Login extends CI_Controller
 {
+	public function __construct()
+	{
+		parent::__construct();
+		// $this->load->model('Models', 'Model');
+		$this->load->model('Models', 'Model');
+	}
 	public function index()
 	{
-		// $this->form_validation->set_rules('email', 'Email', 'required');
+		$this->form_validation->set_rules('email', 'Email', 'required');
 		$this->form_validation->set_rules('password', 'Password', 'required');
 
 		if ($this->form_validation->run() == false) {
 			$this->load->view('login');
 		} else {
-			$username = $this->input->post('username');
+			$email = $this->input->post('email');
 			$password = md5($this->input->post('password'));
 
 			//lakukan pengecekan apakah email terdaftar
-			$user = $this->db->get_where('pengguna', ['username' => $username])->row_array();
+			$user = $this->db->get_where('pengguna', ['email' => $email])->row_array();
 
 			if ($user) {
 				if ($user['is_active'] == 1) {
@@ -25,7 +31,7 @@ class Login extends CI_Controller
 							// redirect('fronted/User/Dashboard');
 							$data = [
 								'id_pengguna' => $user['id_pengguna'],
-								'username' => $user['username'],
+								'email' => $user['email'],
 								'status' => $user['status'],
 							];
 							$this->session->set_userdata($data);
@@ -33,7 +39,7 @@ class Login extends CI_Controller
 						} else {
 							$data = [
 								'id_pengguna' => $user['id_pengguna'],
-								'username' => $user['username'],
+								'email' => $user['email'],
 								'status' => $user['status'],
 							];
 
@@ -43,21 +49,27 @@ class Login extends CI_Controller
 					} else {
 						$this->session->set_flashdata(
 							'message',
-							'<div class="alert alert-danger mb-3" role="alert">Wrong Password!</div>'
+							'<div class="alert alert-danger mb-3" role="alert">Password Anda Salah!</div>'
 						);
 						redirect('Login');
 					}
+				} else if ($user['is_active'] == 0) {
+					$this->session->set_flashdata(
+						'message',
+						'<div class="alert alert-danger mb-3" role="alert">Akun Belum Aktif, Silahkan Cek Email Anda</div>'
+					);
+					redirect('Login/verification?email=' . $email);
 				} else {
 					$this->session->set_flashdata(
 						'message',
-						'<div class="alert alert-danger mb-3" role="alert">Akun anda telah terblokir!</div>'
+						'<div class="alert alert-danger mb-3" role="alert">Akun anda telah terblokir! Silahkan hubungi Admin!</div>'
 					);
 					redirect('Login');
 				}
 			} else {
 				$this->session->set_flashdata(
 					'message',
-					'<div class="alert alert-danger mb-3" role="alert">Email Not Registered</div>'
+					'<div class="alert alert-danger mb-3" role="alert">Email Tidak Terdaftar</div>'
 				);
 				redirect('Login');
 			}
@@ -70,25 +82,24 @@ class Login extends CI_Controller
 		$this->session->unset_userdata('username');
 		$this->session->set_flashdata(
 			'message',
-			'<div class="alert alert-success" role="alert">Logout Sucessfull!</div>'
+			'<div class="alert alert-success" role="alert">Berhasil Logout!</div>'
 		);
 		redirect('Login');
 	}
 	public function register()
 	{
 		$this->form_validation->set_rules('password', 'Password', 'required');
-		$this->form_validation->set_rules('nik', 'Nik', 'required|is_unique[pengguna.nik]');
 		$this->form_validation->set_rules('no_telp', 'Nomor Telepon', 'required|is_unique[pengguna.no_telp]');
-		$this->form_validation->set_rules('username', 'Username', 'required|is_unique[pengguna.username]');
+		$this->form_validation->set_rules('email', 'Email', 'required|is_unique[pengguna.email]');
 
 		if ($this->form_validation->run() == false) {
 			$this->load->view('register');
 		} else {
 			$nama = $this->input->post('nama');
-			$username = $this->input->post('username');
-			$nik = $this->input->post('nik');
+			$email = $this->input->post('email');
 			$no_telp = $this->input->post('no_telp');
 			$alamat = $this->input->post('alamat');
+			$kodeOTP = $this->Model->randomkode(6);
 			$password = md5($this->input->post('password'));
 			//lakukan pengecekan apakah email terdaftar
 
@@ -101,42 +112,113 @@ class Login extends CI_Controller
 				$fotobaru = $this->upload->data('file_name');
 				$data = [
 					'nama' => $nama,
-					'username' => $username,
+					'email' => $email,
 					'password' => $password,
-					'nik' => $nik,
 					'no_telp' => $no_telp,
 					'foto' =>     $fotobaru,
-					'is_active' => 1,
+					'is_active' => 0,
 					'alamat' => $alamat,
 					'status' => 2,
+					'kode_otp' => $kodeOTP,
 					'created_at' => date('Y-m-d H:i:s')
 				];
 				$this->db->insert('pengguna', $data);
+				$this->sendEmail($email);
 				$this->session->set_flashdata(
 					'message',
-					'<div class="alert alert-success mb-3" role="alert">Account Successfully Registered</div>'
+					'<div class="alert alert-success mb-3" role="alert">Akun Berhasil Register Silahkan Cek Email Anda</div>'
 				);
-				redirect('Login');
+				redirect('Login/Verification?email=' . $email);
 			} else {
 				$data = [
 					'nama' => $nama,
-					'username' => $username,
+					'email' => $email,
 					'password' => $password,
-					'nik' => $nik,
 					'no_telp' => $no_telp,
 					'alamat' => $alamat,
 					'foto' =>     '',
 					'status' => 2,
-					'is_active' => 1,
+					'is_active' => 0,
+					'kode_otp' => $kodeOTP,
 					'created_at' => date('Y-m-d H:i:s')
 				];
 				$this->db->insert('pengguna', $data);
+				$this->sendEmail($email);
+
 				$this->session->set_flashdata(
 					'message',
-					'<div class="alert alert-success mb-3" role="alert">Account Successfully Registered</div>'
+					'<div class="alert alert-success mb-3" role="alert">Akun Berhasil Register Silahkan Cek Email Anda</div>'
 				);
-				redirect('Login');
+				redirect('Login/verification?email=' . $email);
 			}
+		}
+	}
+	public function verification()
+	{
+		$email = $_GET['email'];
+		$this->sendEmail($email);
+		$this->load->view('verifikasi', $email);
+	}
+	public function update()
+	{
+		$email = $this->input->post('email');
+		$kode = $this->input->post('kode');
+		$user = $this->db->get_where('pengguna', ['email' => $email])->row_array();
+		if ($user['kode_otp'] == $kode) {
+			$insert = array(
+				'is_active' => 1
+			);
+			$this->db->where('email', $email);
+			$this->db->update('pengguna', $insert);
+			$this->session->set_flashdata(
+				'message',
+				'<div class="alert alert-success mb-3" role="alert">Akun Berhasil Aktif</div>'
+			);
+			redirect('Login');
+		} else {
+			$this->session->set_flashdata(
+				'message',
+				'<div class="alert alert-success mb-3" role="alert">Kode OTP Salah</div>'
+			);
+			redirect('Login/verification?email=' . $email);
+		}
+	}
+	public function sendEmail($email)
+	{
+		$user = $this->db->get_where('pengguna', ['email' => $email])->row_array();
+		$this->load->library('email');
+		$config = [
+			'protocol'  => 'smtp',
+			'smtp_host' => 'ssl://smtp.googlemail.com',
+			'smtp_user' => 'firebase.bimatech@gmail.com',
+			'smtp_pass' => 'bima1234',
+			'smtp_port' => 465,
+			'mailtype'  => 'html',
+			'charset'   => 'utf-8',
+			'newline'   => "\r\n"
+		];
+
+		$this->email->initialize($config);
+
+		$this->email->from('firebase.bimatech@gmail.com', 'Admin SPK Pemilihan Koi');
+
+		$data = array(
+
+			'userName' => $user['nama'],
+			'kodeOTP' => $user['kode_otp'],
+
+		);
+		$this->email->to($email);
+		$this->email->subject('SPK Pemilihan Jenis Ikan Koi');
+		$this->email->message('SPK Pemilihan Jenis Ikan Koi');
+		$body = $this->load->view('temp_pass.php', $data, TRUE);
+
+		$this->email->message($body);
+		if ($this->email->send()) {
+			// echo 'Sukses';
+		} else {
+			echo $this->email->print_debugger();
+			die;
 		}
 	}
 }

@@ -14,7 +14,7 @@ class Akun extends CI_Controller
         $this->session->userdata('id_pengguna')])->row_array();
         $qq = $data['Pengguna']['id_pengguna'];
         $this->form_validation->set_rules('nama', 'Nama', 'required');
-        $this->form_validation->set_rules('username', 'Username', 'required');
+        $this->form_validation->set_rules('email', 'Email', 'required');
         $this->form_validation->set_rules('password', 'Password', 'required|trim|min_length[3]|matches[konfirmasi]', ['min_length' => 'Password too short']);
         $this->form_validation->set_rules('konfirmasi', 'Konfirmasi password', 'required|trim|min_length[3]|matches[password]');
         if ($this->form_validation->run() == false) {
@@ -25,8 +25,7 @@ class Akun extends CI_Controller
             $this->load->view('admin/user/index', $data);
         } else {
             $nama = $this->input->post('nama');
-            $username = $this->input->post('username');
-            $nik = $this->input->post('nik');
+            $email = $this->input->post('email');
             $no_telp = $this->input->post('no_telp');
             $alamat = $this->input->post('alamat');
             $password = md5($this->input->post('password'));
@@ -39,9 +38,8 @@ class Akun extends CI_Controller
                 $fotobaru = $this->upload->data('file_name');
                 $data = [
                     'nama' => $nama,
-                    'username' => $username,
+                    'email' => $email,
                     'password' => $password,
-                    'nik' => $nik,
                     'no_telp' => $no_telp,
                     'foto' =>     $fotobaru,
                     'alamat' => $alamat,
@@ -55,9 +53,8 @@ class Akun extends CI_Controller
             } else {
                 $data = [
                     'nama' => $nama,
-                    'username' => $username,
+                    'email' => $email,
                     'password' => $password,
-                    'nik' => $nik,
                     'no_telp' => $no_telp,
                     'alamat' => $alamat,
                 ];

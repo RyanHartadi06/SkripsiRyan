@@ -21,8 +21,8 @@
                                     </div>
                                     <form method="post" autocomplete="off">
                                         <div class="form-group">
-                                            <label class="small mb-1" for="inputEmail">Username</label>
-                                            <input class="form-control py-4" id="username" name="username" type="text" placeholder="Enter Username" />
+                                            <label class="small mb-1" for="inputEmail">Email</label>
+                                            <input class="form-control py-4" id="email" name="email" type="email" placeholder="Enter Email" />
                                         </div>
                                         <div class="form-group">
                                             <label class="small mb-1" for="inputPassword">Password</label>

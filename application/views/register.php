@@ -25,16 +25,12 @@
                                                 <?php echo $this->session->flashdata('pesan') ?>
                                             </div>
                                             <div class="row">
-                                                <div class="form-group col-lg-6 col-sm-12">
-                                                    <label>Username</label>
-                                                    <input class="form-control" id="username" name="username" type="text" placeholder="Nama User" />
-                                                    <?php echo form_error('username'); ?>
+                                                <div class="form-group col-lg-12 col-sm-12">
+                                                    <label>Email</label>
+                                                    <input class="form-control" id="email" name="email" type="email" placeholder="Email" />
+                                                    <?php echo form_error('email'); ?>
                                                 </div>
-                                                <div class="form-group col-lg-6 col-sm-12">
-                                                    <label>Nama Lengkap</label>
-                                                    <input class="form-control" id="nama" name="nama" type="text" placeholder="Nama User" />
-                                                    <?php echo form_error('nama'); ?>
-                                                </div>
+
                                             </div>
                                             <div class="row">
                                                 <div class="form-group col-lg-12 col-sm-12">
@@ -44,9 +40,9 @@
                                             </div>
                                             <div class="row">
                                                 <div class="form-group col-lg-6 col-sm-12">
-                                                    <label>NIK</label>
-                                                    <input class="form-control" id="nik" name="nik" type="text" placeholder="NIK" />
-                                                    <?php echo form_error('nik'); ?>
+                                                    <label>Nama Lengkap</label>
+                                                    <input class="form-control" id="nama" name="nama" type="text" placeholder="Nama User" />
+                                                    <?php echo form_error('nama'); ?>
                                                 </div>
                                                 <div class="form-group col-lg-6 col-sm-12">
                                                     <label>Nomor Telepon</label>
@@ -57,7 +53,7 @@
                                             <div class="row">
                                                 <div class="form-group col-lg-12 col-sm-12">
                                                     <label>Alamat</label>
-                                                    <input class="form-control" id="alamat" name="alamat" type="text" placeholder="alamat" />
+                                                    <input class="form-control" id="alamat" name="alamat" type="text" placeholder="Alamat" />
                                                     <?php echo form_error('alamat'); ?>
                                                 </div>
                                             </div>
