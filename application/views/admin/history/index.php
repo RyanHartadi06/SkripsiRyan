@@ -21,13 +21,16 @@
                         <div class="page-header-content">
                             <h1 class="page-header-title">
                                 <div class="page-header-icon"><i data-feather="grid"></i></div>
-                                <span>Halaman Pengguna Terdaftar</span>
+                                <span>History</span>
                             </h1>
                         </div>
                     </div>
                 </div>
                 <div class="container-fluid mt-n10">
                     <div class="card mb-4">
+                        <div class="card-header">
+
+                        </div>
                         <div class="card-body">
                             <div class="col">
                                 <?php echo $this->session->flashdata('message') ?>
@@ -37,38 +40,33 @@
                                     <thead>
                                         <tr>
                                             <th>Nomor</th>
-                                            <th>Nama</th>
-                                            <th>Nomor Telepon</th>
-                                            <th>Alamat</th>
-                                            <th>Aktif</th>
+                                            <th>Nama Pengguna</th>
+                                            <th>Nama Penelitian</th>
+                                            <th>PH</th>
+                                            <th>TDS</th>
+                                            <th>Suhu</th>
+                                            <th>Do</th>
+                                            <th>Salinity</th>
+                                            <th>Grade</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <?php $no = 1;
-                                        foreach ($user as $d) { ?>
+                                        foreach ($data as $d) { ?>
                                             <tr>
                                                 <td><?= $no++ ?></td>
                                                 <td><?= $d['nama'] ?></td>
-                                                <td><?= $d['no_telp'] ?></td>
-                                                <td><?= $d['alamat'] ?></td>
-                                                <?php if ($d['is_active'] == 0) { ?>
-                                                    <td>
-                                                        <span class="badge badge-danger">Belum Aktif</span>
-                                                    </td>
-                                                <?php } ?>
-                                                <?php if ($d['is_active'] == 1) { ?>
-                                                    <td>
-                                                        <span class="badge badge-primary">Aktif</span>
-                                                    </td>
-                                                <?php } ?>
-                                                <?php if ($d['is_active'] == 2) { ?>
-                                                    <td>
-                                                        <span class="badge badge-success">Blokir</span>
-                                                    </td>
-                                                <?php } ?>
+                                                <td><?= $d['judul'] ?></td>
+                                                <td><?= $d['ph'] ?></td>
+                                                <td><?= $d['tds'] ?></td>
+                                                <td><?= $d['suhu'] ?></td>
+                                                <td><?= $d['do'] ?></td>
+                                                <td><?= $d['salinity'] ?></td>
+                                                <td><?= $d['grade'] ?></td>
+
                                                 <td>
-                                                    <a class="btn btn-datatable btn-icon btn-transparent-dark" href="<?php echo base_url('Admin/Akun/detail/' . $d['id_pengguna']) ?>"><i class="fas fa-plus"></i> </a>
+                                                    <a class="btn btn-datatable btn-icon btn-transparent-dark" href="<?php echo base_url('Admin/History/detail/' . $d['id_perhitungan']) ?>"><i class="fas fa-plus"></i> </a>
                                                 </td>
                                             </tr>
                                         <?php } ?>

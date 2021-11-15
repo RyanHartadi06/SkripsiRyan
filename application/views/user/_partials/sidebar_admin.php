@@ -27,6 +27,11 @@
                     <div class="nav-link-icon"><i data-feather="folder-plus"></i></div>
                     Karakteristik Kolam
                 </a>
+                <div class="sidenav-menu-heading">Bisnis Proses</div>
+                <a class="nav-link collapsed" href="<?php echo base_url('Admin/History') ?>">
+                    <div class="nav-link-icon"><i data-feather="git-commit"></i></div>
+                    History
+                </a>
                 <div class="sidenav-menu-heading">Pengaturan Akun</div>
                 <a class="nav-link collapsed" href="<?= base_url('Admin/Akun') ?>">
                     <div class="nav-link-icon"><i data-feather="user"></i></div>

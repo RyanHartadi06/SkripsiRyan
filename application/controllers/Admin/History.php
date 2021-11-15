@@ -6,16 +6,14 @@ class History extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-        belumlogin();
-        error_reporting(0);
+        belumlogin_admin();
     }
     public function index()
     {
         $data['Pengguna'] = $this->db->get_where('pengguna', ['id_pengguna' =>
         $this->session->userdata('id_pengguna')])->row_array();
-        $id = $data['Pengguna']['id_pengguna'];
-        $data['data'] = $this->db->query("SELECT * FROM perhitungan , data WHERE perhitungan.id_data = data.id AND data.id_user = '$id' GROUP BY perhitungan.created_at DESC")->result_array();
-        $this->load->view('user/history/index',  $data);
+        $data['data'] = $this->db->query("SELECT * FROM perhitungan , data , pengguna WHERE perhitungan.id_data = data.id AND pengguna.id_pengguna = data.id_user GROUP BY perhitungan.created_at DESC")->result_array();
+        $this->load->view('admin/history/index',  $data);
     }
     public function detail($id_perhitungan)
     {
@@ -23,19 +21,6 @@ class History extends CI_Controller
         $this->session->userdata('id_pengguna')])->row_array();
         $data['ikan'] = $this->db->query("SELECT * FROM perhitungan WHERE id_perhitungan = '$id_perhitungan'")->row();
         $data['data'] = $this->db->query("SELECT * FROM rules, nilai_min,rules_grade WHERE nilai_min.id_min = rules_grade.id_rules_grade AND rules.id_rules = rules_grade.id_rules AND nilai_min.id_perhitungan = '$id_perhitungan'")->result_array();
-        $this->load->view('user/perhitungan/detail', $data);
-    }
-    public function hapus($id)
-    {
-        $this->db->where('id_perhitungan', $id);
-        $this->db->delete('nilai_min');
-        $this->db->where('id_perhitungan', $id);
-        $this->db->delete('perhitungan');
-        $this->db->where('id_perhitungan', $id);
-        $this->db->delete('rules_grade');
-        $this->session->set_flashdata('message', '<div class="alert alert-success mb-3" role="alert">
-            Data Berhasil Dihapus!
-            </div>');
-        redirect('User/History');
+        $this->load->view('admin/history/detail', $data);
     }
 }

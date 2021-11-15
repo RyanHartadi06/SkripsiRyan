@@ -41,17 +41,13 @@
                                         <b><?= $users->nama ?></b>
                                     </div>
                                     <div class="form-group col-lg-6 col-sm-6">
-                                        <label>Username</label>
+                                        <label>Email</label>
                                         <br>
-                                        <b><?= $users->username ?></b>
+                                        <b><?= $users->email ?></b>
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="form-group col-lg-6 col-sm-6">
-                                        <label>NIK</label>
-                                        <br>
-                                        <b><?= $users->nik ?></b>
-                                    </div>
+
                                     <div class="form-group col-lg-6 col-sm-6">
                                         <label>Nomor Telepon</label>
                                         <br>
@@ -67,6 +63,9 @@
                                     <div class="form-group col-lg-6 col-sm-6">
                                         <label>Is Active</label>
                                         <br>
+                                        <?php if ($users->is_active == 0) { ?>
+                                            <span class="badge badge-primary">Belum Aktif</span>
+                                        <?php } ?>
                                         <?php if ($users->is_active == 1) { ?>
                                             <span class="badge badge-primary">Aktif</span>
                                         <?php } ?>
@@ -85,11 +84,11 @@
                             </div>
                         </div>
                         <?php if ($users->is_active == 1) { ?>
-                            <a href="<?= base_url('Admin/Akun/off/' .  $users->id_pengguna) ?>" type="submit" class="btn btn-primary mr-2">
+                            <a href="<?= base_url('Admin/Akun/off/' .  $users->id_pengguna) ?>" type="submit" class="btn btn-danger mr-2">
                                 Nonaktifkan
                             </a>
                         <?php } ?>
-                        <?php if ($users->is_active == 2) { ?>
+                        <?php if ($users->is_active == 2 || $users->is_active == 0) { ?>
                             <a href="<?= base_url('Admin/Akun/on/' .  $users->id_pengguna) ?>" type="submit" class="btn btn-primary mr-2">
                                 Aktifkan
                             </a>
