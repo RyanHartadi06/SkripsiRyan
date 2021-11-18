@@ -197,7 +197,7 @@
         }
 
         a {
-            color: #30e3ca;
+            color: #000000;
         }
 
         table {}
@@ -209,7 +209,7 @@
         }
 
         .logo h1 a {
-            color: #30e3ca;
+            color: #000000;
             font-size: 24px;
             font-weight: 700;
             font-family: 'Lato', sans-serif;

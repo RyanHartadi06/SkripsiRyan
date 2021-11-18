@@ -245,7 +245,7 @@
                         </div>
                     </div>
                     <div class="row mt-5">
-                        <div class="col-lg-12 mb-4">
+                        <div class="col-lg-4 col-md-12 mb-4">
                             <div class="card">
                                 <div class="card-header">Grafik Sensor Suhu</div>
                                 <div class="card-body">
@@ -253,9 +253,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="row mt-5">
-                        <div class="col-lg-12 mb-4">
+                        <div class="col-lg-4 col-md-12 mb-4">
                             <div class="card">
                                 <div class="card-header">Grafik Sensor Kemurnian Air ( TDS )</div>
                                 <div class="card-body">
@@ -263,14 +261,41 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="row mt-5">
-                        <div class="col-lg-12 mb-4">
+                        <div class="col-lg-4 col-md-12 mb-4">
                             <div class="card">
                                 <div class="card-header">Grafik Sensor pH</div>
                                 <div class="card-body">
                                     <div class="chart-area"><canvas id="grafik_ph" width="100%" height="30"></canvas></div>
                                 </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <div class="datatable table-responsive">
+                                <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>Nomor</th>
+                                            <th>pH</th>
+                                            <th>Tds</th>
+                                            <th>Suhu</th>
+                                            <th>Created Date</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php $no = 1;
+                                        foreach ($dataoutput as $d) { ?>
+                                            <tr>
+                                                <td><?= $no++ ?></td>
+                                                <td><?= $d['ph'] ?></td>
+                                                <td><?= $d['tds'] ?></td>
+                                                <td><?= $d['suhu'] ?></td>
+                                                <td><?= $d['createdDate'] ?></td>
+                                            </tr>
+                                        <?php } ?>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>

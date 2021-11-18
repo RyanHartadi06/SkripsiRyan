@@ -722,7 +722,9 @@ class Perhitungan extends CI_Controller
         $this->db->update('perhitungan');
         $data['ikan'] = $this->db->query("SELECT * FROM perhitungan WHERE id_perhitungan = '$id_perhitungan'")->row();
         // $data['data'] = $this->db->query("SELECT * FROM rules, nilai_min,rules_grade WHERE nilai_min.id_perhitungan = rules_grade.id_perhitungan AND rules.id_rules = rules_grade.id_rules AND nilai_min.id_min = rules_grade.id_rules_grade AND rules_grade.id_perhitungan = '$id_perhitungan'")->result_array();
-        $data['data'] = $this->db->query("SELECT * FROM rules, nilai_min,rules_grade WHERE nilai_min.id_perhitungan = rules_grade.id_perhitungan AND rules.id_rules = rules_grade.id_rules  AND rules_grade.id_perhitungan = '$id_perhitungan'")->result_array();
+        // $data['data'] = $this->db->query("SELECT * FROM rules, nilai_min,rules_grade WHERE nilai_min.id_perhitungan = rules_grade.id_perhitungan AND rules.id_rules = rules_grade.id_rules  AND rules_grade.id_perhitungan = '$id_perhitungan'")->result_array();
+        $data['data'] = $this->db->query("SELECT * FROM rules, rules_grade WHERE rules.id_rules = rules_grade.id_rules AND rules_grade.id_perhitungan = '$id_perhitungan'")->result_array();
+        $data['nilai_min'] = $this->db->query("SELECT * FROM  nilai_min WHERE nilai_min.id_perhitungan = '$id_perhitungan'")->result_array();
         $this->load->view('user/perhitungan/detail', $data);
     }
 
@@ -1445,7 +1447,8 @@ class Perhitungan extends CI_Controller
         $this->db->where('id_perhitungan', $id_perhitungan);
         $this->db->update('perhitungan');
         $data['ikan'] = $this->db->query("SELECT * FROM perhitungan WHERE id_perhitungan = '$id_perhitungan'")->row();
-        $data['data'] = $this->db->query("SELECT * FROM rules, nilai_min,rules_grade WHERE nilai_min.id_perhitungan = rules_grade.id_perhitungan AND rules.id_rules = rules_grade.id_rules AND nilai_min.id_min = rules_grade.id_rules_grade AND rules_grade.id_perhitungan = '$id_perhitungan'")->result_array();
+        $data['data'] = $this->db->query("SELECT * FROM rules, rules_grade WHERE rules.id_rules = rules_grade.id_rules AND rules_grade.id_perhitungan = '$id_perhitungan'")->result_array();
+        $data['nilai_min'] = $this->db->query("SELECT * FROM  nilai_min WHERE nilai_min.id_perhitungan = '$id_perhitungan'")->result_array();
         // $data['data'] = $this->db->query("SELECT * FROM rules, nilai_min,rules_grade WHERE nilai_min.id_perhitungan = rules_grade.id_perhitungan AND rules.id_rules = rules_grade.id_rules AND rules_grade.id_perhitungan = '$id_perhitungan'")->result_array();
         $this->load->view('user/perhitungan/detail', $data);
     }

@@ -221,4 +221,86 @@ class Login extends CI_Controller
 			die;
 		}
 	}
+	public function verificationlupapass()
+	{
+		$email = $_GET['email'];
+		$this->sendEmail($email);
+		$this->load->view('sendOTP', $email);
+	}
+	public function Lupapass()
+	{
+		$this->form_validation->set_rules('email', 'Email', 'required');
+
+		if ($this->form_validation->run() == false) {
+			$this->load->view('lupapass');
+		} else {
+			$email = $this->input->post('email');
+
+			//lakukan pengecekan apakah email terdaftar
+			$user = $this->db->get_where('pengguna', ['email' => $email])->row_array();
+			if ($user) {
+				$this->sendEmail($user['email']);
+				$this->session->set_flashdata(
+					'message',
+					'<div class="alert alert-success mb-3" role="alert">Kode OTP telah dikirim melalui email</div>'
+				);
+				redirect('Login/verificationlupapass?email=' . $email);
+			} else {
+				$this->session->set_flashdata(
+					'message',
+					'<div class="alert alert-danger mb-3" role="alert">Email Tidak Ditemukan</div>'
+				);
+				redirect('Login');
+			}
+		}
+	}
+	public function kirimOTP()
+	{
+		$email = $this->input->post('email');
+		$kode = $this->input->post('kode');
+		$user = $this->db->get_where('pengguna', ['email' => $email])->row_array();
+		if ($user['kode_otp'] == $kode) {
+			//pindah halaman form password
+			$this->session->set_flashdata(
+				'message',
+				'<div class="alert alert-success mb-3" role="alert">Kode OTP Anda Benar. Silahkan Update Password</div>'
+			);
+			redirect('Login/viewupdate?email=' . $email);
+		} else {
+			//
+			$this->session->set_flashdata(
+				'message',
+				'<div class="alert alert-success mb-3" role="alert">Kode OTP Salah</div>'
+			);
+			redirect('Login/verificationlupapass?email=' . $email);
+		}
+	}
+	public function viewupdate()
+	{
+		$email = $_GET['email'];
+		$this->load->view('updatepass', $email);
+	}
+	public function updatepass()
+	{
+		$p = $this->input->post('pass1');
+		$q = $this->input->post('pass2');
+		$email = $this->input->post('email');
+		if ($p == $q) {
+			$pass = md5($this->input->post('pass1'));
+			$this->db->set('password', $pass);
+			$this->db->where('email', $email);
+			$this->db->update('pengguna');
+			$this->session->set_flashdata(
+				'message',
+				'<div class="alert alert-success mb-3" role="alert">Update Password Berhasil</div>'
+			);
+			redirect('Login');
+		} else {
+			$this->session->set_flashdata(
+				'message',
+				'<div class="alert alert-success mb-3" role="alert">Password Tidak Sesuai</div>'
+			);
+			redirect('Login/viewupdate?email=' . $email);
+		}
+	}
 }

@@ -66,11 +66,13 @@
                                                 <td><?= $d['nama_kolam'] ?></td>
                                                 <?php if ($d['status'] == 1) { ?>
                                                     <td>
-                                                        <span class="badge badge-primary">Sistem IoT</span> </td>
+                                                        <span class="badge badge-primary">Sistem IoT</span>
+                                                    </td>
                                                 <?php } ?>
                                                 <?php if ($d['status'] == 2) { ?>
                                                     <td>
-                                                        <span class="badge badge-success">Manual</span> </td>
+                                                        <span class="badge badge-success">Manual</span>
+                                                    </td>
                                                 <?php } ?>
                                                 <?php if ($d['status'] == 1) { ?>
                                                     <td>

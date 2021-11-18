@@ -22,7 +22,8 @@ class History extends CI_Controller
         $data['Pengguna'] = $this->db->get_where('pengguna', ['id_pengguna' =>
         $this->session->userdata('id_pengguna')])->row_array();
         $data['ikan'] = $this->db->query("SELECT * FROM perhitungan WHERE id_perhitungan = '$id_perhitungan'")->row();
-        $data['data'] = $this->db->query("SELECT * FROM rules, nilai_min,rules_grade WHERE nilai_min.id_min = rules_grade.id_rules_grade AND rules.id_rules = rules_grade.id_rules AND nilai_min.id_perhitungan = '$id_perhitungan'")->result_array();
+        $data['data'] = $this->db->query("SELECT * FROM rules,rules_grade WHERE rules.id_rules = rules_grade.id_rules AND rules_grade.id_perhitungan = '$id_perhitungan'")->result_array();
+        $data['nilai_min'] = $this->db->query("SELECT * FROM  nilai_min WHERE nilai_min.id_perhitungan = '$id_perhitungan'")->result_array();
         $this->load->view('user/perhitungan/detail', $data);
     }
     public function hapus($id)

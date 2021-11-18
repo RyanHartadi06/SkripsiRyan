@@ -283,6 +283,7 @@ class Proses extends CI_Controller
 	{
 		$qweq = $_GET['id'];
 		$data['qwe'] = $this->db->query("SELECT * FROM data WHERE id = '$qweq'")->result_array();
+		$data['dataoutput'] = $this->db->query("SELECT * FROM data_sensor WHERE id = '$qweq'")->result_array();
 
 		// $data['all'] = $this->db->query("SELECT * FROM data_sensor WHERE id = '$qweq'  ORDER BY id_data DESC LIMIT 1")->row();
 		$data['Pengguna'] = $this->db->get_where('pengguna', ['id_pengguna' =>

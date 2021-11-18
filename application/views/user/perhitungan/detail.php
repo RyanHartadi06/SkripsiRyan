@@ -70,7 +70,7 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-md-12 col-12 col-lg-12">
-                                    <table class="table" id="dataTable" cellspacing="0">
+                                    <table class="table" id="" cellspacing="0">
                                         <thead>
                                             <tr class="text-center">
                                                 <th>Jenis Ikan Koi</th>
@@ -127,6 +127,7 @@
                         </div>
                     </div>
                     <div class="card mb-4">
+                        <div class="card-header">Rules</div>
                         <div class="card-body">
                             <div class="col">
                                 <?php echo $this->session->flashdata('message') ?>
@@ -142,8 +143,6 @@
                                             <th>Do</th>
                                             <th>Salinity</th>
                                             <th>Grade</th>
-                                            <th>Min</th>
-                                            <th>Inference</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -157,30 +156,39 @@
                                                 <td><?= $d['do'] ?></td>
                                                 <td><?= $d['salinity'] ?></td>
                                                 <td><?= $d['grade'] ?></td>
-                                                <td><?= $d['nilai_min'] ?></td>
-                                                <td><?= $d['inference'] ?></td>
-
                                             </tr>
                                         <?php } ?>
                                     </tbody>
                                 </table>
-                                <div class="modal fade" id="modalDelete" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="deleteModalLabel">Hapus Data</h5>
-                                                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                                                    <span aria-hidden="true">×</span>
-                                                </button>
-                                            </div>
-                                            <div class="modal-body">Apakah Anda yakin untuk hapus data?</div>
-                                            <div class="modal-footer">
-                                                <button class="btn btn-primary" type="button" data-dismiss="modal">Batal</button>
-                                                <a class="btn btn-danger" id="delete_link" type="button" href="">Hapus</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card mb-4">
+                        <div class="card-header">Nilai Min dan Inference</div>
+                        <div class="card-body">
+                            <div class="col">
+                                <?php echo $this->session->flashdata('message') ?>
+                            </div>
+                            <div class="datatable table-responsive">
+                                <table class="table table-bordered table-hover" id="datatb" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>Rules</th>
+                                            <th>Nilai Min</th>
+                                            <th>Inference</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php $no = 1;
+                                        foreach ($nilai_min as $d) { ?>
+                                            <tr>
+                                                <td>R<?= $no++ ?></td>
+                                                <td><?= $d['nilai_min'] ?></td>
+                                                <td><?= $d['inference'] ?></td>
+                                            </tr>
+                                        <?php } ?>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
@@ -314,6 +322,9 @@
     var oganyamabuki = gradeOganYamabuki();
     $('#ogan').html(oganyamabuki);
     $('#yamabuki').html(oganyamabuki);
+    $('#datatb').dataTable({
+        "paging": true
+    });
 </script>
 
 </html>
