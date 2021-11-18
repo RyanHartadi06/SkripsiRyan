@@ -23,12 +23,12 @@
                                         <!-- <?php echo validation_errors(); ?> -->
                                         <div class="form-group">
                                             <label class="small mb-1" for="pass1">Password</label>
-                                            <input class="form-control py-4" id="pass1" name="pass1" type="password" placeholder="Enter Password" />
-                                            <input class="form-control py-4" id="email" name="email" value="<?= $_GET['email'] ?>" />
+                                            <input class="form-control py-4" id="pass1" name="pass1" type="password" placeholder="Enter Password" required />
+                                            <input class="form-control py-4" id="email" name="email" value="<?= $_GET['email'] ?>" hidden />
                                         </div>
                                         <div class="form-group">
                                             <label class="small mb-1" for="pass2">Konfirmasi Password</label>
-                                            <input class="form-control py-4" id="pass2" name="pass2" type="password" placeholder="Enter Confirm Password" />
+                                            <input class="form-control py-4" id="pass2" name="pass2" type="password" placeholder="Enter Confirm Password" required />
                                         </div>
                                         <div class="form-group d-flex align-items-center justify-content-between mt-4 mb-0">
                                             <button type="submit" class="btn btn-primary mx-auto">Kirim</button>

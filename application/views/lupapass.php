@@ -22,7 +22,7 @@
                                     <form method="post" action="" autocomplete="off">
                                         <div class="form-group">
                                             <label class="small mb-1" for="email">Masukkan Email Anda</label>
-                                            <input class="form-control py-4" id="email" name="email" type="text" placeholder="Enter Email Account" />
+                                            <input class="form-control py-4" id="email" name="email" type="text" placeholder="Enter Email Account" required />
                                         </div>
                                         <div class="form-group d-flex align-items-center justify-content-between mt-4 mb-0">
                                             <button type="submit" class="btn btn-primary mx-auto">Kirim</button>

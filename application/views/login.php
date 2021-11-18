@@ -22,11 +22,11 @@
                                     <form method="post" autocomplete="off">
                                         <div class="form-group">
                                             <label class="small mb-1" for="inputEmail">Email</label>
-                                            <input class="form-control py-4" id="email" name="email" type="email" placeholder="Enter Email" />
+                                            <input class="form-control py-4" id="email" name="email" type="email" placeholder="Enter Email" required />
                                         </div>
                                         <div class="form-group">
                                             <label class="small mb-1" for="inputPassword">Password</label>
-                                            <input class="form-control py-4" id="password" name="password" type="password" placeholder="Enter password" />
+                                            <input class="form-control py-4" id="password" name="password" type="password" placeholder="Enter password" required />
                                         </div>
                                         <div class="mt-4">
                                             <a href="<?= base_url('Login/Lupapass') ?>">

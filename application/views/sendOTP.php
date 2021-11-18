@@ -26,7 +26,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label class="small mb-1" for="kode">Masukkan Kode OTP anda</label>
-                                            <input class="form-control py-4" id="kode" name="kode" type="text" placeholder="Enter KodeOTP" />
+                                            <input class="form-control py-4" id="kode" name="kode" type="text" placeholder="Enter KodeOTP" required />
                                         </div>
                                         <div class="form-group d-flex align-items-center justify-content-between mt-4 mb-0">
                                             <button type="submit" class="btn btn-primary mx-auto">Kirim</button>

@@ -27,7 +27,7 @@
                                             <div class="row">
                                                 <div class="form-group col-lg-12 col-sm-12">
                                                     <label>Email</label>
-                                                    <input class="form-control" id="email" name="email" type="email" placeholder="Email" />
+                                                    <input class="form-control" id="email" name="email" type="email" placeholder="Email" required />
                                                     <?php echo form_error('email'); ?>
                                                 </div>
 
@@ -35,25 +35,25 @@
                                             <div class="row">
                                                 <div class="form-group col-lg-12 col-sm-12">
                                                     <label>Password</label>
-                                                    <input class="form-control" id="password" name="password" type="password" placeholder="Password" />
+                                                    <input class="form-control" id="password" name="password" type="password" placeholder="Password" required />
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="form-group col-lg-6 col-sm-12">
                                                     <label>Nama Lengkap</label>
-                                                    <input class="form-control" id="nama" name="nama" type="text" placeholder="Nama User" />
+                                                    <input class="form-control" id="nama" name="nama" type="text" placeholder="Nama User" required />
                                                     <?php echo form_error('nama'); ?>
                                                 </div>
                                                 <div class="form-group col-lg-6 col-sm-12">
                                                     <label>Nomor Telepon</label>
-                                                    <input class="form-control" id="no_telp" name="no_telp" type="text" placeholder="Nomor Telepon" />
+                                                    <input class="form-control" id="no_telp" name="no_telp" type="text" placeholder="Nomor Telepon" required />
                                                     <?php echo form_error('no_telp'); ?>
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="form-group col-lg-12 col-sm-12">
                                                     <label>Alamat</label>
-                                                    <input class="form-control" id="alamat" name="alamat" type="text" placeholder="Alamat" />
+                                                    <input class="form-control" id="alamat" name="alamat" type="text" placeholder="Alamat" required />
                                                     <?php echo form_error('alamat'); ?>
                                                 </div>
                                             </div>

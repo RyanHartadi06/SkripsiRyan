@@ -270,7 +270,7 @@ class Login extends CI_Controller
 			//
 			$this->session->set_flashdata(
 				'message',
-				'<div class="alert alert-success mb-3" role="alert">Kode OTP Salah</div>'
+				'<div class="alert alert-danger mb-3" role="alert">Kode OTP Salah</div>'
 			);
 			redirect('Login/verificationlupapass?email=' . $email);
 		}
@@ -298,7 +298,7 @@ class Login extends CI_Controller
 		} else {
 			$this->session->set_flashdata(
 				'message',
-				'<div class="alert alert-success mb-3" role="alert">Password Tidak Sesuai</div>'
+				'<div class="alert alert-danger mb-3" role="alert">Password Tidak Sesuai</div>'
 			);
 			redirect('Login/viewupdate?email=' . $email);
 		}
