@@ -37,19 +37,19 @@
                                 <div class="row">
                                     <div class="form-group col-lg-12 col-sm-12">
                                         <label>Nama Alat</label>
-                                        <input class="form-control" id="name" name="name" type="text" placeholder="Nama Alat" />
+                                        <input class="form-control" id="name" name="name" type="text" placeholder="Nama Alat" required />
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="form-group col-lg-12 col-sm-12">
                                         <label>Gambar</label>
-                                        <input class="form-control" id="gambar" name="gambar" type="file" placeholder="Gambar" />
+                                        <input class="form-control" id="gambar" name="gambar" type="file" placeholder="Gambar" required />
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="form-group col-lg-12 col-sm-12">
                                         <label>Deskripsi</label>
-                                        <textarea class="form-control" id="desc" name="desc" type="text" placeholder="Deskripsi"></textarea>
+                                        <textarea class="form-control" id="desc" name="desc" type="text" placeholder="Deskripsi" required></textarea>
                                     </div>
                                 </div>
                             </div>

@@ -37,7 +37,7 @@
                                 <div class="row">
                                     <div class="form-group col-lg-12 col-sm-12">
                                         <label>Nama Alat</label>
-                                        <input class="form-control" id="name" name="name" type="text" placeholder="Nama Alat" value="<?= $alat->nama_alat ?>" />
+                                        <input class="form-control" id="name" name="name" type="text" placeholder="Nama Alat" value="<?= $alat->nama_alat ?>" required />
                                     </div>
                                 </div>
                                 <div class="row">

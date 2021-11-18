@@ -37,19 +37,19 @@
                                 <div class="row">
                                     <div class="form-group col-lg-12 col-sm-12">
                                         <label>Judul Penelitian</label>
-                                        <input class="form-control" id="name" name="name" type="text" placeholder="Judul Penelitian" />
+                                        <input class="form-control" id="name" name="name" type="text" placeholder="Judul Penelitian" required />
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="form-group col-lg-12 col-sm-12">
                                         <label>Lokasi</label>
-                                        <input class="form-control" id="lokasi" name="lokasi" type="text" placeholder="Lokasi" />
+                                        <input class="form-control" id="lokasi" name="lokasi" type="text" placeholder="Lokasi" required />
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="form-group col-lg-12 col-sm-12">
                                         <label>Nama Kolam</label>
-                                        <input class="form-control" id="nama_kolam" name="nama_kolam" type="text" placeholder="Nama Kolam" />
+                                        <input class="form-control" id="nama_kolam" name="nama_kolam" type="text" placeholder="Nama Kolam" required />
                                     </div>
                                 </div>
                                 <hr>
@@ -57,31 +57,31 @@
                                 <div class="row">
                                     <div class="form-group col-lg-6 col-sm-6">
                                         <label>PH</label>
-                                        <input class="form-control" id="ph" name="ph" type="text" placeholder="PH" required />
+                                        <input class="form-control" id="ph" name="ph" type="text" placeholder="Contoh: 7.4" required onkeypress="return onlyNumber(event)" />
                                     </div>
                                     <div class="form-group col-lg-6 col-sm-6">
                                         <label>TDS</label>
-                                        <input class="form-control" id="tds" name="tds" type="text" placeholder="TDS" required />
+                                        <input class="form-control" id="tds" name="tds" type="text" placeholder="Contoh: 174.70" required onkeypress="return onlyNumber(event)" />
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="form-group col-lg-4 col-sm-4">
                                         <label>Suhu</label>
-                                        <input class="form-control" id="suhu" name="suhu" type="text" placeholder="Suhu" required />
+                                        <input class="form-control" id="suhu" name="suhu" type="text" placeholder="Contoh: 26.5 " required onkeypress="return onlyNumber(event)" />
                                     </div>
                                     <div class="form-group col-lg-4 col-sm-4">
                                         <label>DO</label>
-                                        <input class="form-control" id="do" name="do" type="text" placeholder="DO" required />
+                                        <input class="form-control" id="do" name="do" type="text" placeholder="Contoh: 5" required onkeypress="return onlyNumber(event)" />
                                     </div>
                                     <div class="form-group col-lg-4 col-sm-4">
                                         <label>Salinity</label>
-                                        <input class="form-control" id="salinity" name="salinity" type="text" placeholder="Salinity" required />
+                                        <input class="form-control" id="salinity" name="salinity" type="Contoh: 0.125" placeholder="Salinity" required onkeypress="return onlyNumber(event)" />
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="form-group col-lg-12 col-sm-12">
                                         <label>Deskripsi</label>
-                                        <textarea class="form-control" id="desc" name="desc" type="text" placeholder="Deskripsi"></textarea>
+                                        <textarea class="form-control" id="desc" name="desc" type="text" placeholder="Deskripsi" required></textarea>
                                     </div>
                                 </div>
                             </div>

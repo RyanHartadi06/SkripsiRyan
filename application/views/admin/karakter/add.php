@@ -42,32 +42,33 @@
                                                 <option value="<?= $key['id_jenis'] ?>"><?= $key['nama_ikan'] ?></option>
 
                                             <?php } ?>
-                                        </select> </div>
+                                        </select>
+                                    </div>
                                 </div>
                                 <div class="row">
                                     <div class="form-group col-lg-6 col-sm-6">
                                         <label>Ph</label>
-                                        <input class="form-control" id="ph" name="ph" type="text" placeholder="Input Ph" />
+                                        <input class="form-control" id="ph" name="ph" type="text" placeholder="Input Ph" required />
                                     </div>
                                     <div class="form-group col-lg-6 col-sm-6">
                                         <label>Tds</label>
-                                        <input class="form-control" id="tds" name="tds" type="text" placeholder="Input Tds" />
+                                        <input class="form-control" id="tds" name="tds" type="text" placeholder="Input Tds" required />
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="form-group col-lg-6 col-sm-6">
                                         <label>Suhu</label>
-                                        <input class="form-control" id="suhu" name="suhu" type="text" placeholder="Input Suhu" />
+                                        <input class="form-control" id="suhu" name="suhu" type="text" placeholder="Input Suhu" required />
                                     </div>
                                     <div class="form-group col-lg-6 col-sm-6">
                                         <label>Do</label>
-                                        <input class="form-control" id="do" name="do" type="text" placeholder="Input DO" />
+                                        <input class="form-control" id="do" name="do" type="text" placeholder="Input DO" required />
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="form-group col-lg-6 col-sm-6">
                                         <label>Salinity</label>
-                                        <input class="form-control" id="salinity" name="salinity" type="text" placeholder="Input Salinity" />
+                                        <input class="form-control" id="salinity" name="salinity" type="text" placeholder="Input Salinity" required />
                                     </div>
                                     <div class="form-group col-lg-6 col-sm-6">
                                         <label>Grade</label>
@@ -76,7 +77,8 @@
                                             <option value="B">B</option>
                                             <option value="C">C</option>
                                             <option value="D">D</option>
-                                        </select> </div>
+                                        </select>
+                                    </div>
                                 </div>
 
                             </div>

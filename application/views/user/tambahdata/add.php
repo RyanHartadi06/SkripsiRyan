@@ -37,19 +37,19 @@
 								<div class="row">
 									<div class="form-group col-lg-12 col-sm-12">
 										<label>Judul Penelitian</label>
-										<input class="form-control" id="name" name="name" type="text" placeholder="Judul Penelitian" />
+										<input class="form-control" id="name" name="name" type="text" placeholder="Judul Penelitian" required />
 									</div>
 								</div>
 								<div class="row">
 									<div class="form-group col-lg-12 col-sm-12">
 										<label>Lokasi</label>
-										<input class="form-control" id="lokasi" name="lokasi" type="text" placeholder="Lokasi" />
+										<input class="form-control" id="lokasi" name="lokasi" type="text" placeholder="Lokasi" required />
 									</div>
 								</div>
 								<div class="row">
 									<div class="form-group col-lg-12 col-sm-12">
 										<label>Nama Kolam</label>
-										<input class="form-control" id="nama_kolam" name="nama_kolam" type="text" placeholder="Nama Kolam" />
+										<input class="form-control" id="nama_kolam" name="nama_kolam" type="text" placeholder="Nama Kolam" required />
 									</div>
 								</div>
 								<div class="row">

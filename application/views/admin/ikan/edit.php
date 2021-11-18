@@ -37,7 +37,7 @@
                                 <div class="row">
                                     <div class="form-group col-lg-12 col-sm-12">
                                         <label>Jenis Ikan</label>
-                                        <input class="form-control" id="name" name="name" type="text" placeholder="Jenis Ikan" value="<?= $ikan->nama_ikan ?>" />
+                                        <input class="form-control" id="name" name="name" type="text" placeholder="Jenis Ikan" value="<?= $ikan->nama_ikan ?>" required />
                                     </div>
                                 </div>
                                 <div class="row">

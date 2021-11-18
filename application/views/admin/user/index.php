@@ -37,24 +37,24 @@
                                 <div class="row">
                                     <div class="form-group col-lg-6 col-sm-6">
                                         <label>Nama</label>
-                                        <input class="form-control" id="nama" name="nama" type="text" value="<?= $users->nama ?>" />
+                                        <input class="form-control" id="nama" name="nama" type="text" value="<?= $users->nama ?>" required />
                                     </div>
                                     <div class="form-group col-lg-6 col-sm-6">
                                         <label>Email</label>
-                                        <input class="form-control" id="email" name="email" type="email" value="<?= $users->email ?>" />
+                                        <input class="form-control" id="email" name="email" type="email" value="<?= $users->email ?>" required />
                                     </div>
                                 </div>
                                 <div class="row">
 
                                     <div class="form-group col-lg-12 col-sm-12">
                                         <label>Nomor Telepon</label>
-                                        <input class="form-control" id="no_telp" name="no_telp" type="text" value="<?= $users->no_telp ?>" />
+                                        <input class="form-control" id="no_telp" name="no_telp" type="text" value="<?= $users->no_telp ?>" required />
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="form-group col-lg-6 col-sm-6">
                                         <label>Alamat</label>
-                                        <input class="form-control" id="alamat" name="alamat" type="text" value="<?= $users->alamat ?>" />
+                                        <input class="form-control" id="alamat" name="alamat" type="text" value="<?= $users->alamat ?>" required />
                                     </div>
                                     <div class="form-group col-lg-6 col-sm-6">
                                         <label>Foto</label>

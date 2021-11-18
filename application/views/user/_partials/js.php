@@ -14,3 +14,11 @@
 <script src="<?= base_url("assets/select2/select2.min.js") ?>"></script>
 <!-- <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script> -->
 <script src="<?= base_url("js/chartsloader.js") ?>"></script>
+<script>
+    function onlyNumber(evt) {
+        var charCode = (evt.which) ? evt.which : event.keyCode
+        if (charCode != 46 && charCode > 31 && (charCode < 48 || charCode > 57))
+            return false;
+        return true;
+    }
+</script>

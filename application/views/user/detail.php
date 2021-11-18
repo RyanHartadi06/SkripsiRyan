@@ -181,7 +181,7 @@
                                                         $qq = $_GET['id'];
                                                         $data = $this->db->query("SELECT tds, suhu, ph FROM data_sensor WHERE id = '$qq' ORDER BY id_data DESC LIMIT 1")->row();
                                                         ?>
-                                                        <input type="text" class="form-control" name="do" name="do" required>
+                                                        <input type="text" class="form-control" name="do" name="do" required onkeypress="return onlyNumber(event)">
                                                         <input type="text" class="form-control" name="ph" name="ph" value="<?= $data->ph ?>" hidden>
                                                         <input type="text" class="form-control" name="id" name="id" value="<?= $_GET['id'] ?>" hidden>
                                                         <input type="text" class="form-control" name="suhu" name="suhu" value="<?= $data->suhu ?>" hidden>
@@ -191,7 +191,7 @@
                                                 <div class="row">
                                                     <div class="form-group col-lg-12 col-sm-12">
                                                         <label for="">Salinity</label>
-                                                        <input type="text" class="form-control" name="salinity" name="salinity" required>
+                                                        <input type="text" class="form-control" name="salinity" name="salinity" required onkeypress="return onlyNumber(event)">
                                                     </div>
                                                 </div>
                                                 <div class="modal-footer">

@@ -41,32 +41,33 @@
                                             <?php foreach ($ikan as $key) { ?>
                                                 <option value="<?= $key['id_jenis'] ?>" <?= ($data->id_ikan == $key['id_jenis'] ? 'selected' : '') ?>><?= $key['nama_ikan'] ?></option>
                                             <?php } ?>
-                                        </select> </div>
+                                        </select>
+                                    </div>
                                 </div>
                                 <div class="row">
                                     <div class="form-group col-lg-6 col-sm-6">
                                         <label>Ph</label>
-                                        <input class="form-control" id="ph" name="ph" type="text" placeholder="Input Ph" value="<?= $data->ph ?>" />
+                                        <input class="form-control" id="ph" name="ph" type="text" placeholder="Input Ph" value="<?= $data->ph ?>" required />
                                     </div>
                                     <div class="form-group col-lg-6 col-sm-6">
                                         <label>Tds</label>
-                                        <input class="form-control" id="tds" name="tds" type="text" placeholder="Input Tds" value="<?= $data->tds ?>" />
+                                        <input class="form-control" id="tds" name="tds" type="text" placeholder="Input Tds" value="<?= $data->tds ?>" required />
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="form-group col-lg-6 col-sm-6">
                                         <label>Suhu</label>
-                                        <input class="form-control" id="suhu" name="suhu" type="text" placeholder="Input Suhu" value="<?= $data->suhu ?>" />
+                                        <input class="form-control" id="suhu" name="suhu" type="text" placeholder="Input Suhu" value="<?= $data->suhu ?>" required />
                                     </div>
                                     <div class="form-group col-lg-6 col-sm-6">
                                         <label>Do</label>
-                                        <input class="form-control" id="do" name="do" type="text" placeholder="Input DO" value="<?= $data->do ?>" />
+                                        <input class="form-control" id="do" name="do" type="text" placeholder="Input DO" value="<?= $data->do ?>" required />
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="form-group col-lg-6 col-sm-6">
                                         <label>Salinity</label>
-                                        <input class="form-control" id="salinity" name="salinity" type="text" placeholder="Input Salinity" value="<?= $data->salinity ?>" />
+                                        <input class="form-control" id="salinity" name="salinity" type="text" placeholder="Input Salinity" value="<?= $data->salinity ?>" required />
                                     </div>
                                     <div class="form-group col-lg-6 col-sm-6">
                                         <label>Grade</label>
@@ -93,7 +94,8 @@
                                                 <option value="C">C</option>
                                             <?php } ?>
 
-                                        </select> </div>
+                                        </select>
+                                    </div>
                                 </div>
 
                             </div>
