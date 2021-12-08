@@ -325,8 +325,12 @@ class Perhitungan extends CI_Controller
                 $salinityA = (0.05 - $salinity) / (0.05 - 0.025);
             } else if (0.15 <= $salinity && $salinity <=  0.175) {
                 $salinityA = ($salinity - 0.15) / (0.175 - 0.15);
-            } else if ($salinity < 0.025 && $salinity > 0.175) {
+            } else if ($salinity < 0.025) {
                 $salinityA = 0;
+            } else if ($salinity > 0.175) {
+                $salinityA = 0;
+            } else if ($salinity <= 0.05) {
+                $salinityA = 1;
             }
         }
         if ($salinity >= 0.15 && $salinity <= 0.225) { //Rumus B
@@ -1051,8 +1055,12 @@ class Perhitungan extends CI_Controller
                 $salinityA = (0.05 - $salinity) / (0.05 - 0.025);
             } else if (0.15 <= $salinity && $salinity <=  0.175) {
                 $salinityA = ($salinity - 0.15) / (0.175 - 0.15);
-            } else if ($salinity < 0.025 && $salinity > 0.175) {
+            } else if ($salinity < 0.025) {
                 $salinityA = 0;
+            } else if ($salinity > 0.175) {
+                $salinityA = 0;
+            } else if ($salinity <= 0.05) {
+                $salinityA = 1;
             }
         }
         if ($salinity >= 0.15 && $salinity <= 0.225) { //Rumus B
@@ -1312,11 +1320,11 @@ class Perhitungan extends CI_Controller
         // echo "Suhu";
         // echo json_encode($suhuOutput);
         // echo json_encode($suhuGrade);
-        // echo "Suhu N";
-        // echo json_encode($suhuA);
-        // echo json_encode($suhuB);
-        // echo json_encode($suhuC);
-        // echo json_encode($suhuD);
+        // // echo "Suhu N";
+        // // echo json_encode($suhuA);
+        // // echo json_encode($suhuB);
+        // // echo json_encode($suhuC);
+        // // echo json_encode($suhuD);
         // echo "<br>";
         // echo "Salinity";
         // echo json_encode($salinityOutput);
