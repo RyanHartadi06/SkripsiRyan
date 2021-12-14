@@ -73,7 +73,7 @@ class Perhitungan extends CI_Controller
                 $suhuA = ($suhu - 22.5) / (25 - 22.5);
             } else if (25 < $suhu && $suhu <= 26) {
                 $suhuA = 1;
-            } else if (26 < $suhu && $suhu < 27) {
+            } else if (26 <= $suhu && $suhu <= 27) {
                 $suhuA = (27 - $suhu) / (27 - 26);
             }
         }
@@ -152,7 +152,7 @@ class Perhitungan extends CI_Controller
                 $phB = ($ph - 7.4) / (7.7 - 7.4);
             } else if (8 < $ph && $ph < 8.25) {
                 $phB = (8.25 - $ph) / (8.25 - 8);
-            } else if ((6.5 <= $ph or $ph <= 6.65) or (7.7 <= $ph or $ph <= 8)) {
+            } else if ((6.5 <= $ph && $ph <= 6.65) or (7.7 <= $ph && $ph <= 8)) {
                 $phB = 1;
             }
         }
@@ -176,7 +176,7 @@ class Perhitungan extends CI_Controller
 
         if ($ph <= 5.5 or 8.5 <= $ph) { //jika angka diantara 5.5 maka menggunakan rumus D
             // rumus PH D
-            if (5.5 < $ph && $ph < 8.5) {
+            if (5.5 <= $ph && $ph <= 8.5) {
                 $phD = 0;
             } else if (5.25 < $ph && $ph < 5.5) {
                 $phD = ($ph - 5.25) / (5.5 - 5.25);
@@ -306,7 +306,7 @@ class Perhitungan extends CI_Controller
          *  @return nilai keanggotaan di himpunan d.o Sangat Buruk
          */
         if ($do <= 3.5) {
-            if ($do <= 3) {
+            if ($do <= 2) {
                 $doD = 1;
             } else if ($do >= 3 && $do <= 3.5) {
                 $doD = (3.5 - $do) / (3.5 - 3);
@@ -803,7 +803,7 @@ class Perhitungan extends CI_Controller
                 $suhuA = ($suhu - 22.5) / (25 - 22.5);
             } else if (25 < $suhu && $suhu <= 26) {
                 $suhuA = 1;
-            } else if (26 < $suhu && $suhu < 27) {
+            } else if (26 <= $suhu && $suhu <= 27) {
                 $suhuA = (27 - $suhu) / (27 - 26);
             }
         }
@@ -882,7 +882,7 @@ class Perhitungan extends CI_Controller
                 $phB = ($ph - 7.4) / (7.7 - 7.4);
             } else if (8 < $ph && $ph < 8.25) {
                 $phB = (8.25 - $ph) / (8.25 - 8);
-            } else if ((6.5 <= $ph or $ph <= 6.65) or (7.7 <= $ph or $ph <= 8)) {
+            } else if ((6.5 <= $ph && $ph <= 6.65) or (7.7 <= $ph && $ph <= 8)) {
                 $phB = 1;
             }
         }
@@ -906,7 +906,7 @@ class Perhitungan extends CI_Controller
 
         if ($ph <= 5.5 or 8.5 <= $ph) { //jika angka diantara 5.5 maka menggunakan rumus D
             // rumus PH D
-            if (5.5 < $ph && $ph < 8.5) {
+            if (5.5 <= $ph && $ph <= 8.5) {
                 $phD = 0;
             } else if (5.25 < $ph && $ph < 5.5) {
                 $phD = ($ph - 5.25) / (5.5 - 5.25);
@@ -1036,7 +1036,7 @@ class Perhitungan extends CI_Controller
          *  @return nilai keanggotaan di himpunan d.o Sangat Buruk
          */
         if ($do <= 3.5) {
-            if ($do <= 3) {
+            if ($do <= 2) {
                 $doD = 1;
             } else if ($do >= 3 && $do <= 3.5) {
                 $doD = (3.5 - $do) / (3.5 - 3);
