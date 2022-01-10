@@ -80,6 +80,13 @@
                                         <tbody>
                                             <tr>
                                                 <td>
+                                                    <p>Mix</p>
+                                                    <input type="hidden" name="mi" id="mi" class="koh" style=" border:none; text-align:center;" readonly />
+                                                </td>
+                                                <td id="mix"></td>
+                                            </tr>
+                                            <tr>
+                                                <td>
                                                     <p>Kohaku</p>
                                                     <input type="hidden" name="koh" id="koh" class="koh" style=" border:none; text-align:center;" readonly />
                                                 </td>
@@ -312,6 +319,18 @@
             return "Sangat Buruk (D)"
         }
     }
+
+    function gradeMix() {
+        if (nilaiHasil < 238.59) {
+            return "<p class='bold text-success'>Optimal (A)</p>"
+        } else if (nilaiHasil >= 238.59 && nilaiHasil < 347.5) {
+            return "<p class='bold text-success'>Sedang (B)</p>"
+        } else if (nilaiHasil >= 347.5 && nilaiHasil <= 457.14) {
+            return "<p class='bold text-success'>Buruk (C)</p>"
+        } else {
+            return "<p class='bold text-success'>Sangat Buruk (D)</p>"
+        }
+    }
     var kohaku = gradeKohaku();
     $('#kohaku').html(kohaku);
     var sowasanke = gradeSowaSanke();
@@ -320,8 +339,10 @@
     var shiro = gradeShiro();
     $('#shiro').html(shiro);
     var oganyamabuki = gradeOganYamabuki();
+    var mix = gradeMix();
     $('#ogan').html(oganyamabuki);
     $('#yamabuki').html(oganyamabuki);
+    $('#mix').html(mix);
     $('#datatb').dataTable({
         "paging": true
     });
